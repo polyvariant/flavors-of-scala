@@ -1,0 +1,24 @@
+{
+  "name": "slides",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "slidev build",
+    "dev": "slidev --open",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@iconify-json/devicon": "^1.2.21",
+    "@iconify-json/grommet-icons": "^1.2.1",
+    "@iconify-json/hugeicons": "^1.2.4",
+    "@iconify-json/logos": "^1.2.4",
+    "@iconify-json/noto": "^1.2.3",
+    "@iconify-json/tabler": "^1.2.17",
+    "@slidev/cli": "^51.3.0",
+    "@slidev/theme-default": "latest",
+    "@slidev/theme-seriph": "latest",
+    "slidev-theme-light-icons": "^1.0.2",
+    "slidev-theme-unicorn": "^1.1.2",
+    "vue": "^3.5.13"
+  }
+}
