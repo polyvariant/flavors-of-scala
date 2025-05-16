@@ -21,20 +21,108 @@ TODO: timeline
 Hello everyone!
 -->
 
+
 ---
 
 # Java++
 
-
-- How Java looked like in 2004 (1.3)
+<!-- 
+- How Java looked like in 2004 (1.4)
 - Pizza features
 - Java embraced generics, but nothing more
-- Enter Scala
+- Enter Scala 
+-->
+
+
+---
+
+# Java++
+
+State of Java in 2004, version 1.4
+<v-clicks> 
+
+* No generics yet (they came in Java 5)
+* No annotations (introduced in Java 5)
+* No enums (Java 5)
+* No lambdas or functional programming capabilities (came much later in Java 8)
+* No streams API (Java 8)
+* No var keyword for type inference (Java 10)
+
+</v-clicks> 
+
+<v-click>So there's plenty of room for Scala improvements</v-click>
+
+
+
+---
+
+# Java++
+
+In 2004 Scala was a great innovation, let's see why
+
+---
+
+# Java++
+
+In Java 1.4, when you wanted to produce a list of even squares
 
 ---
 
 # Code example: From Java to Scala
+
+First you create a list
+
+<<< ../snippets/EvenSquares.java#list java {*}
+
+---
+
+# Code example: From Java to Scala
+
+Then filter and square the values
+
+<<< ../snippets/EvenSquares.java#map java {*}
+
+---
+
+# Code example: From Java to Scala
+
+Print at last
+
+<<< ../snippets/EvenSquares.java#foreach java {*}
+
+---
+
+# Code example: From Java to Scala
+
+In the meantime with Scala
+
+<v-click>
+
 <<< ../snippets/JavaPlusPlus.scala#map scala {*}
+
+</v-click>
+
+---
+
+# Java++
+
+Similarly for domain modeling. Let's consider a simple immutable `Person` class.
+
+---
+
+# Code example: From Java to Scala
+
+<!-- 
+TODO would be nice to show it in steps using https://sli.dev/features/shiki-magic-move
+unfortunately `<<< ./person.md ` doesn't work as expected. We could inline `person.md` but still we need to do something about the scrolling
+ -->
+<<< ../snippets/Person.java java {*}{maxHeight:'400px',lines:true}
+
+---
+
+# Code example: From Java to Scala
+
+<<< ../snippets/Person.scala#Person scala
 
 ---
 
