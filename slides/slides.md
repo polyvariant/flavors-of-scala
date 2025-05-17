@@ -116,7 +116,38 @@ Similarly for domain modeling. Let's consider a simple immutable `Person` class.
 TODO would be nice to show it in steps using https://sli.dev/features/shiki-magic-move
 unfortunately `<<< ./person.md ` doesn't work as expected. We could inline `person.md` but still we need to do something about the scrolling
  -->
+
+<div class="long-code">
+
 <<< ../snippets/Person.java java {*}{maxHeight:'400px',lines:true}
+
+</div>
+
+<style>
+
+.long-code > div.slidev-code-wrapper { 
+  overflow: hidden;
+}
+/* animate the code to scroll to the bottom and back to the top, to show how long the definition is */
+.long-code code {
+  display: flex;
+  flex-direction: column;
+  animation: scroll-text 20s linear infinite; /* Apply the scroll animation */
+  animation-delay: 3s; /* start the animation after 3 seconds */
+}
+
+@keyframes scroll-text {
+  0% {
+    transform: translateY(0); /* Start at the top */
+  }
+  50% {
+    transform: translateY(-70%); /* Scroll up (change -70% based on the content height) */
+  }
+  100% {
+    transform: translateY(0); /* Scroll back to the starting point */
+  }
+}
+</style>
 
 ---
 
