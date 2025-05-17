@@ -157,6 +157,30 @@ unfortunately `<<< ./person.md ` doesn't work as expected. We could inline `pers
 
 ---
 
+# Bright Future
+
+Now that we have immutable data types and pure functions, concurrency should be much easier right?
+
+
+---
+
+# Bright Future
+
+<<< ../snippets/Futures.scala#examples scala
+
+<!-- 
+
+Let's not mention the problem of referential transparency yet, we'll come back to it in CE/ZIO section
+
+At this point it's enough to say that immutability, functions as first class citizens and concurrency primitives 
+played very well together and it was tempting to use them for large scare concurrent systems
+
+-->
+
+---
+
+ <!-- może powinniśmy zamienić ten slajd na jakiś wrapup + timeline-->
+
 # How Scala helped
 
 - 2004-2012 Java++, how Scala helped there
@@ -171,6 +195,12 @@ unfortunately `<<< ./person.md ` doesn't work as expected. We could inline `pers
 # Code example: testing Futures
 
 TODO: testing using type parameters, ID monad from Scalaz/early Cats
+
+<!-- 
+
+Może ten przykład z testowaniem pokazać jako uzasadnienie pomysłu z CE/ZIO zamiast przed samą akką?
+
+-->
 
 <!--
 Transition: FUTURE -> concurrency -> Akka Actors
@@ -188,7 +218,7 @@ What about the state?
 - Pure functions
 - Hard to test
 - But… Scala got popular because of it
-- FP programmers took advantage of Spark to promote itse;f
+- FP programmers took advantage of Spark to promote itself
 
 ---
 
