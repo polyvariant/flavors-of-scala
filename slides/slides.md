@@ -161,7 +161,6 @@ unfortunately `<<< ./person.md ` doesn't work as expected. We could inline `pers
 
 Now that we have immutable data types and pure functions, concurrency should be much easier right?
 
-
 ---
 
 # Bright Future
@@ -175,11 +174,8 @@ Let's not mention the problem of referential transparency yet, we'll come back t
 At this point it's enough to say that immutability, functions as first class citizens and concurrency primitives 
 played very well together and it was tempting to use them for large scare concurrent systems
 
--->
+This snippet could be better, treat it as a placeholder
 
----
-
- <!-- może powinniśmy zamienić ten slajd na jakiś wrapup + timeline-->
 
 # How Scala helped
 
@@ -190,11 +186,15 @@ played very well together and it was tempting to use them for large scare concur
 - `Option` (handling nulls) (vs Optional Java 1.7)
 - `Future` (it’s a “lots of hand waving” Monad)
 
----
+może powinniśmy zamienić ten slajd na jakiś wrapup + timeline
+-->
+
+
+--- 
 
 # Code example: testing Futures
 
-TODO: testing using type parameters, ID monad from Scalaz/early Cats
+TODO: testing using type parameters, ID monad from Scalaz/early Cats, perhaps difficulty of handling state?
 
 <!-- 
 
@@ -211,8 +211,7 @@ One-off jobs
 What about the state?
 -->
 
----
-
+<!-- 
 # Side-note: Spark ???
 - Google map-reduce (referencing streams)
 - Pure functions
@@ -220,20 +219,51 @@ What about the state?
 - But… Scala got popular because of it
 - FP programmers took advantage of Spark to promote itself
 
----
 
 # Akka Actors (2012)
 - Shared mutable state
 - Everyone dreams big 
 - Scala got even more popular because of it
 - FP programmers took advantage of Spark to promote itself
-- Code examples: free monad-based Akka actors 
+- Code examples: free monad-based Akka actors  -->
 
 ---
+
+# Futures are nice, but I need to manage state!
+
+---
+image: /actors_collage.jpg
+layout: image
+class: text-white
+---
+
+<!-- todo let's do something about the font -->
+
+# Actors!
+
+--- 
+
+# What's an Actor anyway?
+
+---
+
+TODO: graph/animation of an actor?
+
+---
+
 
 # Problems with Akka-based design
 
 <small>(that Scala devs encountered)</small>
+
+<v-clicks>
+
+- Navigation, discoverability
+- One big actor or many small ones
+- Lifetime
+- More generally: testing…
+
+</v-clicks>
 
 <!---
 Transition: Problems with Akka-based design
@@ -249,6 +279,11 @@ Problems:
 # Code example: akka-testkit 
 
 TODO: how to test that a message wasn’t sent
+
+---
+
+# Perhaps Future wasn't that bad?
+
 
 ---
 
