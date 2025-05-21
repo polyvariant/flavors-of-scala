@@ -12,10 +12,68 @@ drawings:
 transition: none
 mdc: true
 ---
-
+ 
 # Flavors of Scala
 
-TODO: timeline
+
+---
+
+# Timeline 
+
+
+```mermaid { 'theme': 'dark' }
+timeline
+    title Timeline of Major Scala Libraries and Frameworks
+
+    2008 : Scalaz
+    2010 : Akka
+         : Twitter Futures
+    2011 : Finagle
+         : Twitter Util
+    2011 : Play Framework
+    2012 : Apache Spark
+    2014 : Apache Flink
+    2015 : http4s
+    2016 : Cats
+         : Monix
+    2017 : Cats Effect
+    2018 : ZIO
+         : Mill
+         : Ammonite
+    2020 : Skunk
+    2022 : Kyo
+    2023 : Yaes
+
+```
+
+---
+
+# Timeline - extended
+
+```mermaid
+timeline
+    title Timeline of Major Scala Libraries and Frameworks
+
+    2008 : Scalaz – the first major functional programming library in Scala
+    2010 : Akka – actor-based concurrency framework for distributed systems
+         : Twitter Futures – Twitter's custom implementation of Futures
+    2011 : Finagle – Twitter's RPC framework 
+         : Twitter Util – utility libraries supporting Finagle and Twitter infrastructure
+    2011 : Play Framework – web framework inspired by Ruby on Rails
+    2012 : Apache Spark – distributed data processing engine (Big Data)
+    2014 : Apache Flink – stream processing engine with event-at-a-time model
+    2015 : http4s – purely functional web framework (initially built on Scalaz)
+    2016 : Cats – modern functional programming library from Typelevel
+         : Monix – functional & async library (Task, Observable, etc.)
+    2017 : Cats Effect – effect system and runtime for functional Scala
+    2018 : ZIO – functional effect system with typed errors and environment
+         : Mill – alternative build tool for Scala (by Li Haoyi)
+         : Ammonite – enhanced Scala REPL and scripting tool
+    2020 : Skunk – purely functional PostgreSQL library built on Cats Effect
+    2022 : Kyo – algebraic effect system with native support, STM, schedulers
+    2023 : Yaes – minimal, modular, and purely functional effect system
+
+```
 
 <!--
 Hello everyone!
