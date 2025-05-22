@@ -22,40 +22,10 @@ mdc: true
 
 # Timeline 
 
-
-```mermaid { 'theme': 'dark' }
+```mermaid {theme: 'neutral', 'themeVariables': { 'primaryColor': '#ff0000'}}
 timeline
-    title Timeline of Major Scala Libraries and Frameworks
-
-    2008 : Scalaz
-    2010 : Akka
-         : Twitter Futures
-    2011 : Finagle
-         : Twitter Util
-    2011 : Play Framework
-    2012 : Apache Spark
-    2014 : Apache Flink
-    2015 : http4s
-    2016 : Cats
-         : Monix
-    2017 : Cats Effect
-    2018 : ZIO
-         : Mill
-         : Ammonite
-    2020 : Skunk
-    2022 : Kyo
-    2023 : Yaes
-
-```
-
----
-
-# Timeline - extended
-
-```mermaid
-timeline
-    title Timeline of Major Scala Libraries and Frameworks
-
+    2004 : Scala is published - the first official release of Scala programming language
+         : Java++
     2008 : Scalaz – the first major functional programming library in Scala
     2010 : Akka – actor-based concurrency framework for distributed systems
          : Twitter Futures – Twitter's custom implementation of Futures
@@ -72,18 +42,16 @@ timeline
          : Mill – alternative build tool for Scala (by Li Haoyi)
          : Ammonite – enhanced Scala REPL and scripting tool
     2020 : Skunk – purely functional PostgreSQL library built on Cats Effect
-    2022 : Kyo – algebraic effect system with native support, STM, schedulers
-    2023 : Yaes – minimal, modular, and purely functional effect system
-
+    2023 : Kyo – algebraic effect system with native support, STM, schedulers
+         : Ox – Safe direct-style concurrency and resiliency for Scala on the JVM
+         : Gears - experimental cross-platform asynchronous programming library
+    2024 : Yaes – minimal, modular, and purely functional effect system
 ```
 
-<!--
-Hello everyone!
--->
 
 
 ---
-
+ 
 # Java++
 
 <!-- 
