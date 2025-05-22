@@ -1,6 +1,5 @@
 ---
-theme: unicorn
-layout: full
+theme: the-unnamed
 title: Flavors of Scala
 info: |
   ## Flavors of Scala
@@ -11,8 +10,10 @@ drawings:
   persist: true
 transition: none
 mdc: true
+background: /spices.jpg
 ---
- 
+
+
 # Flavors of Scala
 
 
@@ -22,7 +23,11 @@ mdc: true
 
 # Timeline 
 
-```mermaid {theme: 'neutral', 'themeVariables': { 'primaryColor': '#ff0000'}}
+
+<!-- alternative theme approach ```mermaid { 'theme': 'base', 'themeVariables': { 'primaryColor': '#FFFFFF', 'lineColor': '#FFFFFF', 'cScale0':  '#000033', 'cScaleLabel0':  '#ffffff', 'cScale1':  '#000044', 'cScaleLabel1':  '#ffffff', 'cScale2':  '#000055', 'cScaleLabel2':  '#ffffff', 'cScale3':  '#000066', 'cScaleLabel3':  '#ffffff', 'cScale4':  '#000077', 'cScaleLabel4':  '#ffffff', 'cScale5':  '#000088', 'cScaleLabel5':  '#ffffff', 'cScale6':  '#000099', 'cScaleLabel6':  '#ffffff', 'cScale7':  '#0000aa', 'cScaleLabel7':  '#ffffff', 'cScale8':  '#0000bb', 'cScaleLabel8':  '#ffffff', 'cScale9':  '#0000cc', 'cScaleLabel9':  '#ffffff', 'cScale10': '#0000bb', 'cScaleLabel10': '#ffffff', 'cScale11': '#000066', 'cScaleLabel11': '#ffffff'} } -->
+
+```mermaid { 'theme': 'base', 'themeVariables': { 'color': '#FFFFFF'}, timeline: { disableMulticolor: true} }
+
 timeline
     2004 : Scala is published - the first official release of Scala programming language
          : Java++
@@ -47,7 +52,6 @@ timeline
          : Gears - experimental cross-platform asynchronous programming library
     2024 : Yaes – minimal, modular, and purely functional effect system
 ```
-
 
 
 ---
@@ -260,12 +264,9 @@ What about the state?
 # Futures are nice, but I need to manage state!
 
 ---
-image: /actors_collage.jpg
-layout: image
-class: text-white
+background: /actors_collage.jpg
+layout: center
 ---
-
-<!-- todo let's do something about the font -->
 
 # Actors!
 

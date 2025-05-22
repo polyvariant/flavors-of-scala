@@ -18,6 +18,7 @@
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",
     "slidev-theme-light-icons": "^1.0.2",
+    "slidev-theme-the-unnamed": "^0.0.22",
     "slidev-theme-unicorn": "^1.1.2",
     "vue": "^3.5.13"
   }
