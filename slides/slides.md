@@ -280,7 +280,7 @@ What if I need to concurrently modify the state?
 
 <v-clicks>
 
-There's one famous solution out there in Erlang
+There's one famous solution out there
 
 </v-clicks>
 
@@ -294,6 +294,17 @@ layout: center
 --- 
 
 # What's an Actor anyway?
+
+<!-- images from https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-the-Actor-Model-works-by-example -->
+
+<v-clicks>
+
+<img class="absolute top-20 right-30 w-170" alt="" src="https://itknowledgeexchange.techtarget.com/coffee-talk/files/2023/12/asynchronous_communication_modes_in_the_actor_model-f.png" />
+
+</v-clicks>
+
+
+<!-- https://itknowledgeexchange.techtarget.com/coffee-talk/files/2023/12/understanding_the_actor_model-f.png more advanced example -->
 
 ---
 
