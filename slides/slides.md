@@ -224,11 +224,11 @@ może powinniśmy zamienić ten slajd na jakiś wrapup + timeline
 -->
 
 
---- 
+<!-- ---  -->
 
-# Code example: testing Futures
+<!-- # Code example: testing Futures -->
 
-TODO: testing using type parameters, ID monad from Scalaz/early Cats, perhaps difficulty of handling state?
+<!-- TODO: testing using type parameters, ID monad from Scalaz/early Cats, perhaps difficulty of handling state? -->
 
 <!-- 
 
@@ -264,6 +264,25 @@ What about the state?
 ---
 
 # Futures are nice, but I need to manage state!
+
+What if I need to concurrently modify the state?
+
+<v-clicks>
+
+<<< ../snippets/FutureStateProblem.scala#examples scala
+
+</v-clicks>
+
+---
+
+# How do we fix that?
+
+
+<v-clicks>
+
+There's one famous solution out there in Erlang
+
+</v-clicks>
 
 ---
 background: /actors_collage.jpg
