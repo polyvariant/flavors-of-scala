@@ -185,6 +185,8 @@ unfortunately `<<< ./person.md ` doesn't work as expected. We could inline `pers
 
 # Code example: From Java to Scala
 
+The same thing in Scala
+
 <<< ../snippets/Person.scala#Person scala
 
 ---
