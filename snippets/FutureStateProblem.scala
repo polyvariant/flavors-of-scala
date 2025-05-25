@@ -18,7 +18,7 @@ object FutureStateProblem extends App {
     case Success(_) => println(s"Final counter value: $counter")
     case Failure(e) => println(s"Error: ${e.getMessage}")
   }
+  // #endregion
 
   Thread.sleep(2000) // wait for Futures to complete (demo only)
-  // #endregion
 }

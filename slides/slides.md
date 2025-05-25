@@ -269,7 +269,7 @@ What if I need to concurrently modify the state?
 
 <v-clicks>
 
-<<< ../snippets/FutureStateProblem.scala#examples scala
+<<< ../snippets/FutureStateProblem.scala#examples scala {1|9|3-7|*}{lines:true}
 
 </v-clicks>
 
@@ -292,25 +292,37 @@ layout: center
 # Actors!
 
 --- 
+layout: center
+---
 
-# What's an Actor anyway?
-
-<!-- images from https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-the-Actor-Model-works-by-example -->
-
-<v-clicks>
-
-<img class="absolute top-20 right-30 w-170" alt="" src="https://itknowledgeexchange.techtarget.com/coffee-talk/files/2023/12/asynchronous_communication_modes_in_the_actor_model-f.png" />
-
-</v-clicks>
-
-
-<!-- https://itknowledgeexchange.techtarget.com/coffee-talk/files/2023/12/understanding_the_actor_model-f.png more advanced example -->
+# ~~Who's~~ What's an Actor anyway?
 
 ---
 
 # Inbox and state management
 
-<img class="absolute top-20 right-30 w-170" alt="" src="/actors.svg" />
+<img class="absolute top-30 right-10 w-170" alt="" src="/actors.svg" />
+
+<v-clicks>
+
+* Actor can occupy **one** or **zero** threads
+* `Actor system` provides the runtime
+* `Actor system` can be a cluster
+
+</v-clicks>
+
+---
+
+# They can cooperate!
+
+<!-- images from https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-the-Actor-Model-works-by-example -->
+
+<img class="absolute top-20 right-30 w-170" alt="" src="https://itknowledgeexchange.techtarget.com/coffee-talk/files/2023/12/asynchronous_communication_modes_in_the_actor_model-f.png" />
+
+
+<!-- https://itknowledgeexchange.techtarget.com/coffee-talk/files/2023/12/understanding_the_actor_model-f.png more advanced example -->
+
+
 
 ---
 
