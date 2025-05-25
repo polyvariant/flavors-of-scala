@@ -323,6 +323,13 @@ layout: center
 <!-- https://itknowledgeexchange.techtarget.com/coffee-talk/files/2023/12/understanding_the_actor_model-f.png more advanced example -->
 
 
+---
+
+
+# Actors in Akka
+
+TODO: example implementation, show the DSL so that we can refer to code navigation issues (no callstack)
+
 
 ---
 
@@ -420,6 +427,9 @@ layout: full
 
 <!---
 (Bonus: and Dependency injection for free)
+
+
+TODO: chyba warto tu pokazać kawałek Kyo które robi algebraic effects, podlinkować talk wprowadzający https://www.youtube.com/live/gYS3UkmFoHQ?t=719&cbrd=1
 
 -->
 
