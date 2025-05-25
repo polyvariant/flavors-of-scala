@@ -308,7 +308,9 @@ layout: center
 
 ---
 
-TODO: graph/animation of an actor?
+# Inbox and state management
+
+<img class="absolute top-20 right-30 w-170" alt="" src="/actors.svg" />
 
 ---
 

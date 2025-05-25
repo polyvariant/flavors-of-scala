@@ -1,0 +1,83 @@
+<svg width="600" height="250" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* === Animation constants === */
+    /* One loop = 5 increments = 5s * 5 = 25s */
+    /* Each step is 5s */
+
+    /* === Message movement === */
+    @keyframes incrementMoveAndFade {
+      0%   { transform: translateX(0); opacity: 1; }
+      20%  { transform: translateX(260px); opacity: 1; } /* Move in */
+      40%  { transform: translateX(260px); opacity: 1; } /* Pause */
+      60%  { transform: translateX(260px); opacity: 0; } /* Fade in place */
+      100% { transform: translateX(260px); opacity: 0; } /* Stay hidden */
+    }
+
+    @keyframes resetMoveAndFade {
+      0%%   { transform: translateX(0); opacity: 0; }
+      79%   { transform: translateX(0); opacity: 0; }
+      80%   { transform: translateX(0); opacity: 1; }
+      84%  { transform: translateX(260px); opacity: 1; } /* Move in */
+      88%  { transform: translateX(260px); opacity: 1; } /* Pause */
+      93%  { transform: translateX(260px); opacity: 0; } /* Fade in place */
+      100% { transform: translateX(260px); opacity: 0; } /* Stay hidden */
+    }
+
+    /* === State visibility === */
+    /* Only one state visible at a time */
+    @keyframes showState {
+      <!-- 0%, 19.99% { opacity: 1; } -->
+      0%, 20% { opacity: 1; }
+      20%, 100% { opacity: 0; }
+    }
+
+    /* === Assign animations === */
+    #incrementMessage {
+      animation: incrementMoveAndFade 5s linear infinite;
+    }
+    #resetMessage {
+      animation: resetMoveAndFade 25s linear infinite;
+    }
+
+    .state {
+      font-size: 20px;
+      font-weight: bold;
+      text-anchor: middle;
+      font-family: Arial;
+      fill: #333;
+      opacity: 0;
+    }
+
+    /* Show each state at its step (0s, 5s, 10s, ...) */
+    #state0 { animation: showState 25s steps(1) infinite; animation-delay: -2s; }
+    #state1 { animation: showState 25s steps(1) infinite; animation-delay: 3s; }
+    #state2 { animation: showState 25s steps(1) infinite; animation-delay: 8s; }
+    #state3 { animation: showState 25s steps(1) infinite; animation-delay: 13s; }
+    #state4 { animation: showState 25s steps(1) infinite; animation-delay: 18s; }
+  </style>
+
+  <!-- Actor Rectangle -->
+  <rect x="150" y="50" width="300" height="150" fill="#dddddd" stroke="#000" stroke-width="2"/>
+  <text x="300" y="75" font-size="20" text-anchor="middle" font-family="Arial">Number Actor</text>
+
+  <!-- State Values (0 to 4) -->
+  <text id="state0" class="state" x="300" y="120" opacity="1">State: 0</text>
+  <text id="state1" class="state" x="300" y="120">State: 1</text>
+  <text id="state2" class="state" x="300" y="120">State: 2</text>
+  <text id="state3" class="state" x="300" y="120">State: 3</text>
+  <text id="state4" class="state" x="300" y="120">State: 4</text>
+
+  <!-- Inbox -->
+  <rect x="240" y="150" width="120" height="30" fill="#fff" stroke="#000" stroke-width="1"/>
+  <text x="300" y="170" font-size="12" text-anchor="middle" font-family="Arial" fill="#333">Inbox</text>
+
+  <!-- Message Envelopes -->
+  <g id="incrementMessage" transform="translate(0,0)" opacity="0">
+    <rect x="0" y="155" width="80" height="20" fill="#dfd" stroke="#000"/>
+    <text x="40" y="170" font-size="12" text-anchor="middle" font-family="Arial">increment</text>
+  </g>
+  <g id="resetMessage" transform="translate(0,0)" opacity="0">
+    <rect x="0" y="155" width="80" height="20" fill="#fdd" stroke="#000"/>
+    <text x="40" y="170" font-size="12" text-anchor="middle" font-family="Arial">reset</text>
+  </g>
+</svg>
