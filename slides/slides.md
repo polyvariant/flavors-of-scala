@@ -291,6 +291,8 @@ layout: center
 
 # Actors!
 
+(Scala loves Erlang)
+
 --- 
 layout: center
 ---
@@ -358,9 +360,9 @@ Problems:
 
 ---
 
-# Code example: akka-testkit 
+# Meanwhile...
 
-TODO: how to test that a message wasn’t sent
+The community romansuje with different approach to state management: actors, State Monad (transformers too) or just leaving it to databases ("stateless")
 
 ---
 
@@ -387,6 +389,7 @@ TODO: how to test that a message wasn’t sent
 
 # Functional techniques
 
+- Scala loves Haskell
 - IO Monad
 - Scalaz
 - ZIO
@@ -404,6 +407,58 @@ But we still have: Future, Twitter Future, some Actors
 
 Type all the things / hardcore FP
 Code example: ???
+
+TODO: Add Kyo slide
+
+<!---
+
+
+TODO: chyba warto tu pokazać kawałek Kyo które robi algebraic effects, podlinkować talk wprowadzający https://www.youtube.com/live/gYS3UkmFoHQ?t=719&cbrd=1
+
+-->
+
+
+
+---
+layout: full
+---
+
+# Can I even use all of this in practice?
+
+- HTTP
+- Scala loves Python (Cask)
+- Scala loves Ruby on Rails (Scalatra) - microframework
+- Scala loves actors (Spray/Akka HTTP)
+- Scala loves Spring (Play) Future and sometimes IO
+- Scala loves FP (http4s) IO
+- Scala loves types (tapir) final tagless done right (it's good for libraries, and it's good when it doesn't leak)
+
+---
+layout: full
+---
+
+# We did concurrency and HTTP
+
+But a similar story can be told about:
+- databases
+- JSON libraries
+- testing frameworks
+- frontend (Scala.js)
+- dependency management
+- HTTP clients
+- API integrations
+- ...
+
+<!--
+testing: akka-testkit test problems, testing concurrent stuff is hard
+-->
+
+---
+layout: center
+---
+
+# TODO: Conclusions
+
 
 ---
 layout: full
@@ -424,14 +479,6 @@ layout: full
 <div v-click="4">
   <img class="absolute top-30 left-100 w-100" alt="" src="./godfather.png" />
 </div>
-
-<!---
-(Bonus: and Dependency injection for free)
-
-
-TODO: chyba warto tu pokazać kawałek Kyo które robi algebraic effects, podlinkować talk wprowadzający https://www.youtube.com/live/gYS3UkmFoHQ?t=719&cbrd=1
-
--->
 
 ---
 layout: full
