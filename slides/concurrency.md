@@ -1,13 +1,13 @@
 
 # Bright Future
 
-Now that we have immutable data types and pure functions, concurrency should be much easier right?
+## Now that we have immutable data types and pure functions, concurrency should be much easier right?
 
 ---
 
 # Bright Future
 
-<<< ../snippets/Futures.scala#examples scala
+<<< ../snippets/Futures.scala#examples scala {1|3-6|8-10|12-15|*}{lines:true}
 
 <!-- 
 
@@ -99,7 +99,7 @@ layout: center
 
 # Actors!
 
-(Scala loves Erlang)
+## (Scala loves Erlang)
 
 --- 
 layout: center
@@ -115,6 +115,8 @@ layout: center
 
 <v-clicks>
 
+* Actor has a message box and internal state
+* It's logic is triggered by sending message
 * Actor can occupy **one** or **zero** threads
 * `Actor system` provides the runtime
 * `Actor system` can be a cluster
@@ -135,11 +137,30 @@ layout: center
 
 ---
 
+# Actors in Akka/Pekko
 
-# Actors in Akka
+```mermaid
 
-TODO: example implementation, show the DSL so that we can refer to code navigation issues (no callstack)
+sequenceDiagram
+    participant ClientActor as Client
+    participant WaiterActor as Waiter
+    participant KitchenActor as Kitchen
 
+    ClientActor->>WaiterActor: Order("Pasta")
+    WaiterActor->>KitchenActor: Cook("Pasta")
+    Note right of KitchenActor: Simulate cooking time
+    KitchenActor-->>WaiterActor: Ready("Pasta")
+    WaiterActor-->>ClientActor: Serve("Pasta")
+    ClientActor-->>WaiterActor: Thank you!
+
+```
+
+---
+
+# Actors in the Kitchen
+
+
+<<< ../snippets/ActorsKitchen.scala scala {*}{maxHeight:'400px',lines:true}
 
 ---
 
@@ -170,7 +191,7 @@ Problems:
 
 # Meanwhile...
 
-The community romansuje with different approach to state management: actors, State Monad (transformers too) or just leaving it to databases ("stateless")
+## The community romansuje with different approach to state management: actors, State Monad (transformers too) or just leaving it to databases ("stateless")
 
 ---
 

@@ -21,12 +21,12 @@ background: /spices.jpg
 
 <!-- Just a draft, doesn't need to be here, can be moved, split into parts -->
 
-# Timeline 
+# Scala has quite a story now
 
 
 <!-- alternative theme approach ```mermaid { 'theme': 'base', 'themeVariables': { 'primaryColor': '#FFFFFF', 'lineColor': '#FFFFFF', 'cScale0':  '#000033', 'cScaleLabel0':  '#ffffff', 'cScale1':  '#000044', 'cScaleLabel1':  '#ffffff', 'cScale2':  '#000055', 'cScaleLabel2':  '#ffffff', 'cScale3':  '#000066', 'cScaleLabel3':  '#ffffff', 'cScale4':  '#000077', 'cScaleLabel4':  '#ffffff', 'cScale5':  '#000088', 'cScaleLabel5':  '#ffffff', 'cScale6':  '#000099', 'cScaleLabel6':  '#ffffff', 'cScale7':  '#0000aa', 'cScaleLabel7':  '#ffffff', 'cScale8':  '#0000bb', 'cScaleLabel8':  '#ffffff', 'cScale9':  '#0000cc', 'cScaleLabel9':  '#ffffff', 'cScale10': '#0000bb', 'cScaleLabel10': '#ffffff', 'cScale11': '#000066', 'cScaleLabel11': '#ffffff'} } -->
 
-```mermaid { 'theme': 'base', 'themeVariables': { 'color': '#FFFFFF'}, timeline: { disableMulticolor: true} }
+```mermaid { 'theme': 'base', 'themeVariables': { 'color': '#FFFFFF', 'fontSize': '36px'}, timeline: { disableMulticolor: true} }
 
 timeline
     2004 : Scala is published - the first official release of Scala programming language
