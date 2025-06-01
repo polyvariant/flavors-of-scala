@@ -4,7 +4,7 @@ title: Flavors of Scala
 info: |
   ## Flavors of Scala
 
-  [Michał Pawlik](https://michalplachta.com)
+  [Michał Pawlik](https://michal.pawlik.dev)
   [Michał Płachta](https://michalplachta.com)
 drawings:
   persist: true
