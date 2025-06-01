@@ -139,6 +139,8 @@ layout: center
 
 # Actors in Akka/Pekko
 
+<div class="absolute top-25 w-200">
+
 ```mermaid
 
 sequenceDiagram
@@ -153,6 +155,8 @@ sequenceDiagram
     WaiterActor-->>ClientActor: Serve("Pasta")
 
 ```
+
+</div>
 
 ---
 
@@ -310,12 +314,12 @@ layout: center
 
 # Functional techniques
 
-- Scala loves Haskell
-- IO Monad
+#### Scala loves Haskell
+
+- Cats / Monix
 - Scalaz
 - ZIO
-- Cats / Monix
-- Cats IO
+- Cats Effect IO
 
 
 <div>
