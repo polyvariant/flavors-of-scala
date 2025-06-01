@@ -342,11 +342,60 @@ But we still have: Future, Twitter Future, some Actors
 </div>
 
 ---
+layout: center
+background: /galaxy-brain.jpg
+---
+
+# IO - the ultimate separation of concerns
+
+---
+
+# IO - the ultimate separation of concerns
+
+<<< ../snippets/FutureVsIO.scala#example scala {1-5|7-11|13-14|*}{lines:true}
+
+---
+
+# How is it better than MTL?
+
+<<< ../snippets/IORefExample.scala#example scala {3-9|1|11-15|*}{lines:true}
+
+<v-click>
+
+<div class="absolute bottom-15 w-200">
+
+### Everything is wrapped with `IO`
+
+</div>
+
+</v-click>
+
+---
+
+# But I like my other IO monad better!
+
+`cats.effect.IO` is just one implementation, we should abstract it!
+
+---
+layout: center
+background: /galaxy-brain-expanded.jpg
+---
+
+# Final tagless - the final abstraction
+
+
+---
 
 # Final tagless
 
-Type all the things / hardcore FP
-Code example: ???
+<div class="absolute top-25 w-200">
+
+<<< ../snippets/TaglessRefExample.scala#tagless scala {1-4,15-18|6-13,20-32|*}{maxHeight:'420px',lines:true}
+
+</div>
+
+---
+
 
 TODO: Add Kyo slide
 
