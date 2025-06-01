@@ -396,6 +396,9 @@ background: /galaxy-brain-expanded.jpg
 
 ---
 
+# What the `F[_]`
+
+How about algebraic effects?
 
 TODO: Add Kyo slide
 
