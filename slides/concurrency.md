@@ -151,7 +151,6 @@ sequenceDiagram
     Note right of KitchenActor: Simulate cooking time
     KitchenActor-->>WaiterActor: Ready("Pasta")
     WaiterActor-->>ClientActor: Serve("Pasta")
-    ClientActor-->>WaiterActor: Thank you!
 
 ```
 
@@ -191,11 +190,104 @@ Problems:
 
 # Meanwhile...
 
-## The community romansuje with different approach to state management: actors, State Monad (transformers too) or just leaving it to databases ("stateless")
+### The community is flirting with various approaches to state management
+
+- Actors
+- State Monad
+- Monad transformers
+- Offloading state entirely to the database.
+
+Let's give them a quick look
 
 ---
 
-# Perhaps Future wasn't that bad?
+# State Monad
+
+Put simply, it's a way to chain mutations of a value.
+
+
+---
+
+# State Monad
+
+Here's how state monad is defined
+
+<<< ../snippets/StateMonad.scala#stateMonadClass scala {1-3|5-9|*}{lines:true}
+
+---
+
+# State Monad
+
+You can manipulate the state using helpers
+
+<<< ../snippets/StateMonad.scala#stateMonadObject scala {*}{lines:true}
+
+---
+
+# State Monad
+
+<<< ../snippets/StateMonad.scala#stateMonadMain scala {*}{lines:true}
+
+---
+
+# State Monad
+
+Looks fun but we async and parallelism are not included
+
+---
+
+# Monad transformers
+
+
+<div class="absolute top-25 w-200">
+
+<<< ../snippets/StateTExample.scala#example scala {1|10-16|3-9|*}{lines:true}
+
+</div>
+
+---
+
+# Monad transformers are leaky
+
+<div class="absolute top-25 w-200">
+
+There's a lot of lifting 🏋️
+
+<<< ../snippets/StateTExample.scala#lifted scala {*}{lines:true}
+
+<v-click>
+
+It can go as ridiculous as
+
+```scala
+type AppStack[A] = EitherT[StateT[Future, AppState, *], AppError, A]
+```
+
+</v-click>
+
+</div>
+
+<v-click>
+
+<div class="absolute bottom-20 w-200">
+
+## Was simple `Future` that bad? 🤔
+
+</div>
+
+</v-click>
+
+
+
+--- 
+background: /world-if.webp
+layout: center
+---
+
+# World if `Future` was a monad
+<!-- # What was so bad about the `Future` anyway? -->
+
+<!-- <img class="absolute top-30 right-10 w-170" alt="" src="/world-if.webp" /> -->
 
 
 ---
