@@ -7,7 +7,6 @@ import cats.Monad
 //#region example
 type FutureWithInt[A] = StateT[Future, Int, A]
 
-//#region lifted
 def doLiftedAsyncComputation() = {
   val work = Future {
     Thread.sleep(10) // simulate doing the work
@@ -15,7 +14,6 @@ def doLiftedAsyncComputation() = {
   }
   StateT.liftF[Future, Int, Int](work)
 }
-//#endregion
 def program: FutureWithInt[String] =
   for {
     value <- doLiftedAsyncComputation()

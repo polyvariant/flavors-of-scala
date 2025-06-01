@@ -162,8 +162,11 @@ sequenceDiagram
 
 # Actors in the Kitchen
 
+<div class="absolute top-25 w-200">
 
-<<< ../snippets/ActorsKitchen.scala scala {*}{maxHeight:'400px',lines:true}
+<<< ../snippets/ActorsKitchen.scala scala {*}{maxHeight:'420px',lines:true}
+
+</div>
 
 ---
 
@@ -196,12 +199,18 @@ Problems:
 
 ### The community is flirting with various approaches to state management
 
+<v-clicks>
+
 - Actors
 - State Monad
 - Monad transformers
 - Offloading state entirely to the database.
 
+</v-clicks>
+
+<v-click>
 Let's give them a quick look
+</v-click>
 
 ---
 
@@ -242,7 +251,6 @@ Looks fun but we async and parallelism are not included
 
 # Monad transformers
 
-
 <div class="absolute top-25 w-200">
 
 <<< ../snippets/StateTExample.scala#example scala {1|10-16|3-9|*}{lines:true}
@@ -257,7 +265,15 @@ Looks fun but we async and parallelism are not included
 
 There's a lot of lifting 🏋️
 
-<<< ../snippets/StateTExample.scala#lifted scala {*}{lines:true}
+```scala {6}{lines:true}
+def doLiftedAsyncComputation() = {
+  val work = Future {
+    Thread.sleep(10) // simulate doing the work
+    21
+  }
+  StateT.liftF[Future, Int, Int](work)
+}
+```
 
 <v-click>
 
@@ -300,21 +316,20 @@ layout: center
 
 - IO!
 
----
 
-# Side note: Twitter Stack / Linkerd ???
+<!-- # Side note: Twitter Stack / Linkerd ???
 - Twitter Future early adoption
 - Problem: built-in Scala Future was more popular
 - Long-standing problem in Scala: FP vs Java++
   - At least two groups of programmers pulling Scala in their own preferred direction 
     - Future vars 
-    - Later: pure FP vs casual FP (https://softwaremill.com/what-is-functional-programming/)
+    - Later: pure FP vs casual FP (https://softwaremill.com/what-is-functional-programming/) -->
 
 --- 
 
 # Functional techniques
 
-#### Scala loves Haskell
+### Scala loves Haskell
 
 - Cats / Monix
 - Scalaz
