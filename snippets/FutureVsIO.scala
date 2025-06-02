@@ -5,14 +5,14 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import cats.effect.unsafe.implicits.global
 
 @main def main() = {
-  //#region example
+  // #region example
   // Future: eager, starts running immediately
   val future = Future {
     println("Running Future")
     42
   }
 
-  // IO: lazy, describes the effect but does not run it yet
+  // IO: just a value, lazy, describes the computation but does not run it
   val io = IO {
     println("Running IO")
     42
@@ -20,5 +20,6 @@ import cats.effect.unsafe.implicits.global
 
   // Nothing printed until we explicitly run IO
   io.unsafeRunSync()
-  //#endregion
+  // #endregion
 }
+

@@ -17,7 +17,6 @@ lazy val hello = (project in file("."))
     )
   )
 
-enablePlugins(SbtTwirl)
 enablePlugins(SbtWar)
 
 Test / fork := true

@@ -31,6 +31,10 @@ layout: center
 
 ## or rather Scalatra
 
+<!--
+Scala loves Ruby
+-->
+
 ---
 layout: full
 ---
@@ -213,6 +217,12 @@ trait Coffee extends ScalatraBase with FutureSupport {
 
 <!--
 Additionally, when we needed JSON, we needed to extend our servlet with the `JsonSupport` trait
+
+show the JsonSupport problem from our example!
+
+show how the extended trait list grows
+
+SpeakerB: Why do you need FutureSupport here?
 -->
 
 ---
@@ -287,6 +297,10 @@ layout: full
 
 // jakiś obrazek typu przeciąganie liny
 
+<!--
+Java++
+Futures
+-->
 
 ---
 layout: full
@@ -295,6 +309,14 @@ layout: full
 # Spray -> Akka HTTP
 
 // TODO
+
+<!--
+next: Play gives you structure but not much more... (problems stay the same but in MVC world)
+
+http4s: BYOB, batteries not included, bare bones, you have the control but also you have the decision paralysis 
+
+holy grail: tapir
+-->
 
 ---
 layout: full

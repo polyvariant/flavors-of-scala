@@ -13,9 +13,11 @@ mdc: true
 background: /spices.jpg
 ---
 
-
 # Flavors of Scala
 
+<!--
+sd
+-->
 
 ---
 
@@ -53,8 +55,19 @@ timeline
     2024 : Yaes – minimal, modular, and purely functional effect system
 ```
 
+<!--
+zaczynamy w 2004, przeszliśmy sporą drogę, wiele eksperymentów, komplikacji po drodze, ale jak na to spojrzymy z perspektywy czasu to ma to sens
+
+kolejność jest chronologiczno-przypadkowa
+
+take-aways:
+- what kind of problems each approach has
+- what trade-offs have we faced over the last years
+- inspirations from other languages can both help and distract
+-->
 
 ---
+
  
 # Java++
 
@@ -134,11 +147,18 @@ In the meantime with Scala
 
 </v-click>
 
+<!--
+-->
+
 ---
 
 # Java++
 
-Similarly for domain modeling. Let's consider a simple immutable `Person` class.
+Similarly for domain modeling. Let's consider a simple **immutable** `Person` class.
+
+<!--
+We want to model an immutable type.
+-->
 
 ---
 
@@ -252,6 +272,9 @@ Or Scala Future, or Actors (Hardcore Hybrid 😀 (Akka Actors + Monad Transforme
 ---
 
 # What’s happening now
+
+We have always challenged the status quo and it won't change...
+
 - Scala cli (you can use it as a scripting language)
 - More approachable
 - Better packaging
@@ -279,15 +302,21 @@ That all means that Scala is the beginner friendly language that can be used to 
 
 ---
 
-# Simple Scala
+# What is Simple Scala?
 
 TODO: code example
 
 <!--
 all the things we learned and know now: let's use simple but powerful tools
+
+Was Scalatra simple? Was MTL simple?
+
+Easy vs simple
+
+Simple Scala doesn't mean primitive Scala. Simple may mean "simple to read", "simple to change", "easy to maintain"
 -->
 
---- 
+---
 
 # Side note: Dependency injection ???
 
@@ -301,4 +330,3 @@ all the things we learned and know now: let's use simple but powerful tools
 - Capabilities
 “Non-functional” algebras for dependencies (pre-tagless final)
 -->
-

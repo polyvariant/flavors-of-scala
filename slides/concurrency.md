@@ -1,4 +1,3 @@
-
 # Bright Future
 
 ## Now that we have immutable data types and pure functions, concurrency should be much easier right?
@@ -53,21 +52,13 @@ One-off jobs
 What about the state?
 -->
 
-<!-- 
-# Side-note: Spark ???
-- Google map-reduce (referencing streams)
-- Pure functions
-- Hard to test
-- But… Scala got popular because of it
-- FP programmers took advantage of Spark to promote itself
+<!--
+We are using the std lib Future. Type that represents a value that may be available in the future (like fetching from a DB).
 
+flatMapping ("computation chaining") allows us to work on a value that is not yet available which was a revolutionary idea in mainstream languagues back then. 
 
-# Akka Actors (2012)
-- Shared mutable state
-- Everyone dreams big 
-- Scala got even more popular because of it
-- FP programmers took advantage of Spark to promote itself
-- Code examples: free monad-based Akka actors  -->
+every modern language has a type like this but it wasn't the case in 2010.
+-->
 
 ---
 
@@ -80,6 +71,14 @@ What if I need to concurrently modify the state?
 <<< ../snippets/FutureStateProblem.scala#examples scala {1|9|3-7|*}{lines:true}
 
 </v-clicks>
+
+<!--
+TODO: can we simplify?
+
+ask the audience what is the final counter result here
+
+in Scala (since it's a JVM language) we also have a posibility to use the synchronized keyword to guard access to critical section (monitor-based synchronization).
+-->
 
 ---
 
@@ -168,8 +167,11 @@ sequenceDiagram
 
 </div>
 
----
+<!--
+IDE experience
+-->
 
+---
 
 # Problems with Akka-based design
 
@@ -184,13 +186,10 @@ sequenceDiagram
 
 </v-clicks>
 
-<!---
-Transition: Problems with Akka-based design
-Problems:
-- Navigation, discoverability
-- One big actor or many small ones
-- Lifetime
-- More generally: testing…
+<!--
+- coming back from IDE and summarizing
+
+we'll come back to testing problems with actor systems later on
 -->
 
 ---
@@ -204,13 +203,14 @@ Problems:
 - Actors
 - State Monad
 - Monad transformers
-- Offloading state entirely to the database.
+- Offloading state management entirely to the database ("stateless")
 
 </v-clicks>
 
-<v-click>
-Let's give them a quick look
-</v-click>
+
+<!--
+Let's give them a quick look, starting with State Monad...
+-->
 
 ---
 
@@ -223,9 +223,17 @@ Put simply, it's a way to chain mutations of a value.
 
 # State Monad
 
-Here's how state monad is defined
+Put simply, it's a way to chain mutations of a value.
 
 <<< ../snippets/StateMonad.scala#stateMonadClass scala {1-3|5-9|*}{lines:true}
+
+<!--
+Here's how state monad is defined.
+
+?? WHAT'S S and A here?
+
+Two type parameters, S and A, S is the type of state, A is the result of the computation...
+-->
 
 ---
 
@@ -241,11 +249,19 @@ You can manipulate the state using helpers
 
 <<< ../snippets/StateMonad.scala#stateMonadMain scala {*}{lines:true}
 
+<!--
+Note that this is sequential, while Futgu
+-->
+
 ---
 
 # State Monad
 
 Looks fun but we async and parallelism are not included
+
+<!--
+Futures were async!
+-->
 
 ---
 
@@ -297,7 +313,15 @@ type AppStack[A] = EitherT[StateT[Future, AppState, *], AppError, A]
 
 </v-click>
 
+<!--
+It needs to be everywhere!
 
+problems:
+- one monad per app (giga effect)
+- so everything needs to be lifted everywhere
+
+MTL = Monad Transformers Library tried to overcome some of these issues by providing a lot of helper tools, in Scala as well.
+-->
 
 --- 
 background: /world-if.webp
@@ -316,16 +340,17 @@ layout: center
 
 - IO!
 
-
-<!-- # Side note: Twitter Stack / Linkerd ???
+<!--
+# Side note: Twitter Stack / Linkerd ???
 - Twitter Future early adoption
 - Problem: built-in Scala Future was more popular
 - Long-standing problem in Scala: FP vs Java++
   - At least two groups of programmers pulling Scala in their own preferred direction 
     - Future vars 
-    - Later: pure FP vs casual FP (https://softwaremill.com/what-is-functional-programming/) -->
+    - Later: pure FP vs casual FP (https://softwaremill.com/what-is-functional-programming/)
+-->
 
---- 
+---
 
 # Functional techniques
 
@@ -370,11 +395,25 @@ background: /galaxy-brain.jpg
 
 </v-click>
 
+<!--
+no lifting! just a composition of values and a single type
+
+Speaker B: but one problem that we had with MTL is still there: one monad for the whole application (everyone needs to adhere to it, even external libs!) 
+
+(it can be tackled with some discipline but it rarely happens in big dynamically developed projects)
+-->
+
 ---
 
 # But I like my other IO monad better!
 
 `cats.effect.IO` is just one implementation, we should abstract it!
+
+<!--
+For example: there were experiments with an IO monad that has an explicit error type (IO used here has a fixed JVM Throwable error type which wasn't good enough for some programmers).
+
+Everyone was writing their own IO monad.
+-->
 
 ---
 layout: center
