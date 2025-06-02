@@ -1,3 +1,6 @@
+//> using scala "3.3.6"
+//> using dep "org.typelevel::cats-effect:3.6.1"
+
 def main(args: Array[String]): Unit = {
   // #region map
   List(1, 2, 3, 4, 5, 6)
