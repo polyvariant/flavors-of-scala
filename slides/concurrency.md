@@ -181,7 +181,7 @@ IDE experience
 
 - Navigation, discoverability
 - One big actor or many small ones
-- Lifetime
+- Lifecycle
 - More generally: testing…
 
 </v-clicks>
