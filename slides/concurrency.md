@@ -502,11 +502,6 @@ No `IO[A]` in sight!
 
 # Kyo Ref example
 
-<<< ../snippets/KyoRefExample.scala scala {*}{lines:true}
+Try it at home!
 
-<!---
-
-
-TODO: chyba warto tu pokazać kawałek Kyo które robi algebraic effects, podlinkować talk wprowadzający https://www.youtube.com/live/gYS3UkmFoHQ?t=719&cbrd=1
-
--->
+Watch [this talk](https://www.youtube.com/live/gYS3UkmFoHQ?t=719&cbrd=1) for more detailed introduction
