@@ -138,6 +138,8 @@ layout: center
 
 # Actors in Akka/Pekko
 
+<!-- Ten przykład chyba musimy uprościć do "klient" -> "pizzeria" -->
+
 <div class="absolute top-25 w-200">
 
 ```mermaid
@@ -438,7 +440,35 @@ background: /galaxy-brain.jpg
 
 # What the `F[_]`
 
-The problem with any `F[_]: Async: Monad: Clock: UUIDGen` is that it mixes definition, sequencing and handling in one type
+You telling me I now need `F[_]: Async: Monad: Clock: UUIDGen` to run hello world?
+
+<div v-click="1">
+  <img class="absolute top-50 left-100 w-100" alt="" src="./godfather.png" />
+</div>
+
+---
+
+# Is Tagless Final the dead end?
+
+<v-clicks>
+
+- Not necessarily!
+- It works great for library design
+- See Noel's talk from this year's Scalar ([link](https://www.youtube.com/watch?v=nyMwp7--rY4))
+
+</v-clicks>
+
+---
+
+# Can we do better than Monadic effects?
+
+<v-clicks>
+
+- Some argue a single beefy monad is easier to reason about
+- The problem with any `F[_]` is that it mixes definition, sequencing and handling in one type.
+- We're not done yet!
+
+</v-clicks>
 
 ---
 
@@ -448,9 +478,31 @@ Abstract operations with handlers!
 
 ---
 
+# Meet Kyo
+
+<div class="absolute top-25 w-200">
+
+<<< ../snippets/KyoBasicExample.scala#example-app scala {5-12|4|14|16|*}{lines:true}
+
+</div>
+
+<v-click>
+
+<div class="absolute bottom-10 w-200">
+
+No `IO[A]` in sight!
+
+</div>
+
+</v-click>
 
 
-TODO: Add Kyo slide
+
+---
+
+# Kyo Ref example
+
+<<< ../snippets/KyoRefExample.scala scala {*}{lines:true}
 
 <!---
 
