@@ -329,16 +329,12 @@ layout: center
 ---
 
 # World if `Future` was a monad
+
+(Scala loves Haskell)
 <!-- # What was so bad about the `Future` anyway? -->
 
 <!-- <img class="absolute top-30 right-10 w-170" alt="" src="/world-if.webp" /> -->
 
-
----
-
-# What would we like to have instead?
-
-- IO!
 
 <!--
 # Side note: Twitter Stack / Linkerd ???
@@ -350,32 +346,12 @@ layout: center
     - Later: pure FP vs casual FP (https://softwaremill.com/what-is-functional-programming/)
 -->
 
----
-
-# Functional techniques
-
-### Scala loves Haskell
-
-- Cats / Monix
-- Scalaz
-- ZIO
-- Cats Effect IO
-
-
-<div>
-But we still have: Future, Twitter Future, some Actors
-</div>
-
----
-layout: center
-background: /galaxy-brain.jpg
----
-
-# IO - the ultimate separation of concerns
 
 ---
 
 # IO - the ultimate separation of concerns
+
+Think `Future` but lazy
 
 <<< ../snippets/FutureVsIO.scala#example scala {1-5|7-11|13-14|*}{lines:true}
 
@@ -383,7 +359,7 @@ background: /galaxy-brain.jpg
 
 # How is it better than MTL?
 
-<<< ../snippets/IORefExample.scala#example scala {3-9|1|11-15|*}{lines:true}
+<<< ../snippets/IORefExample.scala#example scala {5-11|1-3|2|13-17|*}{lines:true}
 
 <v-click>
 
@@ -405,9 +381,21 @@ Speaker B: but one problem that we had with MTL is still there: one monad for th
 
 ---
 
+# Monadic Effects
+
+We have a bunch of them!
+
+- Cats / Monix
+- Scalaz
+- ZIO
+- Cats Effect IO
+
+
+---
+
 # But I like my other IO monad better!
 
-`cats.effect.IO` is just one implementation, we should abstract it!
+So `cats.effect.IO` is just one implementation, we should abstract it!
 
 <!--
 For example: there were experiments with an IO monad that has an explicit error type (IO used here has a fixed JVM Throwable error type which wasn't good enough for some programmers).
@@ -417,7 +405,7 @@ Everyone was writing their own IO monad.
 
 ---
 layout: center
-background: /galaxy-brain-expanded.jpg
+background: /galaxy-brain.jpg
 ---
 
 # Final tagless - the final abstraction
@@ -427,17 +415,40 @@ background: /galaxy-brain-expanded.jpg
 
 # Final tagless
 
-<div class="absolute top-25 w-200">
+<div class="absolute top-22 w-200">
 
-<<< ../snippets/TaglessRefExample.scala#tagless scala {1-4,15-18|6-13,20-32|*}{maxHeight:'420px',lines:true}
+<<< ../snippets/TaglessRefExample.scala#tagless scala {1-4,6-9|11-23|*}{maxHeight:'420px',lines:true}
 
 </div>
+
+
+---
+
+# Final tagless
+
+<<< ../snippets/TaglessRefExample.scala#ce-implementation scala {*}{lines:true}
+
+<v-click>
+
+<<< ../snippets/TaglessRefExample.scala#other-implementation scala {1|2|6-10|*}{lines:true}
+
+</v-click>
 
 ---
 
 # What the `F[_]`
 
-How about algebraic effects?
+The problem with any `F[_]: Async: Monad: Clock: UUIDGen` is that it mixes definition, sequencing and handling in one type
+
+---
+
+# Algebraic effects
+
+Abstract operations with handlers!
+
+---
+
+
 
 TODO: Add Kyo slide
 

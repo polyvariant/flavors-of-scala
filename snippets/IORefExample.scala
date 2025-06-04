@@ -5,7 +5,9 @@ import scala.concurrent.duration._
 
 object IORefExample extends IOApp.Simple {
   //#region example
-  def doAsyncComputation: IO[Int] = IO.sleep(10.millis) *> IO.pure(21)
+  def doAsyncComputation: IO[Int] = 
+    IO.sleep(10.millis) *> // this doesn't halt the program, it's just a value
+      IO.pure(21)
 
   def program(ref: Ref[IO, Int]): IO[String] = for {
     value    <- doAsyncComputation // perform the async effect

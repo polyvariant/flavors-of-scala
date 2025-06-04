@@ -1,5 +1,7 @@
 //> using scala "3.3.6"
 //> using dep "org.typelevel::cats-effect:3.6.1"
+package javaplusplus
+
 
 def main(args: Array[String]): Unit = {
   // #region map
