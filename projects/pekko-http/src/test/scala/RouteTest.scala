@@ -21,4 +21,42 @@ class RouteTest extends AnyWordSpec with Matchers with ScalatestRouteTest {
       }
     }
   }
+
+  "Async HTTP routes" should {
+    "respond to the /collaboration request with valid artists" in {
+      Get(
+        "/collaboration?artist1=Frank%20Sinatra&artist2=Aretha%20Franklin"
+      ) ~> asyncRoute ~> check {
+        status.intValue() shouldEqual 200
+        responseAs[String] shouldEqual "Frank Sinatra and Aretha Franklin could have collaborated between 1954 and 1995"
+      }
+    }
+
+    "return 404 for non-existent artists" in {
+      Get(
+        "/collaboration?artist1=NonExistent&artist2=ArtistB"
+      ) ~> asyncRoute ~> check {
+        status.intValue() shouldEqual 404
+      }
+    }
+  }
+
+  "Async (MTL) HTTP routes" should {
+    "respond to the /collaboration request with valid artists" in {
+      Get(
+        "/collaboration?artist1=Frank%20Sinatra&artist2=Aretha%20Franklin"
+      ) ~> asyncRouteMTL ~> check {
+        status.intValue() shouldEqual 200
+        responseAs[String] shouldEqual "Frank Sinatra and Aretha Franklin could have collaborated between 1954 and 1995"
+      }
+    }
+
+    "return 404 for non-existent artists" in {
+      Get(
+        "/collaboration?artist1=NonExistent&artist2=ArtistB"
+      ) ~> asyncRouteMTL ~> check {
+        status.intValue() shouldEqual 404
+      }
+    }
+  }
 }

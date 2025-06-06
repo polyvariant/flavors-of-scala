@@ -12,6 +12,7 @@ libraryDependencies ++= Seq(
   "org.apache.pekko" %% "pekko-stream" % PekkoVersion,
   "org.apache.pekko" %% "pekko-http" % PekkoHttpVersion,
   "org.apache.pekko" %% "pekko-http-spray-json" % PekkoHttpVersion,
+  "org.typelevel" %% "cats-core" % "2.10.0",
   "org.apache.pekko" %% "pekko-testkit" % PekkoVersion % Test,
   "org.apache.pekko" %% "pekko-http-testkit" % PekkoHttpVersion % Test,
   "org.scalatest" %% "scalatest" % "3.2.9" % Test
