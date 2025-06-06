@@ -1,6 +1,6 @@
 val ScalatraVersion = "3.1.1"
 
-ThisBuild / scalaVersion := "3.3.4"
+ThisBuild / scalaVersion := "3.3.6"
 ThisBuild / organization := "example"
 
 lazy val hello = (project in file("."))
