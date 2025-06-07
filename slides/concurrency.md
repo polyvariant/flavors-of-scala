@@ -1,6 +1,20 @@
 # Bright Future
 
-## Now that we have immutable data types and pure functions, concurrency should be much easier right?
+Now that we have: 
+- immutable data types 
+- pure functions
+
+<v-clicks>
+
+
+concurrency should be much easier right?
+<img class="absolute bottom-20 right-90 w-55" alt="" src="./anakin-2.png" />
+<img class="absolute bottom-20 right-20 w-55" alt="" src="./padme-2.png" />
+
+<span class="text-4xl font-bold">Right!</span> <img class="absolute bottom-20 right-20 w-55" alt="" src="./padme-1.png" />
+
+</v-clicks>
+
 
 ---
 

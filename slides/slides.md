@@ -257,6 +257,12 @@ The same thing in Scala
 
 <<< ../snippets/Person.scala#Person scala
 
+<v-click>
+
+<img class="absolute bottom-20 right-20 w-80" alt="" src="./the-office-wow.webp" />
+
+</v-click>
+
 ---
 src: ./concurrency.md
 ---
