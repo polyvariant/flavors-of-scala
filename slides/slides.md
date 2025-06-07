@@ -98,9 +98,24 @@ take-aways:
 -->
 
 ---
+layout: center
+---
 
+# It's 2004
+
+---
+layout: center
+background: kid-laptop.jpg
+---
+
+# We're young and ambitious
+
+
+---
+layout: center
+---
  
-# Java++
+# Let's do some Java
 
 <!-- 
 - How Java looked like in 2004 (1.4)
@@ -112,7 +127,7 @@ take-aways:
 
 ---
 
-# Java++
+# Let's do some Java
 
 State of Java in 2004, version 1.4
 
