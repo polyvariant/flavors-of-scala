@@ -145,15 +145,13 @@ layout: center
 ```mermaid
 
 sequenceDiagram
-    participant ClientActor as Client
-    participant WaiterActor as Waiter
-    participant KitchenActor as Kitchen
+    participant Client as Client
+    participant Restaurant as Restaurant
 
-    ClientActor->>WaiterActor: Order("Pasta")
-    WaiterActor->>KitchenActor: Cook("Pasta")
-    Note right of KitchenActor: Simulate cooking time
-    KitchenActor-->>WaiterActor: Ready("Pasta")
-    WaiterActor-->>ClientActor: Serve("Pasta")
+    Client->>Restaurant: Order("Pasta")
+    Restaurant->>Restaurant: Cook("Pasta")
+    Note right of Restaurant: Cooking can take some time
+    Restaurant-->>Client: Serve("Pasta")
 
 ```
 
@@ -165,7 +163,17 @@ sequenceDiagram
 
 <div class="absolute top-25 w-200">
 
-<<< ../snippets/ActorsKitchen.scala scala {*}{maxHeight:'420px',lines:true}
+<<< ../snippets/ActorsKitchen.scala#messages scala {3-4|6-9|*}{lines:true}
+
+</div>
+
+---
+
+# Actors in the Kitchen
+
+<div class="absolute top-22 w-200">
+
+<<< ../snippets/ActorsKitchen.scala#actors scala {4|6-15|22-28|*}{maxHeight:'450px',lines:true}
 
 </div>
 

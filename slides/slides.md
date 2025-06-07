@@ -55,6 +55,30 @@ timeline
     2024 : Yaes – minimal, modular, and purely functional effect system
 ```
 
+---
+layout: center
+---
+
+<div class="absolute top-5">
+
+# Hello there 👋
+
+</div>
+
+
+<img class="absolute top-25 left-10 w-90" alt="" src="./michal_plachta.png" />
+
+<img class="absolute top-25 right-10 w-90" alt="" src="./michal_pawlik.jpg" />
+
+
+<div class="absolute bottom-12 left-10 text-4xl font-bold">
+MICHAŁ PŁACHTA
+</div>
+
+<div class="absolute bottom-12 right-10 text-4xl font-bold">
+MICHAŁ PAWLIK
+</div>
+
 <!--
 zaczynamy w 2004, przeszliśmy sporą drogę, wiele eksperymentów, komplikacji po drodze, ale jak na to spojrzymy z perspektywy czasu to ma to sens
 
@@ -84,19 +108,21 @@ take-aways:
 # Java++
 
 State of Java in 2004, version 1.4
+
 <v-clicks> 
 
-* No generics yet (they came in Java 5)
-* No annotations (introduced in Java 5)
-* No enums (Java 5)
-* No lambdas or functional programming capabilities (came much later in Java 8)
-* No streams API (Java 8)
-* No var keyword for type inference (Java 10)
+- No generics yet (they came in Java 5)
+- No annotations (introduced in Java 5)
+- No enums (Java 5)
+- No lambdas or functional programming capabilities (came much later in Java 8)
+- No streams API (Java 8)
+- No var keyword for type inference (Java 10)
 
-</v-clicks> 
+</v-clicks>
 
-<v-click>So there's plenty of room for Scala improvements</v-click>
-
+<v-click> 
+So there's plenty of room for Scala improvements
+</v-click> 
 
 
 ---

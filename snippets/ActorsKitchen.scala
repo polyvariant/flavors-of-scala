@@ -4,30 +4,41 @@
 import org.apache.pekko.actor.typed.scaladsl.Behaviors
 import org.apache.pekko.actor.typed.{ActorRef, ActorSystem, Behavior}
 import scala.concurrent.duration._
+import scala.concurrent.Future
+import scala.util.Random
 
-// ADT messages
+//#region messages
 object RestaurantMessages {
-
   // Messages the Client can receive
   sealed trait ClientCommand
   case class Serve(dish: String) extends ClientCommand
 
-  // Messages the Waiter can receive
-  sealed trait WaiterCommand
-  case class Order(dish: String, client: ActorRef[ClientCommand]) extends WaiterCommand
-  case class Ready(dish: String, client: ActorRef[ClientCommand]) extends WaiterCommand
+  // Messages the Restaurant can receive
+  sealed trait RestaurantCommand
+  case class Order(dish: String, client: ActorRef[ClientCommand]) extends RestaurantCommand
+  case class Cook(dish: String, client: ActorRef[ClientCommand]) extends RestaurantCommand
+}
+//#endregion
 
-  // Messages the Kitchen can receive
-  sealed trait KitchenCommand
-  case class Cook(
-    dish: String,
-    waiter: ActorRef[WaiterCommand],
-    client: ActorRef[ClientCommand]
-  ) extends KitchenCommand
+//#region actors
+object RestaurantActor {
+  import RestaurantMessages._
+
+  def apply(): Behavior[RestaurantCommand] = Behaviors.receive { (context, message) =>
+    message match {
+      case Order(dish, client) =>
+        println(s"Restaurant: Received order for $dish.")
+        context.self ! Cook(dish, client)
+        Behaviors.same
+
+      case Cook(dish, client) =>
+        println(s"Restaurant: Cooking $dish for client $client ...")
+        context.scheduleOnce(1.second, client, Serve(dish)) // simulate cooking
+        Behaviors.same
+    }
+  }
 }
 
-
-// Actor implementations
 object ClientActor {
   import RestaurantMessages._
 
@@ -39,63 +50,28 @@ object ClientActor {
     }
   }
 }
+//#endregion
 
-object WaiterActor {
-  import RestaurantMessages._
-
-  def apply(kitchen: ActorRef[KitchenCommand]): Behavior[WaiterCommand] = Behaviors.receive { (context, message) =>
-    message match {
-      case Order(dish, client) =>
-        println(s"Waiter: Received order for $dish from client.")
-        kitchen ! Cook(dish, context.self, client)
-        Behaviors.same
-
-      case Ready(dish, client) =>
-        println(s"Waiter: Received $dish from kitchen. Serving client.")
-        client ! Serve(dish)
-        Behaviors.same
-    }
-  }
-}
-
-object KitchenActor {
-  import RestaurantMessages._
-
-  def apply(): Behavior[KitchenCommand] = Behaviors.receive { (context, message) =>
-    message match {
-      case Cook(dish, waiter, client) =>
-        println(s"Kitchen: Cooking $dish for client $client ...")
-        context.scheduleOnce(1.second, waiter, Ready(dish, client))
-        Behaviors.same
-    }
-  }
-}
-
-
-// Main method to start everything
-@main def singleCLientRestaurantSimulation(): Unit = {
+// Main method to run a single client simulation
+@main def singleClientRestaurant(): Unit = {
   import RestaurantMessages._
 
   val system = ActorSystem[Nothing](Behaviors.setup[Nothing] { context =>
-    val kitchen = context.spawn(KitchenActor(), "kitchen")
-    val waiter = context.spawn(WaiterActor(kitchen), "waiter")
+    val restaurant = context.spawn(RestaurantActor(), "restaurant")
     val client = context.spawn(ClientActor(), "client")
 
-    // Kick off the interaction
-    waiter ! Order("Pasta", client)
+    restaurant ! Order("Pasta", client)
 
     Behaviors.empty
-  }, "RestaurantSystem")
+  }, "SimpleRestaurantSystem")
 }
 
-// Main method with random client simulation
-@main def randomClientsRestaurantSimulation(): Unit = {
+// Main method to run random client simulation
+@main def randomClientsRestaurant(): Unit = {
   import RestaurantMessages._
 
   val system = ActorSystem[Nothing](Behaviors.setup[Nothing] { context =>
-    val kitchen = context.spawn(KitchenActor(), "kitchen")
-    val waiter = context.spawn(WaiterActor(kitchen), "waiter")
-
+    val restaurant = context.spawn(RestaurantActor(), "restaurant")
     val menu = List("Pasta", "Pizza", "Panacotta")
     val random = new scala.util.Random()
 
@@ -105,12 +81,11 @@ object KitchenActor {
       val dish = menu(random.nextInt(menu.size))
       val client = context.spawn(ClientActor(), s"client-${System.currentTimeMillis()}")
       context.log.info(s"New client arrived and orders $dish.")
-      waiter ! Order(dish, client)
-      spawnRandomClient() // Schedule the next client
+      restaurant ! Order(dish, client)
+      spawnRandomClient() // Keep them coming
     }
 
-    spawnRandomClient() // Start the first client
-
+    spawnRandomClient()
     Behaviors.empty
-  }, "RestaurantSystem")
+  }, "RandomClientsRestaurantSystem")
 }
