@@ -4,6 +4,8 @@ import sttp.tapir._
 import cats.effect.{IO, IOApp}
 import cats.syntax.all.*
 
+// TODO: add type
+// THIS IS JUST A VALUE
 val collaborationEndpoint = endpoint.get
   .in("collaboration")
   .in(query[String]("artist1"))

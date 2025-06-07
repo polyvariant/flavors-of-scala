@@ -9,6 +9,7 @@ type FutureWithInt[A] = StateT[Future, Int, A]
 
 def doLiftedAsyncComputation() = {
   val work = Future {
+    println("working")
     Thread.sleep(10) // simulate doing the work
     21
   }
@@ -17,9 +18,9 @@ def doLiftedAsyncComputation() = {
 def program: FutureWithInt[String] =
   for {
     value <- doLiftedAsyncComputation()
-    _     <- StateT.set(value * 2)
-    res   <- StateT.get
-    _     <- StateT.set(res * 10)
+    _ <- StateT.set(value * 2)
+    res <- StateT.get
+    _ <- StateT.set(res * 10)
   } yield s"The meaning of life is $res"
 
 @main def run(): Unit = {
@@ -30,3 +31,4 @@ def program: FutureWithInt[String] =
   Thread.sleep(100)
 }
 //#endregion
+

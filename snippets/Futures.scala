@@ -1,25 +1,31 @@
 import scala.concurrent.Future
+import scala.concurrent.ExecutionContext
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.{Success, Failure}
 
-
 object FutureExample extends App {
 
-  // #region examples
-  def findUserName(id: Int): Future[String] = Future.successful(s"User$id")
+  case class Artist(name: String, startYear: Int, endYear: Int)
 
-  val userIdFuture: Future[Int] = Future {
-    Thread.sleep(1000)
-    42
+  // #region examples
+  def findArtist(name: String)(implicit
+      ec: ExecutionContext
+  ): Future[Artist] = Future {
+    Thread.sleep(666) // simulate fetching from a DB
+    Artist("Frank Sinatra", 1935, 1995)
   }
 
-  // Using flatMap to chain another Future
-  val userNameFuture: Future[String] = 
-    userIdFuture.flatMap(findUserName)
+  def calculateActiveYears(artist: Artist): Int =
+    artist.endYear - artist.startYear
 
-  userNameFuture.onComplete {
+  // Using flatMap to chain another Future
+  val artistFuture: Future[Int] =
+    findArtist("Frank Sinatra").map(calculateActiveYears)
+
+  artistFuture.onComplete {
     case Success(value) => println(s"The result is $value")
     case Failure(e)     => println(s"Something went wrong: ${e.getMessage}")
   }
   // #endregion
 }
+

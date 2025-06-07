@@ -7,9 +7,10 @@ import cats.data.EitherT
 import cats.implicits._
 import scala.concurrent.Future
 
-def findArtist(name: String): Either[String, Artist] = {
-  implicit val artistFormat: JsonFormat[Artist] = jsonFormat3(Artist.apply)
+implicit val artistFormat: JsonFormat[Artist] = jsonFormat3(Artist.apply)
 
+// #region findArtist
+def findArtist(name: String): Either[String, Artist] = {
   val artists: List[Artist] = {
     val json = Source.fromResource("artists.json").mkString
     json.parseJson.convertTo[List[Artist]]
@@ -17,6 +18,7 @@ def findArtist(name: String): Either[String, Artist] = {
 
   artists.find(_.name == name).toRight(s"Artist $name not found")
 }
+// #endregion
 
 def findArtistAsync(
     name: String

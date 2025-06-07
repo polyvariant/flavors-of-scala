@@ -295,7 +295,7 @@ layout: full
 
 # Convenience vs safety vs pragmatism
 
-// jakiś obrazek typu przeciąganie liny
+// obrazek człowieka z diabełkiem i aniołkiem na ramionach
 
 <!--
 Java++
@@ -306,16 +306,76 @@ Futures
 layout: full
 ---
 
-# Spray -> Akka HTTP
+# More decoupling
 
-// TODO
+Back then Scala devs started focusing more on safety, trying to decouple things more. Not all tools encouraged this which unfortunately created some friction.
+
+For example, decoupling HTTP errors from the logic itself. E.g. instead of:
+
+
+<<< ../projects/scalatra/src/main/scala/example/servlet.scala#findArtist scala {*}
 
 <!--
-next: Play gives you structure but not much more... (problems stay the same but in MVC world)
+-->
 
-http4s: BYOB, batteries not included, bare bones, you have the control but also you have the decision paralysis 
+---
+layout: full
+---
 
-holy grail: tapir
+# More decoupling using FP
+
+<<< ../projects/pekko-http/src/main/scala/persistence.scala#findArtist scala {*,1}
+
+<!--
+-->
+
+---
+layout: full
+---
+
+# Actors for HTTP
+
+Additionally, as we previously talked about, actors gained a lot of traction.
+
+Why not use their inherent asynchrony to run HTTP servers?
+
+<!--
+-->
+
+---
+layout: full
+---
+
+# New paradigm = New DSL
+
+<<< ../projects/pekko-http/src/main/scala/routes.scala#route scala {*}
+
+<!--
+But this is still synchronous
+-->
+
+---
+layout: full
+---
+
+# Use Futures!
+
+<<< ../projects/pekko-http/src/main/scala/routes.scala#asyncRoute scala {*}
+
+<!--
+This is getting complicated
+-->
+
+---
+layout: full
+---
+
+# Use MTL!
+
+<<< ../projects/pekko-http/src/main/scala/routes.scala#asyncRouteMTL scala {*}
+
+<!--
+
 -->
 
 ---
@@ -336,6 +396,12 @@ But a similar story can be told about:
 
 <!--
 testing: akka-testkit test problems, testing concurrent stuff is hard
+
+next: Play gives you structure but not much more... (problems stay the same but in MVC world)
+
+http4s: BYOB, batteries not included, bare bones, you have the control but also you have the decision paralysis 
+
+holy grail: tapir
 
 - HTTP
 - Scala loves Python (Cask)

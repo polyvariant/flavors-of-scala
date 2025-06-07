@@ -24,6 +24,7 @@ class CollaborationServlet extends ScalatraServlet with JacksonJsonSupport {
   }
 
   // this simulates a side-effectful call: example of an API or a DB call
+  // #region findArtist
   def findArtist(name: String): Artist = {
     val artists: List[Artist] = {
       val json =
@@ -37,4 +38,5 @@ class CollaborationServlet extends ScalatraServlet with JacksonJsonSupport {
       .find(_.name == name)
       .getOrElse(halt(404, s"Artist $name not found"))
   }
+  // #endregion
 }

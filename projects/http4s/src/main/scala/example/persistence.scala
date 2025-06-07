@@ -6,9 +6,9 @@ import io.circe.parser.decode
 import io.circe.generic.auto._
 import cats.MonadThrow
 
-case class ArtistNotFound(name: String)
-    extends Exception(s"Artist $name not found")
+case class ArtistNotFound(name: String) extends Exception(s"Artist $name not found")
 
+// TODO: maybe IO before?
 def findArtist[F[_]](
     name: String
 )(implicit ME: MonadThrow[F]): F[Artist] = {
