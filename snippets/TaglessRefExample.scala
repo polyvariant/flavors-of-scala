@@ -4,6 +4,7 @@ package taglessrefexample // keep this to avoid overlaps with other files
 import cats.effect.{IO, IOApp, Ref}
 import cats.syntax.all._
 import scala.concurrent.duration._
+import cats.effect.kernel.Async
 import cats.effect.kernel.Sync
 
 
@@ -28,8 +29,8 @@ trait Program[F[_]] {
 }
 
 object Program {
-  def apply[F[_]: Sync]: Program[F] = new Program[F] {
-    def doAsyncComputation: F[Int] = Sync[F].delay(Thread.sleep(10)) *> Sync[F].pure(21)
+  def apply[F[_]: Async]: Program[F] = new Program[F] {
+    def doAsyncComputation: F[Int] = Async[F].delay(Thread.sleep(10)) *> Async[F].pure(21)
 
     def program(ref: MutableRef[F, Int]): F[String] = for {
       value <- doAsyncComputation
