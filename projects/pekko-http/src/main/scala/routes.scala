@@ -21,10 +21,10 @@ val route =
 def asyncRoute(implicit ec: ExecutionContext) =
   path("collaboration") {
     get {
-      parameters("artist1", "artist2") { (a1, a2) =>
+      parameters("artist1", "artist2") { (artistIn1, artistIn2) =>
         val resultF = for {
-          maybeArtist1 <- findArtistAsync(a1)
-          maybeArtist2 <- findArtistAsync(a2)
+          maybeArtist1 <- findArtistAsync(artistIn1)
+          maybeArtist2 <- findArtistAsync(artistIn2)
         } yield for {
           artist1 <- maybeArtist1
           artist2 <- maybeArtist2
