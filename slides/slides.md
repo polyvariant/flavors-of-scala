@@ -61,7 +61,7 @@ layout: center
 
 <div class="absolute top-5">
 
-# Hello there 👋
+# Hello world 👋
 
 </div>
 
@@ -69,6 +69,13 @@ layout: center
 <img class="absolute top-25 left-10 w-90" alt="" src="./michal_plachta.png" />
 
 <img class="absolute top-25 right-10 w-90" alt="" src="./michal_pawlik.jpg" />
+
+
+<v-click>
+
+<img class="absolute top-50 left-80 w-90 bg-white rotate-5" alt="" src="./SiriusXM.png" />
+
+</v-click>
 
 
 <div class="absolute bottom-12 left-10 text-4xl font-bold">
