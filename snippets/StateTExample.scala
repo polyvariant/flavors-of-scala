@@ -9,7 +9,6 @@ type FutureWithInt[A] = StateT[Future, Int, A]
 
 def doLiftedAsyncComputation() = {
   val work = Future {
-    println("working")
     Thread.sleep(10) // simulate doing the work
     21
   }
