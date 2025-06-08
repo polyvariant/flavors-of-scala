@@ -1,37 +1,34 @@
----
 
 # Meanwhile...
 
-### The community is flirting with various approaches to state management
+### We figured there are Monads beyond `Future` and `IO`
 
-<v-clicks>
+* stdlib brings some like `List`, `Option`, `Either`
+* Cats bring us some more `Validated`, `NonEmptyList`, `Kleisli`, `State`
 
-- Actors
-- State Monad
-- Monad transformers
-- Offloading state management entirely to the database ("stateless")
-
-</v-clicks>
 
 
 <!--
 Let's give them a quick look, starting with State Monad...
 -->
 
----
-
-# State Monad
-
-Put simply, it's a way to chain mutations of a value.
-
 
 ---
 
 # State Monad
 
+<div class="absolute top-20 w-200">
+
 Put simply, it's a way to chain mutations of a value.
 
-<<< ../snippets/StateMonad.scala#stateMonadClass scala {1-3|5-9|*}{lines:true}
+
+<v-click>
+
+<<< ../snippets/StateMonadCats.scala#example scala {1-7|8-13|14-15|16-19|*}{lines:true}
+
+</v-click>
+
+</div>
 
 <!--
 Here's how state monad is defined.
@@ -40,20 +37,6 @@ Here's how state monad is defined.
 
 Two type parameters, S and A, S is the type of state, A is the result of the computation...
 -->
-
----
-
-# State Monad
-
-You can manipulate the state using helpers
-
-<<< ../snippets/StateMonad.scala#stateMonadObject scala {*}{lines:true}
-
----
-
-# State Monad
-
-<<< ../snippets/StateMonad.scala#stateMonadMain scala {*}{lines:true}
 
 <!--
 Note that this is sequential, while Futgu
@@ -75,7 +58,7 @@ Futures were async!
 
 <div class="absolute top-25 w-200">
 
-<<< ../snippets/StateTExample.scala#example scala {1|10-16|3-9|*}{lines:true}
+<<< ../snippets/StateTCatsEffect.scala#example scala {2-9|3|10-23|*}{lines:true}
 
 </div>
 
@@ -87,13 +70,14 @@ Futures were async!
 
 There's a lot of lifting 🏋️
 
-```scala {6}{lines:true}
-def doLiftedAsyncComputation() = {
-  val work = Future {
-    Thread.sleep(10) // simulate doing the work
-    21
+```scala {1}{lines:true}
+val nextStation: StateT[IO, List[String], String] = StateT { stationsList =>
+  IO.sleep(1.second) *> IO.pure {
+    stationsList match {
+      case Nil          => (Nil, "No more stations")
+      case head :: tail => (tail, s"Current station: $head")
+    }
   }
-  StateT.liftF[Future, Int, Int](work)
 }
 ```
 
@@ -113,7 +97,7 @@ type AppStack[A] = EitherT[StateT[Future, AppState, *], AppError, A]
 
 <div class="absolute bottom-20 w-200">
 
-## Was simple `Future` that bad? 🤔
+## Perhaps we should stick to `Ref`? 🤔
 
 </div>
 

@@ -314,7 +314,7 @@ Think `Future` but lazy
 
 <div class="absolute bottom-20 right-20 text-2xl bg-white text-black rotate-5 border-solid border-white border-10">
 
-Features
+Featuring
 * Queues
 * Atomic Ref
 * Resource management
@@ -383,26 +383,36 @@ background: /galaxy-brain.jpg
 # Final tagless - the final abstraction
 
 
----
-
-# Final tagless
-
-<div class="absolute top-22 w-200">
-
-<<< ../snippets/TaglessRefExample.scala#tagless scala {1-4,6-9|11-23|*}{maxHeight:'420px',lines:true}
-
-</div>
-
 
 ---
 
 # Final tagless
 
-<<< ../snippets/TaglessRefExample.scala#ce-implementation scala {*}{lines:true}
+<<< ../snippets/TaglessFinalJourney.scala#interface scala {*}{lines:true}
+
+---
+
+# Final tagless
+
+<<< ../snippets/TaglessFinalJourney.scala#partial-implementation scala {*}{lines:true}
+
 
 <v-click>
 
-<<< ../snippets/TaglessRefExample.scala#other-implementation scala {1|2|6-10|*}{lines:true}
+<div class="absolute bottom-20 right-20 text-2xl bg-white text-black rotate-5 border-solid border-white border-10">
+
+Featuring
+
+✅ Testability
+
+✅ Composability
+
+❌ Readability
+
+❌ Cognitive load
+
+</div>
 
 </v-click>
+
 
