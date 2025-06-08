@@ -275,13 +275,6 @@ src: ./concurrency.md
 src: ./http.md
 ---
 
-# What the `F[_]`
-
-You telling me I now need `F[_]: Async: Monad: Clock: UUIDGen` to run hello world?
-
-<div v-click="1">
-  <img class="absolute top-50 left-100 w-100" alt="" src="./godfather.png" />
-</div>
 
 ---
 
