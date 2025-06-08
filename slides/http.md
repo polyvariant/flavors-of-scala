@@ -512,12 +512,14 @@ And that's the new DSL. However, as we said earlier, asynchrony was getting trac
 
 # Actors and Futures are the foundation
 
-<<< ../projects/pekko-http/src/main/scala/Server.scala#server scala {*}
-
-// TODO: show how the route value is bound and that everything is run on actors, exposing Futures.
+<<< ../projects/pekko-http/src/main/scala/Server.scala#server scala {*|6}
 
 <!--
-That's In this new approach, Futures and actors were the foundation.
+That's In this new approach, Futures and actors were the foundation. We start the server and get a Future value back.
+
+[click] The value that defines the routes (endpoints and server logic) is used here.
+
+[click] It all looks cool, right? FP for the logic, Futures and actors for concurrency.
 -->
 
 ---
@@ -527,41 +529,116 @@ That's In this new approach, Futures and actors were the foundation.
 <<< ../projects/pekko-http/src/main/scala/routes.scala#route scala {*|6-7}
 
 <div v-click="1">
-  <div class="absolute top-48 right-30 w-110 text-red-500 font-bold text-4xl text-center">SEQUENTIAL</div>
+  <div class="absolute top-55 right-30 w-110 text-red-500 font-bold text-4xl text-center">SEQUENTIAL</div>
 </div>
 
 <!--
 Just by doing that, we were able to quickly integrate the asynchronous actor-based systems with the HTTP layer, however we still needed to be vigilant about asynchrony.
+
+[click] Because just because we run inside an actor system didn't mean that we were concurrent. So if we had some code based on the Either monad meant we were finding artists sequentially. So we needed more.
+-->
+
+---
+
+# Merging the FP and Future?
+
+````md magic-move
+```scala
+def findArtist(name: String): Either[ArtistNotFound, Artist] = {
+  val artists: List[Artist] = {
+    val json = Source.fromResource("artists.json").mkString
+    json.parseJson.convertTo[List[Artist]]
+  }
+
+  artists.find(_.name == name).toRight(ArtistNotFound(name))
+}
+```
+```scala
+def findArtistAsync(name: String): Future[Either[ArtistNotFound, Artist]] = {
+  Future {
+    val artists: List[Artist] = {
+      val json = Source.fromResource("artists.json").mkString
+      json.parseJson.convertTo[List[Artist]]
+    }
+
+    artists.find(_.name == name).toRight(ArtistNotFound(name))
+  }
+}
+```
+````
+
+
+<!-- 
+We needed to use Futures and Eithers together, getting the concurrency in but not leaving the type safety behind.
+
+[click] So, we need to wrap the thing inside a Future and this will be run concurrently.
 -->
 
 ---
 
 # Use Futures!
 
-<<< ../projects/pekko-http/src/main/scala/routes.scala#asyncRoute scala {*}
+<<< ../projects/pekko-http/src/main/scala/routes.scala#asyncRoute scala {*|5-11}
+
+<div v-click="1">
+  <div class="absolute top-65 right-20 w-110 text-red-500 font-bold text-xl text-center">Future[Either[ArtistNotFound, Artist]]</div>
+</div>
 
 <!--
-Now we have two forces that drove us: being asynchronous and trying to be safe. This was getting complicated very quickly.
+When developers made such changes to internal DB/API call functions, they could be used in the routes themselves. The good thing about this setup was that akka-http allowed us to configure the threading for each layer of our app, so that was cool. However...
+
+[click] It turned out integrating Futures and FP was a big problem. Suddenly, we had two forces that drove us: being asynchronous and trying to be safe. This was getting complicated very quickly. But going back wasn't an option, Scala devs were searching for solutions.
 -->
 
 ---
 
-# Use MTL!
+# It was hard to work with such types
 
-<<< ../projects/pekko-http/src/main/scala/routes.scala#asyncRouteMTL scala {*}
+````md magic-move
+```scala
+def findArtistAsync(name: String): Future[Either[ArtistNotFound, Artist]] = {
+  Future {
+    val artists: List[Artist] = {
+      val json = Source.fromResource("artists.json").mkString
+      json.parseJson.convertTo[List[Artist]]
+    }
 
-<!--
-And that meant we needed to step up our FP game. We want to work with Eithers, and the asynchronous Futures, together, but conveniently. Naturally, we went with Monad Transformers, here EitherT.
+    artists.find(_.name == name).toRight(ArtistNotFound(name))
+  }
+}
+```
+```scala
+def findArtistAsyncMTL(name: String): EitherT[Future, ArtistNotFound, Artist] = {
+  EitherT { 
+    Future {
+      val artists: List[Artist] = {
+        val json = Source.fromResource("artists.json").mkString
+        json.parseJson.convertTo[List[Artist]]
+      }
+
+      artists.find(_.name == name).toRight(ArtistNotFound(name))
+    }
+  }
+}
+```
+````
+
+
+<!-- 
+These wrapped types, Futures of Eithers, weren't very convenient to use. Again, this showed that it was very hard to have both safety and convenience. Of course other functional programming languages have already solved this issue.
+
+[click] The natural progression, taken from the FP world, was to use monad transformers. In this example, just wrapping the Future of Eithers in EitherT helped a lot because we now returned a simpler type that allowed us to work more efficiently with the underlying programs.
 -->
-
 ---
 
-# Use MTL!
+# Use Monad Transformers!
 
-<<< ../projects/pekko-http/src/main/scala/routes.scala#asyncRouteMTL scala {*}
+<<< ../projects/pekko-http/src/main/scala/routes.scala#asyncRouteMTL scala {*|5-8}
 
 <!--
-We want to work with Eithers, not the asynchronous Futures, hence EitherT.
+We needed to step up our FP game, but it looked like it paid off. The call site was much simpler. We wanted to work with Eithers, and the asynchronous Futures, together, but conveniently. Naturally, we went with Monad Transformers, here EitherT.
+
+[click] instead of having to use a for comprehension inside a for comprehension, we could use a single for in the context of Eithers, and still using the concurrency features of the Future type.
 -->
 
 ---
