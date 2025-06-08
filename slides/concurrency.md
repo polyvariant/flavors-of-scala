@@ -11,7 +11,7 @@ concurrency should be much easier right?
 <img class="absolute bottom-20 right-90 w-55" alt="" src="./anakin-2.png" />
 <img class="absolute bottom-20 right-20 w-55" alt="" src="./padme-2.png" />
 
-<span class="text-4xl font-bold">Right!</span> <img class="absolute bottom-20 right-20 w-55" alt="" src="./padme-1.png" />
+<img class="absolute bottom-20 right-20 w-55" alt="" src="./padme-1.png" /> <span class="absolute bottom-20 right-20 text-4xl font-bold bg-white text-black rotate-335">YES!</span>
 
 </v-clicks>
 
@@ -20,7 +20,7 @@ concurrency should be much easier right?
 
 # Bright Future
 
-<<< ../snippets/Futures.scala#examples scala {1-6|11-13|15-18|*}{lines:true}
+<<< ../snippets/Futures.scala#examples scala {1-6|11-14|16-19|*}{lines:true}
 
 <!-- 
 
@@ -82,9 +82,20 @@ What if I need to concurrently modify the state?
 
 <v-clicks>
 
-<<< ../snippets/FutureStateProblem.scala#examples scala {1|9|3-7|*}{lines:true}
+<<< ../snippets/FutureStateProblem.scala#examples scala {1|3-7|9|*}{lines:true}
 
 </v-clicks>
+
+
+<v-click>
+
+<span class="absolute top-50 left-100 text-4xl font-bold bg-white text-black rotate-355">
+What will be the final value?
+</span>
+
+</v-click>
+
+
 
 <!--
 TODO: can we simplify?
@@ -142,7 +153,7 @@ layout: center
 
 <!-- images from https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-the-Actor-Model-works-by-example -->
 
-<img class="absolute top-20 right-30 w-170" alt="" src="https://itknowledgeexchange.techtarget.com/coffee-talk/files/2023/12/asynchronous_communication_modes_in_the_actor_model-f.png" />
+<img class="absolute top-20 right-30 w-170" alt="" src="/asynchronous_communication_modes_in_the_actor_model-f.png" />
 
 
 <!-- https://itknowledgeexchange.techtarget.com/coffee-talk/files/2023/12/understanding_the_actor_model-f.png more advanced example -->
@@ -220,7 +231,14 @@ we'll come back to testing problems with actor systems later on
 
 # Meanwhile...
 
-### The community figures that `Future`s eager evaluation is not a good idea
+<v-clicks>
+
+* Some say state management is the biggest issue with `Future`s
+
+* Others blame the **eager evaluation**
+
+</v-clicks>
+
 
 <!--
 -->
@@ -229,7 +247,25 @@ we'll come back to testing problems with actor systems later on
 
 # Meanwhile... Futures eager evaluation
 
-<<< ../snippets/FuturesEagerEval.scala#examples scala {*}
+<<< ../snippets/FuturesEagerEval.scala#examples scala {1-9|11-14|*}{lines: true}
+
+
+<v-after>
+
+<div class="absolute top-30 right-20 border-solid border-gray border-2">
+
+```{1,4-6}
+$ scala FuturesEagerEval.scala 
+Compiling project (Scala 3.6.2, JVM (17))
+Compiled project (Scala 3.6.2, JVM (17))
+done x
+done y
+The result is 42
+```
+
+</div>
+
+</v-after>
 
 <!--
 -->
@@ -269,20 +305,24 @@ Think `Future` but lazy
 
 ---
 
-# How is it better than MTL?
+# Cats Effect
 
-// FIXME: we haven't introduced MTL yet at this point
 <<< ../snippets/IORefExample.scala#example scala {5-11|1-3|2|13-17|*}{lines:true}
 
-<v-click>
 
-<div class="absolute bottom-15 w-200">
+<v-after>
 
-### Everything is wrapped with `IO`
+<div class="absolute bottom-20 right-20 text-2xl bg-white text-black rotate-5 border-solid border-white border-10">
+
+Features
+* Queues
+* Atomic Ref
+* Resource management
+* and more
 
 </div>
 
-</v-click>
+</v-after>
 
 <!--
 no lifting! just a composition of values and a single type
@@ -294,9 +334,25 @@ Speaker B: but one problem that we had with MTL is still there: one monad for th
 
 ---
 
+<span class="absolute top-20 left-50">
+Me: This IO monad looks great
+</span>
+
+<v-click>
+
+<span class="absolute top-30 right-50">
+Me to me: Write your own IO monad!
+</span>
+
+<img class="absolute top-40 left-50 w-150" alt="" src="/evil-kermit.jpg" />
+
+</v-click>
+
+---
+
 # Monadic Effects
 
-We have a bunch of them!
+And so have a bunch of them!
 
 - Cats / Monix
 - Scalaz
@@ -305,6 +361,9 @@ We have a bunch of them!
 
 
 ---
+src: ./state.md
+---
+
 
 # But I like my other IO monad better!
 

@@ -157,7 +157,11 @@ In 2004 Scala was a great innovation, let's see why
 
 # Java++
 
-In Java 1.4, when you wanted to produce a list of even squares
+Working with collections in Java 1.4 demo
+
+- predefine a list 
+- only keep the even numbers
+- square each number
 
 ---
 
@@ -173,7 +177,7 @@ First you create a list
 
 Then filter and square the values
 
-<<< ../snippets/EvenSquares.java#map java {*}
+<<< ../snippets/EvenSquares.java#map java {2-3|4,5,10|7|8|*}{lines: true}
 
 ---
 

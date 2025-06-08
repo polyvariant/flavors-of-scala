@@ -20,7 +20,8 @@ object FutureExample extends App {
 
   // Using flatMap to chain another Future
   val artistFuture: Future[Int] =
-    findArtist("Frank Sinatra").map(calculateActiveYears)
+    findArtist("Frank Sinatra")
+      .map(calculateActiveYears)
 
   artistFuture.onComplete {
     case Success(value) => println(s"The result is $value")
