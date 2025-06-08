@@ -105,7 +105,7 @@ layout: center
 
 ---
 layout: center
-background: kid-laptop.jpg
+background: /kid-laptop.jpg
 ---
 
 # We're young and ambitious
