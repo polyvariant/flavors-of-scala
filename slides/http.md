@@ -592,7 +592,7 @@ When developers made such changes to internal DB/API call functions, they could 
 
 ---
 
-# It was hard to work with such types
+# Working with Futures of Eithers
 
 ````md magic-move
 ```scala
@@ -639,6 +639,25 @@ These wrapped types, Futures of Eithers, weren't very convenient to use. Again, 
 We needed to step up our FP game, but it looked like it paid off. The call site was much simpler. We wanted to work with Eithers, and the asynchronous Futures, together, but conveniently. Naturally, we went with Monad Transformers, here EitherT.
 
 [click] instead of having to use a for comprehension inside a for comprehension, we could use a single for in the context of Eithers, and still using the concurrency features of the Future type.
+-->
+
+---
+
+# Convenience vs Safety: Actors and advanced FP
+
+<img class="absolute top-35 right-20 size-2/5 shadow-xl rounded-md" alt="" src="/devil_and_angel.gif" />
+
+## Convenience
+- easier to decouple using types <hugeicons-happy/>
+- hard to work with one big monad <hugeicons-unhappy/>
+
+## Safety
+- types <hugeicons-happy/>
+- concurrency using actors <hugeicons-happy/>
+- `Future`s are eagerly evaluated <hugeicons-unhappy/>
+
+<!--
+In case of actors and FP, Scala ecosystem made some progress, but some new problems were created along the way.
 -->
 
 ---
