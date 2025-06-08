@@ -250,7 +250,7 @@ we'll come back to testing problems with actor systems later on
 <<< ../snippets/FuturesEagerEval.scala#examples scala {1-9|11-14|*}{lines: true}
 
 
-<v-after>
+<v-click>
 
 <div class="absolute top-30 right-20 border-solid border-gray border-2">
 
@@ -265,7 +265,7 @@ The result is 42
 
 </div>
 
-</v-after>
+</v-click>
 
 <!--
 -->
@@ -442,15 +442,23 @@ Featuring
 
 # What the `F[_]`
 
+<v-click>
+
+Everyone was supposed to be happy!
+
+</v-click>
+
+<!-- you should've be able to decide for MT or beefy effect to your preference, at the end of the world -->
+<v-click>
+
 You telling me I now need `F[_]: Async: Monad: Clock: UUIDGen` to run hello world?
 
-<v-click>
-  <img class="absolute top-50 left-100 w-100" alt="" src="./godfather.png" />
+  <img class="absolute top-60 left-100 w-100" alt="" src="./godfather.png" />
 </v-click>
 
 <v-click>
 
-<span class="absolute bottom-20 left-20 text-4xl font-bold bg-white text-black rotate-5">We'll get back to that</span>
+<span class="absolute bottom-10 left-20 text-4xl font-bold bg-white text-black rotate-5">We'll get back to that</span>
 
 </v-click>
 
