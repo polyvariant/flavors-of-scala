@@ -416,3 +416,11 @@ Featuring
 </v-click>
 
 
+---
+
+# Final tagless - ZIO implementation
+
+<<< ../snippets/TaglessFinalJourney.scala#zio-implementation scala {*}{lines:true}
+
+
+

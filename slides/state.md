@@ -86,7 +86,7 @@ val nextStation: StateT[IO, List[String], String] = StateT { stationsList =>
 It can go as ridiculous as
 
 ```scala
-type AppStack[A] = EitherT[StateT[Future, AppState, *], AppError, A]
+type AppStack[A] = EitherT[StateT[IO, AppState, *], AppError, A]
 ```
 
 </v-click>
@@ -95,11 +95,7 @@ type AppStack[A] = EitherT[StateT[Future, AppState, *], AppError, A]
 
 <v-click>
 
-<div class="absolute bottom-20 w-200">
-
-## Perhaps we should stick to `Ref`? 🤔
-
-</div>
+<img class="absolute bottom-10 right-10 w-90 bg-white rotate-2" alt="" src="./out-of-hand.jpg" />
 
 </v-click>
 

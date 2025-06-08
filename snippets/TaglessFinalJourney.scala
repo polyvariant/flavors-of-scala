@@ -1,6 +1,7 @@
 //> using dep org.typelevel::cats-core::2.13.0
 //> using dep org.typelevel::cats-effect::3.6.1
 //> using option -Xkind-projector
+//> using dep dev.zio::zio::2.1.19
 
 import cats.Monad
 import cats.data.StateT
@@ -54,6 +55,42 @@ object AbstractStateTApp extends IOApp.Simple {
       _ <- IO.println(current)
       _ <- IO.println(s"Remaining stations: $remaining")
     } yield ()
+  }
+}
+//#endregion
+
+import zio._
+import scala.concurrent.duration._
+
+//#region zio-implementation
+class JourneyZIO(stationsRef: Ref[List[String]]) extends Journey[Task] {
+
+  override def nextStation: Task[String] = 
+    stationsRef.modify {
+      case Nil          => ("No more stations", Nil)
+      case head :: tail => (s"Current station: $head", tail)
+    }
+
+  override def travel: Task[String] = for {
+    _      <- nextStation
+    _      <- nextStation
+    result <- nextStation
+  } yield result
+}
+object JourneyZIO {
+  val stations = List("Wrocław", "Kłodzko", "Międzylesie", "Lichkov", "Pardubice", "Praha")
+  def instance = Ref.make(stations).map(new JourneyZIO(_))
+}
+//#endregion
+
+//#region zio-app
+object ZIOApp extends ZIOAppDefault {
+  def run = {
+    for {
+      journey <- JourneyZIO.instance
+      result <- journey.travel
+      _ <- Console.printLine(result)
+    } yield ExitCode.success
   }
 }
 //#endregion
