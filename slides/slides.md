@@ -362,23 +362,6 @@ layout: full
   <img class="absolute top-30 left-100 w-100" alt="" src="./godfather.png" />
 </div>
 
----
-layout: full
----
-
-# Many things can do the same thing
-
-<small>and developers will make sure to use them all</small>
-
-
-<div class="absolute top-30 left-40 flex flex-col items-center p-7 rounded-2xl bg-black shadow-xl w-100">
-  <div class="flex">
-    <span class="text-2xl font-medium text-white">Let's write generic and add "runtime" later</span>
-  </div>
-  <div>
-    <img class="size-full shadow-xl rounded-md" alt="" src="/explaining-stressed.gif" />
-  </div>
-</div>
 
 <!--
 Transition: Many things that do the same thing

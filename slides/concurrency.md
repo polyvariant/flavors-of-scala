@@ -383,12 +383,28 @@ background: /galaxy-brain.jpg
 # Final tagless - the final abstraction
 
 
-
 ---
 
 # Final tagless
 
 <<< ../snippets/TaglessFinalJourney.scala#interface scala {*}{lines:true}
+
+
+<v-click>
+
+
+<div class="absolute right-30 bottom-10 flex flex-col items-center p-7 rounded-2xl bg-black shadow-xl w-100">
+  <div class="flex">
+    <span class="text-2xl font-medium text-white">Let's write generic and add "runtime" later</span>
+  </div>
+  <div>
+    <img class="size-full shadow-xl rounded-md" alt="" src="/explaining-stressed.gif" />
+  </div>
+</div>
+
+
+</v-click>
+
 
 ---
 
