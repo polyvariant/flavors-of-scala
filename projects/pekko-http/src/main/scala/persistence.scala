@@ -10,23 +10,26 @@ import scala.concurrent.Future
 implicit val artistFormat: JsonFormat[Artist] = jsonFormat3(Artist.apply)
 
 // #region findArtist
-def findArtist(name: String): Either[String, Artist] = {
+case class ArtistNotFound(name: String)
+    extends Exception(s"Artist $name not found")
+
+def findArtist(name: String): Either[ArtistNotFound, Artist] = {
   val artists: List[Artist] = {
     val json = Source.fromResource("artists.json").mkString
     json.parseJson.convertTo[List[Artist]]
   }
 
-  artists.find(_.name == name).toRight(s"Artist $name not found")
+  artists.find(_.name == name).toRight(ArtistNotFound(name))
 }
 // #endregion
 
 def findArtistAsync(
     name: String
-)(implicit ec: ExecutionContext): Future[Either[String, Artist]] =
+)(implicit ec: ExecutionContext): Future[Either[ArtistNotFound, Artist]] =
   Future(findArtist(name))
 
 def findArtistAsyncMTL(
     name: String
-)(implicit ec: ExecutionContext): EitherT[Future, String, Artist] = {
+)(implicit ec: ExecutionContext): EitherT[Future, ArtistNotFound, Artist] = {
   EitherT(findArtistAsync(name))
 }

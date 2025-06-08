@@ -5,6 +5,7 @@ import org.apache.pekko.stream.Materializer
 import scala.concurrent.ExecutionContext
 import scala.io.StdIn
 
+// #region server
 object Server extends App {
   implicit val system: ActorSystem = ActorSystem("pekko-http-system")
   implicit val materializer: Materializer = ActorMaterializer()
@@ -18,3 +19,4 @@ object Server extends App {
     .flatMap(_.unbind())
     .onComplete(_ => system.terminate())
 }
+// #endregion
