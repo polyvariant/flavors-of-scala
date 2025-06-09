@@ -3,6 +3,9 @@
 
 All these techniques had their impact on how Scala devs developed software. Let's go very quickly through some examples and see how the code looked like and what developers focused on.
 
+<img class="absolute bottom-10 left-90 w-90" alt="" src="./spongebob-rainbow.jpg" />
+<span class="absolute bottom-65 text-2xl font-bold bg-white text-black left-100">Fancy coding techniques</span>
+
 ---
 
 # HTTP
