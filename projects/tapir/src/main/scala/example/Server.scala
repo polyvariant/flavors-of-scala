@@ -4,6 +4,7 @@ import sttp.tapir._
 import sttp.tapir.server.netty.cats.NettyCatsServer
 import cats.effect.{IO, IOApp}
 
+// #region app
 object Server extends IOApp.Simple {
 
   override def run: IO[Unit] = {
@@ -20,3 +21,4 @@ object Server extends IOApp.Simple {
       }
   }
 }
+// #endregion

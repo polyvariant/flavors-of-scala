@@ -8,7 +8,8 @@ import sttp.model.StatusCode
 import sttp.tapir.server.stub4.TapirStubInterpreter
 import cats.effect.IO
 
-object ServerSuite extends SimpleIOSuite {
+// #region test
+object ServerSuite extends SimpleIOSuite:
   val backend: Backend[IO] = TapirStubInterpreter(BackendStub(CatsMonadError[IO]))
     .whenServerEndpoint(collaborationEndpoint)
     .thenRunLogic()
@@ -25,6 +26,7 @@ object ServerSuite extends SimpleIOSuite {
         )
       }
   }
+// #endregion
 
   test("The /collaboration endpoint should return NotFound for non-existent artists") {
     basicRequest
@@ -35,4 +37,3 @@ object ServerSuite extends SimpleIOSuite {
         expect(response.code == StatusCode.BadRequest)
       }
   }
-}

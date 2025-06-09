@@ -4,8 +4,7 @@ import sttp.tapir._
 import cats.effect.{IO, IOApp}
 import cats.syntax.all.*
 
-// TODO: add type
-// THIS IS JUST A VALUE
+// #region endpoint
 val collaborationEndpoint = endpoint.get
   .in("collaboration")
   .in(query[String]("artist1"))
@@ -13,7 +12,9 @@ val collaborationEndpoint = endpoint.get
   .out(stringBody)
   .errorOut(plainBody[String])
   .serverLogic(collaboration)
+// #endregion
 
+// #region impl
 private def collaboration(artistIn1: String, artistIn2: String) = {
   val result = for {
     artist1 <- findArtist[IO](artistIn1)
@@ -21,3 +22,4 @@ private def collaboration(artistIn1: String, artistIn2: String) = {
   } yield checkCollaboration(artist1, artist2)
   result.attempt.map(_.leftMap(_.getMessage()))
 }
+// #endregion

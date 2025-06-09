@@ -835,7 +835,7 @@ IO is much better than Future, allows structured concurrency.
 
 # ...and final tagless
 
-<div class="absolute top-30 left-40 flex flex-col items-center p-7 rounded-2xl bg-black shadow-xl w-100">
+<div class="absolute top-30 left-40 flex flex-col items-center p-7 rounded-2xl bg-black shadow-xl w-110">
   <div class="flex">
     <span class="text-2xl font-medium text-white">IOs and final tagless everywhere</span>
   </div>
@@ -930,6 +930,141 @@ We were able to solve some convenience and safety problems. It's easier to work 
 -->
 ---
 
+# What we wanted
+
+<img class="absolute top-20 left-60 size-100 shadow-xl rounded-md" alt="" src="/car_safety.png" />
+
+<!--
+When we started the journey many years ago, we had a lot of convenience but not much safety. We embarked on a long journey, trying to use many different tools, always making a leap forward. We wanted more safety.
+-->
+
+---
+
+# What we got
+
+<img class="absolute bottom-10 left-90 w-90" alt="" src="./vanya.jpg" />
+<span class="absolute bottom-95 text-2xl font-bold bg-white text-black left-95">Scala devs want more safety</span>
+<span class="absolute bottom-45 text-2xl font-bold bg-white text-black left-97">convenience</span>
+
+<!--
+We got just a safety, and a lot of inconvenience.
+-->
+
+---
+
+# But we still learned a lot
+
+- immutable values are cool
+- pure functions are cool
+- expressive types are cool
+- lazy evaluation is cool
+
+<!-- 
+Couldn't we just use this as a basis and let programmers choose their own poison for the other aspects?
+-->
+
+---
+
+# Enter tapir
+
+<<< ../projects/tapir/src/main/scala/example/endpoints.scala#endpoint scala {*}
+
+<v-click>
+
+<span class="absolute top-30 right-20 text-4xl font-bold bg-white text-black rotate-5">just a value</span>
+
+</v-click>
+
+<!-- 
+That's how tapir gained a lot of traction and stole many Scala developers' hearts. It's a result of getting all the experience we discussed so far and putting it to practice using the foundational Scala FP advantages: values and functions.
+
+[click] So, an endpoint is just a value.
+-->
+
+---
+
+# Enter tapir
+
+<<< ../projects/tapir/src/main/scala/example/endpoints.scala#impl scala {*}
+
+<span class="absolute top-30 right-20 text-4xl font-bold bg-white text-black rotate-5">just a function</span>
+
+<!-- 
+server logic is just a function
+-->
+
+---
+
+# Enter tapir
+
+<<< ../projects/tapir/src/main/scala/example/Server.scala#app scala {*|10|4}
+
+<span class="absolute top-30 right-20 text-4xl font-bold bg-white text-black rotate-5">just a value!</span>
+
+<!-- 
+and the whole app is just another IO value
+
+[click] we just use the endpoint value here to make sure the endpoint is server by the server
+
+[click] and finally note how we use a Netty server here, tapir allows us to use any backends and effect types, cats IO, ZIO, actors using pekko and many more. You can choose your own poison.
+-->
+
+---
+
+# Convenience vs Safety: tapir
+
+<img class="absolute top-35 right-20 size-2/5 shadow-xl rounded-md" alt="" src="/devil_and_angel.gif" />
+
+## Convenience
+- immutable values <hugeicons-happy/>
+- pure functions <hugeicons-happy/>
+- a lot of stable integrations <hugeicons-happy/>
+
+## Safety
+- you choose
+
+<!--
+Since you can choose what's the design of your app, you can use anything and it will integrate well.
+-->
+
+---
+
+# And this all affects testability
+
+Remember the test we started with?
+
+```scala
+class ScalatraServletTests extends ScalatraFunSuite {
+
+  addServlet(classOf[CollaborationServlet], "/*")
+
+  test("GET /collaboration") {
+    get("/collaboration", params = Map("artist1" -> "ArtistA", "artist2" -> "ArtistB")) {
+      status should equal(200)
+      body should equal(
+        "ArtistA and ArtistB could have collaborated between 1985 and 1992"
+      )
+    }
+  }
+}
+```
+
+<!--
+We needed to test the logic together with the HTTP, JSON, DB layer because the tool guides you this way. We also needed to start a real server when running tests.
+-->
+
+---
+
+# And it all affects testing
+
+<<< ../projects/tapir/src/test/scala/example/ServerSuite.scala#test scala {*}
+
+<!--
+Now, thanks to the tool we use and how it's designed around values and functions, we just test the values, no server needed Very quick and very stable.
+-->
+
+---
+
 # We did concurrency and HTTP
 
 But a similar story can be told about:
@@ -942,13 +1077,3 @@ But a similar story can be told about:
 - API integrations
 - ...
 
-<!--
-testing: akka-testkit test problems, testing concurrent stuff is hard
-
-next: Play gives you structure but not much more... (problems stay the same but in MVC world)
-
-http4s: BYOB, batteries not included, bare bones, you have the control but also you have the decision paralysis 
-
-holy grail: tapir
-
--->
