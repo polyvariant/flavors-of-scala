@@ -77,6 +77,16 @@ Let's see how it works in action.
 
 # Example: Artist collaborations
 
+<img class="absolute top-25 left-10 w-90" alt="" src="./sinatra.jpg" />
+
+<img class="absolute top-25 right-10 w-90" alt="" src="./aretha.jpg" />
+
+<span class="absolute top-60 left-50 text-4xl font-bold bg-white text-black rotate-335">Could they work together?</span>
+
+---
+
+# Example: Artist collaborations
+
 Implement an API which returns an information whether two given artists could have collaborated with each other.
 
 E.g.
