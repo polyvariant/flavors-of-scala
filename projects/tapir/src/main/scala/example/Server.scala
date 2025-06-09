@@ -14,7 +14,7 @@ object Server extends IOApp.Simple {
         server
           .host("localhost")
           .port(8080)
-          .addEndpoint(collaborationEndpoint)
+          .addEndpoint(collaborationServerEndpoint)
           .start()
           .flatTap(_ => IO.println("Server now online. Press RETURN to stop...").flatTap(_ => IO.readLine))
           .void

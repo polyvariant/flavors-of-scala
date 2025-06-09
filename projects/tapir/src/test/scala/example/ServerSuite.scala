@@ -11,7 +11,7 @@ import cats.effect.IO
 // #region test
 object ServerSuite extends SimpleIOSuite:
   val backend: Backend[IO] = TapirStubInterpreter(BackendStub(CatsMonadError[IO]))
-    .whenServerEndpoint(collaborationEndpoint)
+    .whenServerEndpoint(collaborationServerEndpoint)
     .thenRunLogic()
     .backend()
 
