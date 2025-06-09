@@ -334,6 +334,22 @@ Watch [this talk](https://www.youtube.com/live/gYS3UkmFoHQ?t=719&cbrd=1) for mor
 layout: center
 ---
 
-# TODO: Conclusions
+We're done here
 
+<v-click>
 
+# But the Scala community is not
+
+</v-click>
+
+---
+
+# Scala community is not done
+
+<v-clicks>
+
+- Keep exploring
+- Get inspired by other languages
+- Have fun coding
+
+</v-clicks>
