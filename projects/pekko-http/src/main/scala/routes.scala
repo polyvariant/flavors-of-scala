@@ -49,7 +49,7 @@ def asyncRouteMTL(implicit ec: ExecutionContext) =
     get {
       parameters("artist1", "artist2") { (a1, a2) =>
         val result = for {
-          artist1 <- findArtistAsyncMTL(a1) // TOOD: EitherT explain
+          artist1 <- findArtistAsyncMTL(a1)
           artist2 <- findArtistAsyncMTL(a2)
         } yield checkCollaboration(artist1, artist2)
 

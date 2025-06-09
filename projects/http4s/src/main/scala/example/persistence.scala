@@ -1,5 +1,6 @@
 package example
 
+import cats.effect.IO
 import scala.io.Source
 import cats.implicits._
 import io.circe.parser.decode
@@ -8,7 +9,30 @@ import cats.MonadThrow
 
 case class ArtistNotFound(name: String) extends Exception(s"Artist $name not found")
 
-// TODO: maybe IO before?
+def findArtistIOEither(name: String): IO[Either[ArtistNotFound, Artist]] = {
+  val json = Source.fromResource("artists.json").mkString
+  decode[List[Artist]](json) match {
+    case Right(artists) =>
+      artists.find(_.name == name) match {
+        case Some(artist) => Right(artist).pure[IO]
+        case None         => Left(ArtistNotFound(name)).pure[IO]
+      }
+    case Left(error) => IO.raiseError(error)
+  }
+}
+
+def findArtistIO(name: String): IO[Artist] = {
+  val json = Source.fromResource("artists.json").mkString
+  decode[List[Artist]](json) match {
+    case Right(artists) =>
+      artists.find(_.name == name) match {
+        case Some(artist) => artist.pure[IO]
+        case None         => IO.raiseError(ArtistNotFound(name))
+      }
+    case Left(error) => IO.raiseError(error)
+  }
+}
+
 def findArtist[F[_]](
     name: String
 )(implicit ME: MonadThrow[F]): F[Artist] = {

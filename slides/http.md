@@ -635,6 +635,11 @@ These wrapped types, Futures of Eithers, weren't very convenient to use. Again, 
 
 <<< ../projects/pekko-http/src/main/scala/routes.scala#asyncRouteMTL scala {*|5-8}
 
+<div v-click="1">
+  <div class="absolute top-65 right-20 w-110 text-red-500 font-bold text-xl text-center">EitherT[Future, ArtistNotFound, Artist]</div>
+</div>
+
+
 <!--
 We needed to step up our FP game, but it looked like it paid off. The call site was much simpler. We wanted to work with Eithers, and the asynchronous Futures, together, but conveniently. Naturally, we went with Monad Transformers, here EitherT.
 
@@ -649,17 +654,249 @@ We needed to step up our FP game, but it looked like it paid off. The call site 
 
 ## Convenience
 - easier to decouple using types <hugeicons-happy/>
-- hard to work with one big monad <hugeicons-unhappy/>
+- hard to handle monads wrapping other monads <hugeicons-unhappy/>
 
 ## Safety
-- types <hugeicons-happy/>
+- endpoints as values <hugeicons-happy/> <hugeicons-happy/>
+- decoupling using types <hugeicons-happy/>
 - concurrency using actors <hugeicons-happy/>
-- `Future`s are eagerly evaluated <hugeicons-unhappy/>
+- `Future`s are eagerly evaluated <hugeicons-unhappy/> <hugeicons-unhappy/>
+- `Future` is too powerful <hugeicons-unhappy/>
 
 <!--
-In case of actors and FP, Scala ecosystem made some progress, but some new problems were created along the way.
+In case of actors and FP, Scala ecosystem made some progress, but some new problems were created along the way. Let's handle the last two problems in order. First, the eager evaluation.
 -->
 
+---
+
+# Future to IO
+
+````md magic-move
+```scala
+def findArtist(name: String): Future[Either[ArtistNotFound, Artist]] = {
+  Future {
+    val artists: List[Artist] = {
+      val json = Source.fromResource("artists.json").mkString
+      json.parseJson.convertTo[List[Artist]]
+    }
+
+    artists.find(_.name == name).toRight(ArtistNotFound(name))
+  }
+}
+```
+```scala
+def findArtist(name: String): IO[Either[ArtistNotFound, Artist]] = {
+  val json = Source.fromResource("artists.json").mkString
+  decode[List[Artist]](json) match {
+    case Right(artists) =>
+      artists.find(_.name == name) match {
+        case Some(artist) => Right(artist).pure[IO]
+        case None         => Left(ArtistNotFound(name)).pure[IO]
+      }
+    case Left(error) => IO.raiseError(error)
+  }
+}
+```
+```scala
+def findArtist(name: String): IO[Artist] = {
+  val json = Source.fromResource("artists.json").mkString
+  decode[List[Artist]](json) match {
+    case Right(artists) =>
+      artists.find(_.name == name) match {
+        case Some(artist) => artist.pure[IO]
+        case None         => IO.raiseError(ArtistNotFound(name))
+      }
+    case Left(error) => IO.raiseError(error)
+  }
+}
+```
+````
+
+
+<!-- 
+We know that IO's are lazily evaluated, just values holding the description of the program to be executed. Many people just switched to IO.
+
+[click] But we still wanted to be able to decouple the domain errors with HTTP or other representation errors so Either must stay, which would present us exactly the same problem as we had with Futures of Eithers. This setup wasn't that easy to use in call-site. 
+
+We could use EitherT with IOs here but that would mean we'd need to work with monads wrapping other monads, spraying it all over our apps. Some people did that but many others chose to be more pragmatic and focus on convenience by...
+
+[click] hiding the error inside IO, keeping the signature clean. Again this was a tradeoff: more convenience at the cost of less safety. Errors were no longer explicit. The call site needed to know what kind of errors can be thrown.
+
+-->
+---
+
+# Convenience vs Safety: IO
+
+<img class="absolute top-35 right-20 size-2/5 shadow-xl rounded-md" alt="" src="/devil_and_angel.gif" />
+
+## Convenience
+- easier to decouple using types <hugeicons-happy/>
+- easy to work with `IO` <hugeicons-happy/>
+
+## Safety
+- decoupling using types <hugeicons-happy/>
+- structured concurrency using `IO` <hugeicons-happy/>
+- `IO`s are lazily evaluated <hugeicons-happy/>
+- ~~`Future`~~ `IO` is too powerful <hugeicons-unhappy/>
+
+<!--
+We were able to solve some convenience and safety problems. It's easier to work with IO than with monad transformers. It's lazily evaluated but one problem remained the same as in Futures: these types are too powerful: you can do everything in a function that returns an IO.
+-->
+---
+
+# Liberties constrain, constraints liberate
+
+````md magic-move
+```scala
+def findArtist(name: String): IO[Artist] = {
+  val json = Source.fromResource("artists.json").mkString
+  decode[List[Artist]](json) match {
+    case Right(artists) =>
+      artists.find(_.name == name) match {
+        case Some(artist) => artist.pure[IO]
+        case None         => IO.raiseError(ArtistNotFound(name))
+      }
+    case Left(error) => IO.raiseError(error)
+  }
+}
+```
+```scala
+def findArtist[F[_]](
+    name: String
+)(implicit ME: MonadThrow[F]): F[Artist] = {
+  val json = Source.fromResource("artists.json").mkString
+  decode[List[Artist]](json) match {
+    case Right(artists) =>
+      artists.find(_.name == name) match {
+        case Some(artist) => artist.pure[F]
+        case None         => ME.raiseError(ArtistNotFound(name))
+      }
+    case Left(error) => ME.raiseError(error)
+  }
+}
+```
+````
+
+
+<!-- 
+We wanted to mark our internal functions with just the right amount of constraints, so that only the thing that we allow can happen. In the case of our dummy findArtist simulation it can just throw an error: either a domain error or a serialization error.
+
+[click] That's were the tagless final approach went in. We can mark the function as returning an Artist inside a value of a type that can also hold some error information. The type is going to be chosen by somebody else at the final call site.
+-->
+---
+
+# We now have IOs
+
+<div class="absolute top-30 left-40 flex flex-col items-center p-7 rounded-2xl bg-black shadow-xl w-100">
+  <div class="flex">
+    <span class="text-2xl font-medium text-white">IOs everywhere</span>
+  </div>
+  <div>
+    <img class="size-full shadow-xl rounded-md" alt="" src="/everywhere.jpg" />
+  </div>
+</div>
+
+<!--
+IO is much better than Future, allows structured concurrency.
+-->
+
+---
+
+# ...and final tagless
+
+<div class="absolute top-30 left-40 flex flex-col items-center p-7 rounded-2xl bg-black shadow-xl w-100">
+  <div class="flex">
+    <span class="text-2xl font-medium text-white">IOs and final tagless everywhere</span>
+  </div>
+  <div>
+    <img class="size-full shadow-xl rounded-md" alt="" src="/everywhere.jpg" />
+  </div>
+</div>
+
+<!--
+We also have a good way of constraining the function return types and using IO to interpret the programs at the end of the world.
+-->
+
+---
+
+# New paradigm = New DSL
+
+<div class="absolute top-30 left-40 flex flex-col items-center p-7 rounded-2xl bg-black shadow-xl w-100">
+  <div class="flex">
+    <span class="text-2xl font-medium text-white">New DSLs everywhere</span>
+  </div>
+  <div>
+    <img class="size-full shadow-xl rounded-md" alt="" src="/everywhere.jpg" />
+  </div>
+  <div class="flex">
+    <span class="text-l font-medium text-gray">(Scala devs love DSLs)</span>
+  </div>
+</div>
+
+
+<!--
+and that of course meant we needed new DSLs for HTTP
+-->
+
+---
+
+# New paradigm = New DSL
+
+<<< ../projects/http4s/src/main/scala/example/Collaboration.scala#interface scala {*}
+
+<!--
+New DSL for HTTP was a tool called http4s which embraced the new way of develping apps. It pushed Scala devs to decouple the server logic implementation from the endpoint definition using the tagless final approach. So, to create an HTTP server for our example, we first need to define the server logic signature.
+-->
+
+---
+
+# New paradigm = New DSL
+
+<<< ../projects/http4s/src/main/scala/example/Collaboration.scala#interface scala {*}
+
+<<< ../projects/http4s/src/main/scala/example/Routes.scala#route scala {*}
+
+<!--
+Then we could define the endpoints using the new HTTP DSL.
+-->
+
+---
+
+# http4s + final tagless
+
+<<< ../projects/http4s/src/main/scala/example/Collaboration.scala#interface scala {*}
+
+<<< ../projects/http4s/src/main/scala/example/Routes.scala#route scala {*}
+
+<<< ../projects/http4s/src/main/scala/example/Collaboration.scala#impl scala {*}
+
+<!--
+And finally, we could implement the server logic in separation from the HTTP endpoints.
+
+That's how http4s route definition looked like. It was all functional, abstracted away, decisions about the final interpretation type delayed until the last moment.
+
+And that's the new DSL. Was it the holy grail? it turns out, not really... we still search for better techniques. Why?
+-->
+
+---
+
+# Convenience vs Safety: final tagless
+
+<img class="absolute top-35 right-20 size-2/5 shadow-xl rounded-md" alt="" src="/devil_and_angel.gif" />
+
+## Convenience
+- large, complicated signatures <hugeicons-unhappy/>
+- change in one place causes a lot of other changes<hugeicons-unhappy/>
+
+## Safety
+- decoupling using types <hugeicons-happy/>
+- fine-grained control <hugeicons-happy/>
+- structured concurrency <hugeicons-happy/>
+- `F[_]: Sync` <hugeicons-unhappy/> <hugeicons-unhappy/>
+
+<!--
+We were able to solve some convenience and safety problems. It's easier to work with IO than with monad transformers. It's lazily evaluated but one problem remained the same as in Futures: these types are too powerful: you can do everything in a function that returns an IO.
+-->
 ---
 
 # We did concurrency and HTTP
@@ -683,11 +920,4 @@ http4s: BYOB, batteries not included, bare bones, you have the control but also 
 
 holy grail: tapir
 
-- HTTP
-- Scala loves Python (Cask)
-- Scala loves Ruby on Rails (Scalatra) - microframework
-- Scala loves actors (Spray/Akka HTTP)
-- Scala loves Spring (Play) Future and sometimes IO
-- Scala loves FP (http4s) IO
-- Scala loves types (tapir) final tagless done right (it's good for libraries, and it's good when it doesn't leak)
 -->
