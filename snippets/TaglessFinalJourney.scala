@@ -77,6 +77,7 @@ class JourneyZIO(stationsRef: Ref[List[String]]) extends Journey[Task] {
     result <- nextStation
   } yield result
 }
+
 object JourneyZIO {
   val stations = List("Wrocław", "Kłodzko", "Międzylesie", "Lichkov", "Pardubice", "Praha")
   def instance = Ref.make(stations).map(new JourneyZIO(_))

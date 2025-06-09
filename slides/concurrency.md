@@ -188,7 +188,7 @@ sequenceDiagram
 
 <div class="absolute top-25 w-200">
 
-<<< ../snippets/ActorsKitchen.scala#messages scala {2-4|6-9|*}{lines:true}
+<<< ../snippets/ActorsKitchen.scala#messages scala {6-9|2-4|*}{lines:true}
 
 </div>
 
@@ -359,6 +359,13 @@ And so have a bunch of them!
 - ZIO
 - Cats Effect IO
 
+---
+layout: center
+---
+
+# Effects are cool
+
+but they are not the only monads
 
 ---
 src: ./state.md
@@ -438,11 +445,27 @@ Featuring
 
 <<< ../snippets/TaglessFinalJourney.scala#zio-implementation scala {*}{lines:true}
 
+
+<v-click>
+
+<div class="absolute bottom-20 right-20 text-2xl bg-white text-black rotate-5 border-solid border-white border-10">
+
+You don't need Monad Transformers
+
+if you don't like them
+
+</div>
+
+</v-click>
+
+
 ---
 
 # What the `F[_]`
 
 <v-click>
+
+<!-- Speaker A: Everyone was supposed to be happy!  -->
 
 Everyone was supposed to be happy!
 
@@ -450,6 +473,8 @@ Everyone was supposed to be happy!
 
 <!-- you should've be able to decide for MT or beefy effect to your preference, at the end of the world -->
 <v-click>
+
+<!-- Speaker B: You telling me -->
 
 You telling me I now need `F[_]: Async: Monad: Clock: UUIDGen` to run hello world?
 
