@@ -289,16 +289,11 @@ src: ./http.md
 </v-clicks>
 
 ---
+layout: center
+---
 
-# Can we do better than Monadic effects?
+# Monadic effects are not the only option
 
-<v-clicks>
-
-- Some argue a single beefy monad is easier to reason about
-- The problem with any `F[_]` is that it mixes definition, sequencing and handling in one type.
-- We're not done yet!
-
-</v-clicks>
 
 ---
 
@@ -341,94 +336,4 @@ layout: center
 
 # TODO: Conclusions
 
-
----
-layout: full
----
-
-# Now we have everything
-
-<v-clicks>
-
-- We have immutability
-- pure functions
-- concurrency is simple now
-- right?
-- Right?
-
-</v-clicks>
-
-<div v-click="4">
-  <img class="absolute top-30 left-100 w-100" alt="" src="./godfather.png" />
-</div>
-
-
-<!--
-Transition: Many things that do the same thing
-Many projects experimented with some of these features and ended up with a mess
-So let’s write a generic code and choose the “runtime” (monad) later!
-Or Scala Future, or Actors (Hardcore Hybrid 😀 (Akka Actors + Monad Transformers)
--->
-
----
-
-# What’s happening now
-
-We have always challenged the status quo and it won't change...
-
-- Scala cli (you can use it as a scripting language)
-- More approachable
-- Better packaging
-- Scala simplified a lot of features
-
-That all means that Scala is the beginner friendly language that can be used to teach universal functional features that are available in many other languages:
-- ADTs
-- Pattern matching
-- Immutability (inc. collections) 
-- Pure functions
-- Concurrency
-- Streams, stream-based APIs
-
----
-
-# What’s next ???
-- The ecosystem has matured a lot but:
-  - Some people use IO/final tagless and won’t go back
-  - Some people explore Algebraic Effects/Kyo/yaes (https://github.com/rcardin/yaes) 
-  - Some people are still not happy and try different options, starting from basics: Direct style: Ox/Gears
-  - Some people use Scala as Java++ and don’t talk about it (there are many of them!)
-  - Exploration inside the language is still happening: e.g. Capabilities
-- Depending on when you used or saw Scala code, your feelings about the language can be different
-- But right now this is a simple FP language that anybody can use!
-
----
-
-# What is Simple Scala?
-
-TODO: code example
-
-<!--
-all the things we learned and know now: let's use simple but powerful tools
-
-Was Scalatra simple? Was MTL simple?
-
-Easy vs simple
-
-Simple Scala doesn't mean primitive Scala. Simple may mean "simple to read", "simple to change", "easy to maintain"
--->
-
----
-
-# Side note: Dependency injection ???
-
-- constructor based?
-- Autowire magic?
-- Guice?
-- Another design problem that hasn’t been generally solved for everyone
-
-<!--
-- Potential transition? 
-- Capabilities
-“Non-functional” algebras for dependencies (pre-tagless final)
--->
 

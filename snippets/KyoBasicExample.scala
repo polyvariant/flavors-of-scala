@@ -15,8 +15,10 @@ object MyKyoApp extends KyoApp {
       _            <- Console.printLine(s"Generated random number: $randomNumber")
     } yield "example"
   
+  // Apply handler for `Check`
   val programIgnoringErrors: String < IO = Check.runDiscard(program)
 
+  // Apply handler for `IO`
   run(programIgnoringErrors)
 }
 //#endregion
