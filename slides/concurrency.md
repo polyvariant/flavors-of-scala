@@ -483,6 +483,8 @@ You telling me I now need `F[_]: Async: Monad: Clock: UUIDGen` to run hello worl
 
 <v-click>
 
+<!-- Speaker A: let's save the discussion for later and move on to something practical -->
+
 <span class="absolute bottom-10 left-20 text-4xl font-bold bg-white text-black rotate-5">We'll get back to that</span>
 
 </v-click>
