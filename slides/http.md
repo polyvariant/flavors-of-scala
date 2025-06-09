@@ -1021,7 +1021,8 @@ and the whole app is just another IO value
 - a lot of stable integrations <hugeicons-happy/>
 
 ## Safety
-- you choose
+- HTTP-specific domain modeled using types <hugeicons-happy/>
+- the rest of your app: **you choose**
 
 <!--
 Since you can choose what's the design of your app, you can use anything and it will integrate well.
