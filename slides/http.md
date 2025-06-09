@@ -371,12 +371,12 @@ Even if Scala devs didn't know it back then, all the discussions, including the 
 <img class="absolute top-35 right-20 size-2/5 shadow-xl rounded-md" alt="" src="/devil_and_angel.gif" />
 
 ## Convenience
-- everything in one place <hugeicons-happy/>
-- easy to quickly write something that works <hugeicons-happy/>
+- everything in one place <tabler-thumb-up-filled/>
+- easy to quickly write something that works <tabler-thumb-up-filled/>
 
 ## Safety
-- based on well-tested tech (servlets) <hugeicons-happy/>
-- many stable integrations <hugeicons-happy/>
+- based on well-tested tech (servlets) <tabler-thumb-up-filled/>
+- many stable integrations <tabler-thumb-up-filled/>
 
 <!--
 In case of Scalatra, we can see a lot of benefits in both categories. 
@@ -389,14 +389,14 @@ In case of Scalatra, we can see a lot of benefits in both categories.
 <img class="absolute top-12 right-20 size-1/5 shadow-xl rounded-md" alt="" src="/devil_and_angel.gif" />
 
 ## Convenience
-- <span style="color: gray">everything in one place <hugeicons-happy/></span>
-- <span style="color: gray">easy to quickly write something that works <hugeicons-happy/></span>
-- dealing with servlets everywhere (even in tests) <hugeicons-unhappy/>
+- <span style="color: gray">everything in one place <tabler-thumb-up-filled/></span>
+- <span style="color: gray">easy to quickly write something that works <tabler-thumb-up-filled/></span>
+- dealing with servlets everywhere (even in tests) <tabler-thumb-down/>
 
 ## Safety
-- <span style="color: gray">based on well-tested tech (servlets) <hugeicons-happy/></span>
-- <span style="color: gray">many stable integrations <hugeicons-happy/></span>
-- in bigger apps: hard to write something that works correctly <hugeicons-unhappy/> <hugeicons-unhappy/> <hugeicons-unhappy/>
+- <span style="color: gray">based on well-tested tech (servlets) <tabler-thumb-up-filled/></span>
+- <span style="color: gray">many stable integrations <tabler-thumb-up-filled/></span>
+- in bigger apps: hard to write something that works correctly <tabler-thumb-down/> <tabler-thumb-down/> <tabler-thumb-down/>
 
 <!--
 maybe it's quick to write something, but it's usually not that quick to write something that works correctly (or change something bigger without introducing bugs)
@@ -684,15 +684,15 @@ We needed to step up our FP game, but it looked like it paid off. The call site 
 <img class="absolute top-35 right-20 size-2/5 shadow-xl rounded-md" alt="" src="/devil_and_angel.gif" />
 
 ## Convenience
-- easier to decouple using types <hugeicons-happy/>
-- hard to handle monads wrapping other monads <hugeicons-unhappy/>
+- easier to decouple using types <tabler-thumb-up-filled/>
+- hard to handle monads wrapping other monads <tabler-thumb-down/>
 
 ## Safety
-- endpoints as values <hugeicons-happy/> <hugeicons-happy/>
-- decoupling using types <hugeicons-happy/>
-- concurrency using actors <hugeicons-happy/>
-- `Future`s are eagerly evaluated <hugeicons-unhappy/> <hugeicons-unhappy/>
-- `Future` is too powerful <hugeicons-unhappy/>
+- endpoints as values <tabler-thumb-up-filled/> <tabler-thumb-up-filled/>
+- decoupling using types <tabler-thumb-up-filled/>
+- concurrency using actors <tabler-thumb-up-filled/>
+- `Future`s are eagerly evaluated <tabler-thumb-down/> <tabler-thumb-down/>
+- `Future` is too powerful <tabler-thumb-down/>
 
 <!--
 In case of actors and FP, Scala ecosystem made some progress, but some new problems were created along the way. Let's handle the last two problems in order. First, the eager evaluation.
@@ -761,14 +761,14 @@ We could use EitherT with IOs here but that would mean we'd need to work with mo
 <img class="absolute top-35 right-20 size-2/5 shadow-xl rounded-md" alt="" src="/devil_and_angel.gif" />
 
 ## Convenience
-- easier to decouple using types <hugeicons-happy/>
-- easy to work with `IO` <hugeicons-happy/>
+- easier to decouple using types <tabler-thumb-up-filled/>
+- easy to work with `IO` <tabler-thumb-up-filled/>
 
 ## Safety
-- decoupling using types <hugeicons-happy/>
-- structured concurrency using `IO` <hugeicons-happy/>
-- `IO`s are lazily evaluated <hugeicons-happy/>
-- ~~`Future`~~ `IO` is too powerful <hugeicons-unhappy/>
+- decoupling using types <tabler-thumb-up-filled/>
+- structured concurrency using `IO` <tabler-thumb-up-filled/>
+- `IO`s are lazily evaluated <tabler-thumb-up-filled/>
+- ~~`Future`~~ `IO` is too powerful <tabler-thumb-down/>
 
 <!--
 We were able to solve some convenience and safety problems. It's easier to work with IO than with monad transformers. It's lazily evaluated but one problem remained the same as in Futures: these types are too powerful: you can do everything in a function that returns an IO.
@@ -916,14 +916,14 @@ And that's the new DSL. Was it the holy grail? it turns out, not really... we st
 <img class="absolute top-35 right-20 size-2/5 shadow-xl rounded-md" alt="" src="/devil_and_angel.gif" />
 
 ## Convenience
-- large, complicated signatures <hugeicons-unhappy/>
-- change in one place causes a lot of other changes<hugeicons-unhappy/>
+- large, complicated signatures <tabler-thumb-down/>
+- change in one place causes a lot of other changes<tabler-thumb-down/>
 
 ## Safety
-- decoupling using types <hugeicons-happy/>
-- fine-grained control <hugeicons-happy/>
-- structured concurrency <hugeicons-happy/>
-- `F[_]: Sync` <hugeicons-unhappy/> <hugeicons-unhappy/>
+- decoupling using types <tabler-thumb-up-filled/>
+- fine-grained control <tabler-thumb-up-filled/>
+- structured concurrency <tabler-thumb-up-filled/>
+- `F[_]: Sync` <tabler-thumb-down/> <tabler-thumb-down/>
 
 <!--
 We were able to solve some convenience and safety problems. It's easier to work with IO than with monad transformers. It's lazily evaluated but one problem remained the same as in Futures: these types are too powerful: you can do everything in a function that returns an IO.
@@ -1016,12 +1016,12 @@ and the whole app is just another IO value
 <img class="absolute top-35 right-20 size-2/5 shadow-xl rounded-md" alt="" src="/devil_and_angel.gif" />
 
 ## Convenience
-- immutable values <hugeicons-happy/>
-- pure functions <hugeicons-happy/>
-- a lot of stable integrations <hugeicons-happy/>
+- immutable values <tabler-thumb-up-filled/>
+- pure functions <tabler-thumb-up-filled/>
+- a lot of stable integrations <tabler-thumb-up-filled/>
 
 ## Safety
-- HTTP-specific domain modeled using types <hugeicons-happy/>
+- HTTP-specific domain modeled using types <tabler-thumb-up-filled/>
 - the rest of your app: **you choose**
 
 <!--
