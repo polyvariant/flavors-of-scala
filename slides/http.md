@@ -1,22 +1,50 @@
 
 # Can I even use all of this in practice?
+<!-- 
+All these techniques had their impact on how Scala devs developed software. 
 
-All these techniques had their impact on how Scala devs developed software. Let's go very quickly through some examples and see how the code looked like and what developers focused on.
+Let's go very quickly through some examples and see how the code looked like and what developers focused on. 
 
-<img class="absolute bottom-10 left-90 w-90" alt="" src="./spongebob-rainbow.jpg" />
-<span class="absolute bottom-65 text-2xl font-bold bg-white text-black left-100">Fancy coding techniques</span>
+-->
 
----
-
-# HTTP
-
-For every startup, the most important decision is what web framework to use (and we all know that if a startup fails it's 100% fault of the wrong web framework).
+<img class="absolute bottom-30 left-90 w-90" alt="" src="./spongebob-rainbow.jpg" />
+<span class="absolute bottom-85 text-2xl font-bold bg-white text-black left-100">Fancy coding techniques</span>
 
 ---
 
 # HTTP
+
+<img class="absolute top-5 right-50 w-100" alt="" src="./Boardroom_Suggestion.jpg" />
+
+<span class="absolute top-8 left-125 font-bold text-black ">
+Making startup! First decision?!
+</span>
+
+
+<span class="absolute text-xs top-57 left-102 font-bold text-black ">
+HTTP library
+</span>
+
+
+<span class="absolute text-xs top-57 left-128 font-bold text-black ">
+JSON library
+</span>
+
+
+<span class="absolute text-xs top-60 left-160 font-bold text-black ">
+Business case
+</span>
+
+<!-- 
+
+For every startup, the most important decision is what web framework to use (and we all know that if a startup fails it's 100% fault of the wrong web framework). 
+
 
 We will not go through every possible web framework for Scala, just couple of them that had the most impact. And since we already talked about actors, the best way to start with HTTP is to mention a singer.
+
+-->
+
+
 
 ---
 background: /sinatra.jpg
