@@ -16,12 +16,10 @@ background: /spices.jpg
 # Flavors of Scala
 
 <!--
-sd
+
 -->
 
 ---
-
-<!-- Just a draft, doesn't need to be here, can be moved, split into parts -->
 
 # Scala has quite a story now
 
@@ -55,6 +53,12 @@ timeline
     2024 : Yaes – minimal, modular, and purely functional effect system
 ```
 
+<!--
+This presentation will take 20 years... of Scala development. And we'll try to squeeze it as much as we can. This slide shows how much has happened over these years.
+
+We'll try to go roughly chronogically and at the end we won't tell you what's the best approach. This talk is a history lesson and how different ideas were explored in the Scala community.
+-->
+
 ---
 layout: center
 ---
@@ -87,14 +91,9 @@ MICHAŁ PAWLIK
 </div>
 
 <!--
-zaczynamy w 2004, przeszliśmy sporą drogę, wiele eksperymentów, komplikacji po drodze, ale jak na to spojrzymy z perspektywy czasu to ma to sens
+which we've been part of for over 10 years. Hello!
 
-kolejność jest chronologiczno-przypadkowa
-
-take-aways:
-- what kind of problems each approach has
-- what trade-offs have we faced over the last years
-- inspirations from other languages can both help and distract
+[click] We both work in SiriusXM.
 -->
 
 ---
@@ -353,3 +352,41 @@ We're done here
 - Have fun coding
 
 </v-clicks>
+
+---
+layout: center
+---
+
+<div class="absolute top-5">
+
+# Thank you!
+
+</div>
+
+
+<img class="absolute top-25 left-30 w-70" alt="" src="./michal_plachta.png" />
+
+<img class="absolute top-25 right-30 w-70" alt="" src="./michal_pawlik.jpg" />
+
+
+<div class="absolute bottom-30 left-26 text-4xl font-bold">
+MICHAŁ PŁACHTA <br/>
+</div>
+
+<div class="absolute bottom-10 left-30 text-2xl">
+
+<logos-bluesky/> bluesky [@mplachta.com](https://bsky.app/profile/mplachta.com) <br/>
+<grommet-icons-blog/> blog [michalplachta.com](https://michalplachta.com)
+
+</div>
+
+<div class="absolute bottom-30 right-30 text-4xl font-bold">
+MICHAŁ PAWLIK
+</div>
+
+<div class="absolute bottom-10 right-20 text-2xl">
+
+<logos-bluesky/> bluesky [@michal.pawlik.dev](https://bsky.app/profile/michal.pawlik.dev) <br/>
+<grommet-icons-blog/> blog [blog.michal.pawlik.dev](https://blog.michal.pawlik.dev)
+
+</div>
