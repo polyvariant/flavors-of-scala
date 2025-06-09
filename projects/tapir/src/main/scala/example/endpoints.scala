@@ -3,9 +3,10 @@ package example
 import sttp.tapir._
 import cats.effect.{IO, IOApp}
 import cats.syntax.all.*
+import sttp.tapir.server.ServerEndpoint
 
 // #region endpoint
-val collaborationEndpoint = endpoint.get
+val collaborationEndpoint: ServerEndpoint[Any, IO] = endpoint.get
   .in("collaboration")
   .in(query[String]("artist1"))
   .in(query[String]("artist2"))
