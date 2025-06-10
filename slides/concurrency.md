@@ -154,17 +154,6 @@ layout: center
 
 </v-clicks>
 
----
-
-# They can cooperate!
-
-<!-- images from https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-the-Actor-Model-works-by-example -->
-
-<img class="absolute top-20 right-30 w-170" alt="" src="/asynchronous_communication_modes_in_the_actor_model-f.png" />
-
-
-<!-- https://itknowledgeexchange.techtarget.com/coffee-talk/files/2023/12/understanding_the_actor_model-f.png more advanced example -->
-
 
 ---
 
