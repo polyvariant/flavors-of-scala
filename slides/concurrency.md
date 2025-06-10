@@ -302,6 +302,42 @@ Think `Future` but lazy
 
 <<< ../snippets/FutureVsIO.scala#example scala {1-5|7-11|13-14|*}{lines:true}
 
+
+---
+
+<span class="absolute top-20 left-50">
+<strong>Me:</strong> IO monad sounds great great!
+</span>
+
+<v-click>
+
+<span class="absolute top-30 right-45">
+<strong>Me to me:</strong> Write your own IO monad!
+</span>
+
+<img class="absolute top-40 left-50 w-150" alt="" src="/evil-kermit.jpg" />
+
+</v-click>
+
+<v-clicks>
+
+
+<span class="absolute top-[40%] left-[40%] text-4xl font-bold text-yellow-400 rotate-2">Scalaz</span>
+
+<span class="absolute top-[60%] left-[55%] text-4xl font-bold text-yellow-400 rotate-10">Monix</span>
+
+<span class="absolute top-[30%] left-[55%] text-4xl font-bold text-yellow-400 rotate-5">Cats Effect</span>
+
+<span class="absolute top-[55%] left-[45%] text-4xl font-bold text-yellow-400 rotate-350">ZIO</span>
+
+<span class="absolute top-[65%] left-[70%] text-4xl font-bold text-yellow-400 rotate-5">Kyo</span>
+
+<span class="absolute top-[75%] left-[45%] text-4xl font-bold text-yellow-400 rotate-355">Yaes</span>
+
+
+</v-clicks>
+
+
 ---
 
 # Cats Effect
@@ -333,40 +369,6 @@ Speaker B: but one problem that we had with MTL is still there: one monad for th
 
 (it can be tackled with some discipline but it rarely happens in big dynamically developed projects)
 -->
-
----
-
-<span class="absolute top-20 left-50">
-Me: This IO monad looks great
-</span>
-
-<v-click>
-
-<span class="absolute top-30 right-50">
-Me to me: Write your own IO monad!
-</span>
-
-<img class="absolute top-40 left-50 w-150" alt="" src="/evil-kermit.jpg" />
-
-</v-click>
-
-<v-clicks>
-
-
-<span class="absolute top-[40%] left-[40%] text-4xl font-bold text-yellow-400 rotate-2">Scalaz</span>
-
-<span class="absolute top-[60%] left-[55%] text-4xl font-bold text-yellow-400 rotate-10">Monix</span>
-
-<span class="absolute top-[30%] left-[55%] text-4xl font-bold text-yellow-400 rotate-5">Cats Effect</span>
-
-<span class="absolute top-[55%] left-[45%] text-4xl font-bold text-yellow-400 rotate-350">ZIO</span>
-
-<span class="absolute top-[65%] left-[70%] text-4xl font-bold text-yellow-400 rotate-5">Kyo</span>
-
-<span class="absolute top-[75%] left-[45%] text-4xl font-bold text-yellow-400 rotate-355">Yaes</span>
-
-
-</v-clicks>
 
 ---
 layout: center
