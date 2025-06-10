@@ -17,6 +17,10 @@ Let's give them a quick look, starting with State Monad...
 
 # State Monad
 
+
+<span class="absolute top-10 right-10 text-4xl font-bold text-yellow rotate-10">2009 / 2016</span>
+<span class="absolute top-5 right-10 text-xl font-bold text-yellow rotate-10">Scalaz / Cats</span>
+
 <div class="absolute top-20 w-200">
 
 Put simply, it's a way to chain mutations of a value.
@@ -55,6 +59,10 @@ Futures were async!
 ---
 
 # Monad transformers
+
+<span class="absolute top-10 right-10 text-4xl font-bold text-yellow rotate-10">2017</span>
+<span class="absolute top-5 right-7 text-xl font-bold text-yellow rotate-10">Cats MTL</span>
+
 
 <div class="absolute top-25 w-200">
 

@@ -20,6 +20,9 @@ concurrency should be much easier right?
 
 # Bright Future
 
+<span class="absolute top-10 right-10 text-4xl font-bold text-yellow rotate-10">2010 / 2013</span>
+<span class="absolute top-5 right-5 text-xl font-bold text-yellow rotate-10">Twitter / stdlib</span>
+
 <<< ../snippets/Futures.scala#examples scala {1-6|11-14|16-19|*}{lines:true}
 
 <!-- 
@@ -134,6 +137,10 @@ layout: center
 ---
 
 # Inbox and state management
+
+
+<span class="absolute top-10 right-10 text-4xl font-bold text-yellow rotate-10">2006 / 2009</span>
+<span class="absolute top-5 right-5 text-xl font-bold text-yellow rotate-10">stdlib / Akka</span>
 
 <img class="absolute top-30 right-10 w-170" alt="" src="/actors.svg" />
 
@@ -299,6 +306,9 @@ layout: center
 
 # IO - the ultimate separation of concerns
 
+<span class="absolute top-10 right-10 text-4xl font-bold text-yellow rotate-10">2013</span>
+<span class="absolute top-5 right-10 text-xl font-bold text-yellow rotate-10">Scalaz</span>
+
 Think `Future` but lazy
 
 <<< ../snippets/FutureVsIO.scala#example scala {1-5|7-11|13-14|*}{lines:true}
@@ -306,6 +316,9 @@ Think `Future` but lazy
 ---
 
 # Cats Effect
+
+
+<span class="absolute top-10 right-10 text-4xl font-bold text-yellow rotate-10">2017</span>
 
 <<< ../snippets/IORefExample.scala#example scala {5-11|1-3|2|13-17|*}{lines:true}
 
@@ -348,16 +361,23 @@ Me to me: Write your own IO monad!
 
 </v-click>
 
----
+<v-clicks>
 
-# Monadic Effects
 
-And so have a bunch of them!
+<span class="absolute top-[40%] left-[40%] text-4xl font-bold text-yellow-400 rotate-2">Scalaz</span>
 
-- Cats / Monix
-- Scalaz
-- ZIO
-- Cats Effect IO
+<span class="absolute top-[60%] left-[55%] text-4xl font-bold text-yellow-400 rotate-10">Monix</span>
+
+<span class="absolute top-[30%] left-[55%] text-4xl font-bold text-yellow-400 rotate-5">Cats Effect</span>
+
+<span class="absolute top-[55%] left-[45%] text-4xl font-bold text-yellow-400 rotate-350">ZIO</span>
+
+<span class="absolute top-[65%] left-[70%] text-4xl font-bold text-yellow-400 rotate-5">Kyo</span>
+
+<span class="absolute top-[75%] left-[45%] text-4xl font-bold text-yellow-400 rotate-355">Yaes</span>
+
+
+</v-clicks>
 
 ---
 layout: center
@@ -393,6 +413,8 @@ background: /galaxy-brain.jpg
 ---
 
 # Final tagless
+
+<span class="absolute top-10 right-10 text-4xl font-bold text-yellow rotate-10">2015~2017</span>
 
 <<< ../snippets/TaglessFinalJourney.scala#interface scala {*}{lines:true}
 
