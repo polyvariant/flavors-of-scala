@@ -154,55 +154,97 @@ layout: center
 
 </v-clicks>
 
-
 ---
 
 # Actors in Akka/Pekko
 
-<!-- Ten przykład chyba musimy uprościć do "klient" -> "pizzeria" -->
+<<< ../snippets/CounterActor.scala#CounterActor scala {2-4|6-12|14|*}{lines:true}
 
-<div class="absolute top-25 w-200">
+---
+
+# Artists Guild
 
 ```mermaid
 
 sequenceDiagram
     participant Client as Client
-    participant Restaurant as Restaurant
+    participant ArtistGuild as ArtistGuild
 
-    Client->>Restaurant: Order("Pasta")
-    Restaurant->>Restaurant: Cook("Pasta")
-    Note right of Restaurant: Cooking can take some time
-    Restaurant-->>Client: Serve("Pasta")
+    Client->>ArtistGuild: findArtist("John Coltrane")
+    ArtistGuild->>ArtistGuild: Look up artist by name
+    Note right of ArtistGuild: This may involve querying a database or cache
+    ArtistGuild-->>Client: Artist("John Coltrane")
 
 ```
 
-</div>
 
 ---
 
-# Actors in the Kitchen
+# Artists Guild - components
 
-<div class="absolute top-25 w-200">
+```mermaid
 
-<<< ../snippets/ActorsKitchen.scala#messages scala {6-9|2-4|*}{lines:true}
+flowchart LR
+    Client[Client]
+    Guild[ArtistGuild]
 
-</div>
+    style Guild fill:#ffe45e,color:black
+
+    Client -->|Request Artist| Guild
+
+```
+
+---
+
+# Artists Guild - with database
+
+
+```mermaid
+flowchart LR
+    Client[Client]
+    Guild[ArtistGuild]
+    DB[(ArtistDB)]
+
+    style Guild fill:#ffe45e,color:black
+
+    Client -->|Request Artist| Guild
+    Guild -->|Query by Name| DB
+
+```
+
 
 ---
 
-# Actors in the Kitchen
+# Artists Guild - smaller actors
 
-<div class="absolute top-22 w-200">
 
-<<< ../snippets/ActorsKitchen.scala#actors scala {4|6-15|22-28|*}{maxHeight:'450px',lines:true}
+```mermaid
 
-</div>
+flowchart LR
+    Client[Client]
+    Guild[ArtistGuild]
+    Musicians[MusicianService]
+    Actors[ActorService]
+    MusicDB[(MusicDB)]
+    ActorDB[(ActorDB)]
 
-<!--
-IDE experience
--->
+    style Guild fill:#ffe45e,color:black
+
+    Client -->|Request Musician| Guild
+    Client -->|Request Actor| Guild
+
+    Guild -->|Route to MusicianService| Musicians
+    Guild -->|Route to ActorService| Actors
+
+    Musicians -->|Query Musician| MusicDB
+
+    Actors -->|Query Actor| ActorDB
+
+```
+
 
 ---
+
 
 # Problems with Akka-based design
 
@@ -211,7 +253,18 @@ IDE experience
 <v-clicks>
 
 - Navigation, discoverability
-- One big actor or many small ones
+- One big actor or many small ones 
+
+</v-clicks>
+
+<v-click>
+<img class="absolute top-20 right-10 w-100" alt="" src="/the-rock-big-actor.webp" /> 
+</v-click>
+<v-click>
+<div class="absolute bottom-10 right-10 w-100 h-50" style="background: url('/the-rock-small-actor.jpg') repeat;"></div>
+</v-click>
+<v-clicks>
+
 - Lifecycle
 - More generally: testing…
 
