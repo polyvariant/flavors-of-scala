@@ -307,8 +307,8 @@ we'll come back to testing problems with actor systems later on
 
 
 <v-click>
+<!-- t=${Date.now()} is a clever hack to ensure the browser loads the image right when it is displayed, to make sure it starts from t=0 on click-->
 <img class="absolute top-30 right-20 w-80"  :src="`/eager-false-start.gif?t=${Date.now()}`"/>
-<!-- <img class="absolute top-30 right-20 w-80" src="/eager-false-start.gif"/> -->
 </v-click>
 
 <v-click>
