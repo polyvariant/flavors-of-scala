@@ -202,10 +202,10 @@ In the meantime with Scala
 -->
 
 ---
+background: /musicians.jpg
+---
 
-# Java++
-
-Similarly for domain modeling. Let's consider a simple **immutable** `Person` class.
+# Java - immutable `Artist` class
 
 <!--
 We want to model an immutable type.
@@ -222,7 +222,7 @@ unfortunately `<<< ./person.md ` doesn't work as expected. We could inline `pers
 
 <div class="long-code">
 
-<<< ../snippets/Person.java java {*}{maxHeight:'400px',lines:true}
+<<< ../snippets/Artist.java java {*}{maxHeight:'400px',lines:true}
 
 </div>
 
@@ -258,7 +258,7 @@ unfortunately `<<< ./person.md ` doesn't work as expected. We could inline `pers
 
 The same thing in Scala
 
-<<< ../snippets/Person.scala#Person scala
+<<< ../projects/http4s/src/main/scala/example/model.scala#artist scala
 
 <v-click>
 

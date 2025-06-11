@@ -8,8 +8,8 @@ Now that we have:
 
 
 concurrency should be much easier right?
-<img class="absolute bottom-20 right-90 w-55" alt="" src="./anakin-2.png" />
-<img class="absolute bottom-20 right-20 w-55" alt="" src="./padme-2.png" />
+
+<img class="absolute bottom-20 right-90 w-55" alt="" src="./anakin-2.png" /> <img class="absolute bottom-20 right-20 w-55" alt="" src="./padme-2.png" />
 
 <img class="absolute bottom-20 right-20 w-55" alt="" src="./padme-1.png" /> <span class="absolute bottom-20 right-20 text-4xl font-bold bg-white text-black rotate-335">YES!</span>
 
