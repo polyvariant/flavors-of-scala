@@ -6,15 +6,16 @@ import org.apache.pekko.actor.typed.scaladsl.*
 
 //#region CounterActor
 object CounterActor {
-  sealed trait Message
-  case object Increment extends Message
-  case object Reset extends Message
+  enum Message {
+    case Increment
+    case Reset
+  }
 
   private def behavior(count: Int): Behavior[Message] = 
     Behaviors.receive { (ctx, msg) =>
       msg match {
-        case Increment => behavior(count + 1)
-        case Reset     => behavior(0)
+        case Message.Increment => behavior(count + 1)
+        case Message.Reset     => behavior(0)
       }
     }
 

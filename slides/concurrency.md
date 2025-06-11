@@ -158,7 +158,7 @@ layout: center
 
 # Actors in Akka/Pekko
 
-<<< ../snippets/CounterActor.scala#CounterActor scala {2-4|6-12|14|*}{lines:true}
+<<< ../snippets/CounterActor.scala#CounterActor scala {2-5|7-13|15|*}{lines:true}
 
 <img class="absolute top-10 right-5 w-120" alt="" src="/actors.svg" />
 
@@ -255,7 +255,7 @@ flowchart LR
 - Navigation, discoverability
 
 <div v-click.hide="+1" class="absolute top-25 right-5 border-solid border-gray border-2">
-<<< ../snippets/CounterActor.scala#CounterActor scala {2-12}
+<<< ../snippets/CounterActor.scala#CounterActor scala {2-13}
 </div>
 
 <v-click>
