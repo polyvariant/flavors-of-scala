@@ -1,20 +1,29 @@
+package futureexample
+
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.{Success, Failure}
+import scala.io.Source
+
+case class Artist(name: String, startYear: Int, endYear: Int)
+
+def jsonParse[T](content: String): T = ???
 
 object FutureExample extends App {
 
   case class Artist(name: String, startYear: Int, endYear: Int)
 
   // #region examples
-  def findArtist(name: String)(implicit
-      ec: ExecutionContext
-  ): Future[Artist] = Future {
-    Thread.sleep(666) // simulate fetching from a DB
-    Artist("Frank Sinatra", 1935, 1995)
-  }
-
+  def findArtist(name: String)(implicit ec: ExecutionContext): Future[Artist] = 
+    Future {
+      val artists: List[Artist] = {
+        val jsonText = Source.fromResource("artists.json").mkString
+        jsonParse[List[Artist]](jsonText)
+      }
+      artists.find(_.name == name).head
+    }
+  
   def calculateActiveYears(artist: Artist): Int =
     artist.endYear - artist.startYear
 

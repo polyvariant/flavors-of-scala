@@ -23,7 +23,7 @@ concurrency should be much easier right?
 <span class="absolute top-10 right-10 text-4xl font-bold text-yellow rotate-10">2010 / 2013</span>
 <span class="absolute top-5 right-5 text-xl font-bold text-yellow rotate-10">Twitter / stdlib</span>
 
-<<< ../snippets/Futures.scala#examples scala {1-6|11-14|16-19|*}{lines:true}
+<<< ../snippets/Futures.scala#examples scala {1-8|12-16|18-21|*}{lines:true}
 
 <!-- 
 

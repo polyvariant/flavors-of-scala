@@ -101,7 +101,7 @@ type AppStack[A] = EitherT[StateT[IO, AppState, *], AppError, A]
 
 </div>
 
-<v-click>
+<v-click at="1">
 
 <img class="absolute bottom-10 right-10 w-90 bg-white rotate-2" alt="" src="./out-of-hand.jpg" />
 
