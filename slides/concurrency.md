@@ -307,8 +307,13 @@ we'll come back to testing problems with actor systems later on
 
 
 <v-click>
+<img class="absolute top-30 right-20 w-80"  :src="`/eager-false-start.gif?t=${Date.now()}`"/>
+<!-- <img class="absolute top-30 right-20 w-80" src="/eager-false-start.gif"/> -->
+</v-click>
 
-<div class="absolute top-30 right-20 border-solid border-gray border-2">
+<v-click>
+
+<div class="absolute bottom-15 right-20 border-solid border-gray border-2">
 
 ```{1,4-6}
 $ scala FuturesEagerEval.scala 
