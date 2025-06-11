@@ -1,4 +1,4 @@
-# Bright Future
+# Bright `Future`
 
 Now that we have: 
 - immutable data types 
@@ -18,7 +18,7 @@ concurrency should be much easier right?
 
 ---
 
-# Bright Future
+# Bright `Future`
 
 <span class="absolute top-10 right-10 text-4xl font-bold text-yellow rotate-10">2010 / 2013</span>
 <span class="absolute top-5 right-5 text-xl font-bold text-yellow rotate-10">Twitter / stdlib</span>
@@ -142,7 +142,7 @@ layout: center
 <span class="absolute top-10 right-10 text-4xl font-bold text-yellow rotate-10">2006 / 2009</span>
 <span class="absolute top-5 right-5 text-xl font-bold text-yellow rotate-10">stdlib / Akka</span>
 
-<img class="absolute top-30 right-10 w-170" alt="" src="/actors.svg" />
+<img class="absolute top-30 right-5 w-150" alt="" src="/actors.svg" />
 
 <v-clicks>
 
@@ -160,6 +160,8 @@ layout: center
 
 <<< ../snippets/CounterActor.scala#CounterActor scala {2-4|6-12|14|*}{lines:true}
 
+<img class="absolute top-10 right-5 w-120" alt="" src="/actors.svg" />
+
 ---
 
 # Artists Guild
@@ -170,10 +172,10 @@ sequenceDiagram
     participant Client as Client
     participant ArtistGuild as ArtistGuild
 
-    Client->>ArtistGuild: findArtist("John Coltrane")
+    Client->>ArtistGuild: findArtist("Dean Martin")
     ArtistGuild->>ArtistGuild: Look up artist by name
     Note right of ArtistGuild: This may involve querying a database or cache
-    ArtistGuild-->>Client: Artist("John Coltrane")
+    ArtistGuild-->>Client: Artist("Dean Martin")
 
 ```
 
@@ -250,12 +252,17 @@ flowchart LR
 
 <small>(that Scala devs encountered)</small>
 
-<v-clicks>
-
 - Navigation, discoverability
+
+<div v-click.hide="+1" class="absolute top-25 right-5 border-solid border-gray border-2">
+<<< ../snippets/CounterActor.scala#CounterActor scala {2-12}
+</div>
+
+<v-click>
+
 - One big actor or many small ones 
 
-</v-clicks>
+</v-click>
 
 <v-click>
 <img class="absolute top-20 right-10 w-100" alt="" src="/the-rock-big-actor.webp" /> 
