@@ -216,10 +216,6 @@ We want to model an immutable type.
 
 # Code example: From Java to Scala
 
-<!-- 
-TODO would be nice to show it in steps using https://sli.dev/features/shiki-magic-move
-unfortunately `<<< ./person.md ` doesn't work as expected. We could inline `person.md` but still we need to do something about the scrolling
- -->
 
 <div class="long-code">
 

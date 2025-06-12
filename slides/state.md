@@ -12,63 +12,104 @@
 Let's give them a quick look, starting with State Monad...
 -->
 
-
 ---
 
-# State Monad
+# Either
 
+Let's handle errors the right way!
 
-<span class="absolute top-10 right-10 text-4xl font-bold text-yellow rotate-10">2009 / 2016</span>
-<span class="absolute top-5 right-10 text-xl font-bold text-yellow rotate-10">Scalaz / Cats</span>
-
-<div class="absolute top-20 w-200">
-
-Put simply, it's a way to chain mutations of a value.
-
+````md magic-move
+```scala
+def findArtist(name: String)(implicit ec: ExecutionContext): Future[Artist] = 
+  Future {
+    val artists: List[Artist] = {
+      val jsonText = Source.fromResource("artists.json").mkString
+      jsonParse[List[Artist]](jsonText)
+    }
+    artists.find(_.name == name).head
+  }
+```
+```scala
+def findArtistIO(name: String): IO[Artist] = 
+  IO {
+    val artists: List[Artist] = {
+      val jsonText = Source.fromResource("artists.json").mkString
+      jsonParse[List[Artist]](jsonText)
+    }
+    artists.find(_.name == name).head
+  }
+```
+```scala
+def findArtistIOEither(name: String): IO[Either[ArtistNotFound, Artist]] =
+  IO {
+    val artists: List[Artist] = {
+      val jsonText = Source.fromResource("artists.json").mkString
+      jsonParse[List[Artist]](jsonText)
+    }
+    artists.find(_.name == name).toRight(ArtistNotFound(name))
+  }
+```
+````
 
 <v-click>
+Not the most convenient
 
-<<< ../snippets/StateMonadCats.scala#example scala {1-7|8-13|14-15|16-19|*}{lines:true}
+```scala
+val result = for {
+  maybeArtist1 <- findArtistIOEither(artistIn1)
+  maybeArtist2 <- findArtistIOEither(artistIn2)
+} yield for {
+  artist1 <- maybeArtist1
+  artist2 <- maybeArtist2
+} yield checkCollaboration(artist1, artist2)
+```
+
 
 </v-click>
 
-</div>
-
-<!--
-Here's how state monad is defined.
-
-?? WHAT'S S and A here?
-
-Two type parameters, S and A, S is the type of state, A is the result of the computation...
--->
-
-<!--
-Note that this is sequential, while Futgu
--->
 
 ---
 
-# State Monad
-
-Looks fun but we async and parallelism are not included
-
-<!--
-Futures were async!
--->
-
----
-
-# Monad transformers
-
-<span class="absolute top-10 right-10 text-4xl font-bold text-yellow rotate-10">2017</span>
-<span class="absolute top-5 right-7 text-xl font-bold text-yellow rotate-10">Cats MTL</span>
+# EitherT
 
 
-<div class="absolute top-25 w-200">
+````md magic-move
+```scala
+def findArtistIOEither(name: String): IO[Either[ArtistNotFound, Artist]] =
+  IO {
+    val artists: List[Artist] = {
+      val jsonText = Source.fromResource("artists.json").mkString
+      jsonParse[List[Artist]](jsonText)
+    }
+    artists.find(_.name == name).toRight(ArtistNotFound(name))
+  }
+```
+```scala
+def findArtistMTL(name: String): EitherT[IO, ArtistNotFound, Artist] =
+  EitherT { 
+    IO {
+      val artists: List[Artist] = {
+        val jsonText = Source.fromResource("artists.json").mkString
+        jsonParse[List[Artist]](jsonText)
+      }
+      artists.find(_.name == name).toRight(ArtistNotFound(name))
+    }
+  }
+```
+````
 
-<<< ../snippets/StateTCatsEffect.scala#example scala {2-9|3|10-23|*}{lines:true}
+<v-click>
 
-</div>
+Convenient client side API again!
+
+```scala
+val result = for {
+  artist1 <- findArtistMTL(a1)
+  artist2 <- findArtistMTL(a2)
+} yield checkCollaboration(artist1, artist2)
+```
+</v-click>
+
 
 ---
 
@@ -76,15 +117,15 @@ Futures were async!
 
 <div class="absolute top-25 w-200">
 
-There's a lot of lifting 🏋️
+But there's a lot of lifting 🏋️
 
 ```scala {1}{lines:true}
-val nextStation: StateT[IO, List[String], String] = StateT { stationsList =>
-  IO.sleep(1.second) *> IO.pure {
-    stationsList match {
-      case Nil          => (Nil, "No more stations")
-      case head :: tail => (tail, s"Current station: $head")
+def findArtistMTL(name: String): EitherT[IO, ArtistNotFound, Artist] = EitherT { IO {
+    val artists: List[Artist] = {
+      val jsonText = Source.fromResource("artists.json").mkString
+      jsonParse[List[Artist]](jsonText)
     }
+    artists.find(_.name == name).toRight(ArtistNotFound(name))
   }
 }
 ```

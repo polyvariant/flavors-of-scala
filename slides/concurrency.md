@@ -20,8 +20,8 @@ concurrency should be much easier right?
 
 # Bright `Future`
 
-<span class="absolute top-10 right-10 text-4xl font-bold text-yellow rotate-10">2010 / 2013</span>
-<span class="absolute top-5 right-5 text-xl font-bold text-yellow rotate-10">Twitter / stdlib</span>
+<span class="absolute top-17 right-10 text-4xl font-bold text-yellow rotate-10">2010 / 2013</span>
+<span class="absolute top-12 right-5 text-xl font-bold text-yellow rotate-10">Twitter / stdlib</span>
 
 <<< ../snippets/Futures.scala#examples scala {1-8|12-16|18-21|*}{lines:true}
 
@@ -92,7 +92,7 @@ What if I need to concurrently modify the state?
 
 <v-click>
 
-<span class="absolute top-50 left-100 text-4xl font-bold bg-white text-black rotate-355">
+<span class="absolute top-30 left-100 text-4xl font-bold bg-white text-black rotate-4">
 What will the final value be?
 </span>
 
@@ -139,8 +139,8 @@ layout: center
 # Inbox and state management
 
 
-<span class="absolute top-10 right-10 text-4xl font-bold text-yellow rotate-10">2006 / 2009</span>
-<span class="absolute top-5 right-5 text-xl font-bold text-yellow rotate-10">stdlib / Akka</span>
+<span class="absolute top-17 right-10 text-4xl font-bold text-yellow rotate-10">2006 / 2009</span>
+<span class="absolute top-12 right-5 text-xl font-bold text-yellow rotate-10">stdlib / Akka</span>
 
 <img class="absolute top-30 right-5 w-150" alt="" src="/actors.svg" />
 
@@ -172,7 +172,7 @@ sequenceDiagram
     participant Client as Client
     participant ArtistGuild as ArtistGuild
 
-    Client->>ArtistGuild: findArtist("Dean Martin")
+    Client->>ArtistGuild: FindArtist("Dean Martin")
     ArtistGuild->>ArtistGuild: Look up artist by name
     Note right of ArtistGuild: This may involve querying a database or cache
     ArtistGuild-->>Client: Artist("Dean Martin")
@@ -362,7 +362,7 @@ layout: center
 
 # IO - the ultimate separation of concerns
 
-<span class="absolute top-10 right-10 text-4xl font-bold text-yellow rotate-10">2013</span>
+<span class="absolute top-17 right-10 text-4xl font-bold text-yellow rotate-10">2013</span>
 <span class="absolute top-5 right-10 text-xl font-bold text-yellow rotate-10">Scalaz</span>
 
 Think `Future` but lazy
@@ -410,14 +410,15 @@ Think `Future` but lazy
 # Cats Effect
 
 
-<span class="absolute top-10 right-10 text-4xl font-bold text-yellow rotate-10">2017</span>
+<span class="absolute top-17 right-10 text-4xl font-bold text-yellow rotate-10">2017</span>
 
-<<< ../snippets/IORefExample.scala#example scala {5-11|1-3|2|13-17|*}{lines:true}
+<<< ../snippets/IOCounterExample.scala#example scala {*}{lines:true}
+<!-- <<< ../snippets/IORefExample.scala#example scala {5-11|1-3|2|13-17|*}{lines:true} -->
 
 
 <v-after>
 
-<div class="absolute bottom-20 right-20 text-2xl bg-white text-black rotate-5 border-solid border-white border-10">
+<div class="absolute bottom-20 right-20 text-2xl bg-white text-black rotate-5 border-solid border-black border-1">
 
 Featuring
 * Queues
@@ -430,7 +431,6 @@ Featuring
 </v-after>
 
 <!--
-// TODO: migrate to smaller counter example
 no lifting! just a composition of values and a single type
 
 Speaker B: but one problem that we had with MTL is still there: one monad for the whole application (everyone needs to adhere to it, even external libs!) 
@@ -445,10 +445,6 @@ layout: center
 # Effects are cool
 
 but they are not the only monads
-
-<!--
-TODO: move the Future->Either->EitherT for artists here
--->
 
 ---
 src: ./state.md
@@ -477,7 +473,7 @@ background: /galaxy-brain.jpg
 
 # Final tagless
 
-<span class="absolute top-10 right-10 text-4xl font-bold text-yellow rotate-10">2015~2017</span>
+<span class="absolute top-17 right-10 text-4xl font-bold text-yellow rotate-10">2015~2017</span>
 
 <<< ../snippets/TaglessFinalJourney.scala#interface scala {*}{lines:true}
 
