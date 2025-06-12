@@ -15,10 +15,13 @@ object Routes:
     import dsl.*
 
     // #region route
-    HttpRoutes.of[F] { case GET -> Root / "collaboration" :? Artist1Param(artist1) +& Artist2Param(artist2) =>
-      C.collaboration(artist1, artist2).flatMap(Ok(_)).handleErrorWith {
-        case ex: ArtistNotFound => NotFound(ex.getMessage)
-        case ex                 => InternalServerError(ex.getMessage)
-      }
+    HttpRoutes.of[F] {
+      case GET -> Root / "collaboration"
+          :? Artist1Param(artist1)
+          +& Artist2Param(artist2) =>
+        C.collaboration(artist1, artist2).flatMap(Ok(_)).handleErrorWith {
+          case ex: ArtistNotFound => NotFound(ex.getMessage)
+          case ex                 => InternalServerError(ex.getMessage)
+        }
     }
     // #endregion

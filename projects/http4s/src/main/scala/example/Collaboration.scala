@@ -9,8 +9,8 @@ trait Collaboration[F[_]] {
 }
 // #endregion
 
-// #region impl
 object Collaboration {
+// #region impl
   def impl[F[_]: MonadThrow]: Collaboration[F] = new Collaboration[F] {
     def collaboration(artist1: String, artist2: String): F[String] =
       for {
@@ -18,5 +18,5 @@ object Collaboration {
         a2 <- findArtist(artist2)
       } yield checkCollaboration(a1, a2)
   }
-}
 // #endregion
+}
