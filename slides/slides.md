@@ -11,6 +11,10 @@ drawings:
 transition: none
 mdc: true
 background: /spices.jpg
+themeConfig:
+  code-background: var(--slidev-theme-code-background)
+  code-color: var(--slidev-theme-code-color)
+  code-font-size: 1.2em
 ---
 
 # Flavors of Scala
