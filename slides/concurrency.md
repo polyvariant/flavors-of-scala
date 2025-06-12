@@ -416,7 +416,7 @@ Think `Future` but lazy
 <!-- <<< ../snippets/IORefExample.scala#example scala {5-11|1-3|2|13-17|*}{lines:true} -->
 
 
-<v-after>
+<v-click>
 
 <div class="absolute bottom-20 right-20 text-2xl bg-white text-black rotate-5 border-solid border-black border-1">
 
@@ -428,7 +428,7 @@ Featuring
 
 </div>
 
-</v-after>
+</v-click>
 
 <!--
 no lifting! just a composition of values and a single type
