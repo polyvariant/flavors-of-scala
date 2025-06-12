@@ -93,7 +93,7 @@ What if I need to concurrently modify the state?
 <v-click>
 
 <span class="absolute top-50 left-100 text-4xl font-bold bg-white text-black rotate-355">
-What will be the final value?
+What will the final value be?
 </span>
 
 </v-click>
@@ -110,7 +110,7 @@ in Scala (since it's a JVM language) we also have a posibility to use the synchr
 
 ---
 
-# How do we fix that?
+# How do make it **safer**?
 
 
 <v-clicks>
@@ -257,6 +257,8 @@ flowchart LR
 <div v-click.hide="+1" class="absolute top-25 right-5 border-solid border-gray border-2">
 <<< ../snippets/CounterActor.scala#CounterActor scala {2-13}
 </div>
+
+<span v-click.hide="+1" class="absolute top-20 right-10 text-4xl font-bold bg-white text-black rotate-5">INCONVENIENCE</span>
 
 <v-click>
 
@@ -428,6 +430,7 @@ Featuring
 </v-after>
 
 <!--
+// TODO: migrate to smaller counter example
 no lifting! just a composition of values and a single type
 
 Speaker B: but one problem that we had with MTL is still there: one monad for the whole application (everyone needs to adhere to it, even external libs!) 
@@ -442,6 +445,10 @@ layout: center
 # Effects are cool
 
 but they are not the only monads
+
+<!--
+TODO: move the Future->Either->EitherT for artists here
+-->
 
 ---
 src: ./state.md

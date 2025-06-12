@@ -126,6 +126,8 @@ And this is how it's ported to Scala.
 
 # The artist collaboration implementation
 
+// TODO: FutureSpport, hide findArtist impl
+
 ````md magic-move
 ```scala
 case class Artist(name: String, startYear: Int, endYear: Int)
@@ -186,30 +188,11 @@ class CollaborationServlet extends ScalatraServlet with JacksonJsonSupport {
 ````
 
 <!--
--->
-
----
-
-# It's quick and simple
-
-<v-clicks>
-
 - small library
 - up and running very quickly
 - batteries (servlets) included
-
-</v-clicks>
-
----
-
-# It's pragmatic but...
-
 Pragmatism isn't always the best option! This simple, quick approach comes with a heavy baggage.
-
-<!--
-servlets... really?
 -->
-
 
 ---
 
@@ -413,22 +396,59 @@ maybe it's quick to write something, but it's usually not that quick to write so
 -->
 
 ---
+layout: two-cols-header
+---
 
 # Convenience vs Safety: Scalatra & co.
+
+::left::
 
 ```mermaid {scale: 0.8}
 quadrantChart
   x-axis Lower Convenience --> Higher Convenience
   y-axis Lower Safety --> Higher Safety
-  everything in one place:::scalatra: [0.85, 0.1] radius: 8
-  quickly up & running:::scalatra: [0.85, 0.2] radius: 8
-  dealing with servlets:::scalatra: [0.15, 0.55] radius: 8
-  stable integrations:::scalatra: [0.55, 0.55] radius: 8
+  scalatra:::scalatra: [0.9, 0.9]
+
   classDef scalatra color: #ff3300
   classDef play color: #109060
   classDef class2 color: #908342, radius : 10, stroke-color: #310085, stroke-width: 10px
   classDef class3 color: #f00fff, radius : 10
 ```
+
+::right::
+
+- everything in one place <tabler-thumb-up-filled/>
+- easy to quickly write something that works <tabler-thumb-up-filled/>
+- many stable integrations <tabler-thumb-up-filled/>
+- based on well-tested tech (servlets) <tabler-thumb-up-filled/>
+
+---
+layout: two-cols-header
+---
+
+# Convenience vs Safety: Scalatra & co.
+
+// TODO: moving dot down on each list point
+
+::left::
+
+```mermaid {scale: 0.8}
+quadrantChart
+  x-axis Lower Convenience --> Higher Convenience
+  y-axis Lower Safety --> Higher Safety
+  scalatra:::scalatra: [0.9, 0.2]
+
+  classDef scalatra color: #ff3300
+  classDef play color: #109060
+  classDef class2 color: #908342, radius : 10, stroke-color: #310085, stroke-width: 10px
+  classDef class3 color: #f00fff, radius : 10
+```
+
+::right::
+
+- deploying servlets <tabler-thumb-down/>
+- in bigger apps: hard to write something that works correctly <tabler-thumb-down/>
+- testing is difficult <tabler-thumb-down/>
 
 ---
 
@@ -464,6 +484,8 @@ Not all tools encouraged this which unfortunately created some friction.
 ---
 
 # More decoupling
+
+// TODO remove
 
 <<< ../projects/scalatra/src/main/scala/example/servlet.scala#findArtist scala {*}
 
@@ -1217,24 +1239,16 @@ layout: two-cols-header
 quadrantChart
   x-axis Lower Convenience --> Higher Convenience
   y-axis Lower Safety --> Higher Safety
-  everything in one place:::scalatra: [0.85, 0.1]
-  quickly up & running:::scalatra: [0.85, 0.3]
-  servlets:::scalatra: [0.15, 0.55]
-  integrations included:::scalatra: [0.55, 0.55]
-  concurrency using actors:::actors: [0.45, 0.61]
-  typed I/O:::io: [0.52, 0.67]
-  structured concurrency:::io: [0.62, 0.8]
-  lazy evaluation:::io: [0.59, 0.88]
-  too powerful type:::io: [0.82, 0.2]
-  decoupling using types:::fp: [0.77, 0.91]
+  scalatra:::scalatra: [0.85, 0.1]
+  akka-http:::akka: [0.6, 0.4]
+  http4s:::http4s: [0.4, 0.6]
+  tapir:::tapir: [0.7, 0.8]
 
   classDef scalatra color: #ff3300, radius : 8
-  classDef actors color: #109060, radius : 8
-  classDef io color: #f00fff, radius : 8
-  classDef fp color: #F99111, radius : 8, stroke-color: #310085, stroke-width: 10px
-  classDef class3 color: #f00fff, radius : 8
+  classDef akka color: #109060, radius : 8
+  classDef http4s color: #f00fff, radius : 8
+  classDef tapir color: #F99111, radius : 8
 ```
-<span style="color: #ff3300;">scalatra</span> <span style="color: #109060;">actors</span> <span style="color: #f00fff;">IO</span> <span style="color: #F99111;">FP</span>
 
 ::right::
 
@@ -1242,12 +1256,18 @@ quadrantChart
 <!--
 quadrant
 
+TODO: add more 
+
+Scala developers pursued safety, but it turned out it was at the cost of convenience, especially for new joiners.
+
 ::right::
 
 <p>IO: where should it go?</p>
 <ul style="list-style-type: circle;">
 <li><span style="color: #f00fff;">concurrency using actors</span></li> 
 </ul>
+
+small abstract: Since the beginning, Scala devs have been pursuing more ergonomic ways of building software. Even in 2025, we are still not satisfied with what we have, we still believe we could do better. Maybe the problem is not in the language, but in us?
 -->
 ---
 
@@ -1287,6 +1307,7 @@ Couldn't we just use this as a basis and let programmers choose their own poison
 ---
 
 # Enter tapir
+// TODO pick whatever server/backend/effect system you want
 
 <<< ../projects/tapir/src/main/scala/example/endpoints.scala#endpoint scala {*}
 
@@ -1353,6 +1374,8 @@ Since you can choose what's the design of your app, you can use anything and it 
 
 # And this all affects testability
 
+// TODO remove testing
+
 Remember the test we started with?
 
 ```scala
@@ -1387,15 +1410,30 @@ Now, thanks to the tool we use and how it's designed around values and functions
 
 ---
 
-# We did concurrency and HTTP
+# What the `F[_]`
 
-But a similar story can be told about:
-- databases
-- JSON libraries
-- testing frameworks
-- frontend (Scala.js)
-- dependency management
-- HTTP clients
-- API integrations
-- ...
+<v-click>
 
+<!-- Speaker A: Everyone was supposed to be happy!  -->
+
+Everyone was supposed to be happy!
+
+</v-click>
+
+<!-- you should've be able to decide for MT or beefy effect to your preference, at the end of the world -->
+<v-click>
+
+<!-- Speaker B: You telling me -->
+
+You telling me I now need `F[_]: Async: Monad: Clock: UUIDGen` to run hello world?
+
+  <img class="absolute top-60 left-100 w-100" alt="" src="./godfather.png" />
+</v-click>
+
+<v-click>
+
+<!-- Speaker A: let's save the discussion for later and move on to something practical -->
+
+<span class="absolute bottom-10 left-20 text-4xl font-bold bg-white text-black rotate-5">We'll get back to that</span>
+
+</v-click>

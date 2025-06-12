@@ -150,13 +150,14 @@ So there's plenty of room for Scala improvements
 
 ---
 
-# Java++
+# Code example: From Java to Scala
 
+First you create a list
+
+<<< ../snippets/EvenSquares.java#list java {*}
+
+<!--
 In 2004 Scala was a great innovation, let's see why
-
----
-
-# Java++
 
 Working with collections in Java 1.4 demo
 
@@ -164,13 +165,7 @@ Working with collections in Java 1.4 demo
 - only keep the even numbers
 - square each number
 
----
-
-# Code example: From Java to Scala
-
-First you create a list
-
-<<< ../snippets/EvenSquares.java#list java {*}
+-->
 
 ---
 
@@ -180,11 +175,15 @@ Then filter and square the values
 
 <<< ../snippets/EvenSquares.java#map java {2-3|4,5,10|7|8|*}{lines: true}
 
+<!--
+- only keep the even numbers
+- square each number
+
+-->
+
 ---
 
 # Code example: From Java to Scala
-
-Print at last
 
 <<< ../snippets/EvenSquares.java#foreach java {*}
 
@@ -265,6 +264,7 @@ The same thing in Scala
 <v-click>
 
 <img class="absolute bottom-20 right-20 w-80" alt="" src="./the-office-wow.webp" />
+<span class="absolute bottom-50 left-20 text-4xl font-bold bg-white text-black rotate-5">CONVENIENCE</span>
 
 </v-click>
 
@@ -284,7 +284,7 @@ src: ./http.md
 <v-clicks>
 
 - Not necessarily!
-- It works great for library design
+- It works great for library design (tapir!)
 - See Noel's talk from this year's Scalar ([link](https://www.youtube.com/watch?v=nyMwp7--rY4))
 
 </v-clicks>
@@ -330,6 +330,20 @@ No `IO[A]` in sight!
 Try it at home!
 
 Watch [this talk](https://www.youtube.com/live/gYS3UkmFoHQ?t=719&cbrd=1) for more detailed introduction
+
+---
+
+# We did concurrency and HTTP
+
+But a similar story can be told about:
+- databases
+- JSON libraries
+- testing frameworks
+- frontend (Scala.js)
+- dependency management
+- HTTP clients
+- API integrations
+- ...
 
 ---
 layout: center
