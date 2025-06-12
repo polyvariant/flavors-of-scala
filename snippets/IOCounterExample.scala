@@ -12,7 +12,6 @@ class Counter(ref: Ref[IO, Int]) {
 }
 
 object CounterApp extends IOApp.Simple {
-
   def run: IO[Unit] = for {
     ref    <- Ref.of[IO, Int](0) // initialize Ref 0
     counter = new Counter(ref)

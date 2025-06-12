@@ -475,7 +475,7 @@ background: /galaxy-brain.jpg
 
 <span class="absolute top-17 right-10 text-4xl font-bold text-yellow rotate-10">2015~2017</span>
 
-<<< ../snippets/TaglessFinalJourney.scala#interface scala {*}{lines:true}
+<<< ../snippets/TaglessFinalArtists.scala#interface scala {*}{lines:true}
 
 
 <v-click>
@@ -498,12 +498,18 @@ background: /galaxy-brain.jpg
 
 # Final tagless
 
-<<< ../snippets/TaglessFinalJourney.scala#partial-implementation scala {*}{lines:true}
-
+<!-- <<< ../snippets/TaglessFinalJourney.scala#partial-implementation scala {*}{lines:true} -->
+<<< ../snippets/TaglessFinalArtists.scala#mtl-implementation scala {*}{lines:true}
 
 <v-click>
 
-<div class="absolute bottom-20 right-20 text-2xl bg-white text-black rotate-5 border-solid border-white border-10">
+<<< ../snippets/TaglessFinalArtists.scala#zio-implementation scala {*}{lines:true}
+
+</v-click>
+
+<v-click>
+
+<div class="absolute bottom-2 right-20 text-2xl bg-white text-black rotate-5 border-solid border-white border-10">
 
 Featuring
 
@@ -511,33 +517,17 @@ Featuring
 
 ✅ Composability
 
+✅ Choice
+
 ❌ Readability
 
 ❌ Cognitive load
 
-</div>
-
-</v-click>
-
-
----
-
-# Final tagless - ZIO implementation
-
-<<< ../snippets/TaglessFinalJourney.scala#zio-implementation scala {*}{lines:true}
-
-
-<v-click>
-
-<div class="absolute bottom-20 right-20 text-2xl bg-white text-black rotate-5 border-solid border-white border-10">
-
-You don't need Monad Transformers
-
-if you don't like them
 
 </div>
 
 </v-click>
+
 
 
 ---
