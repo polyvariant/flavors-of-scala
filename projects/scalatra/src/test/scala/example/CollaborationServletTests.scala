@@ -9,11 +9,11 @@ class ScalatraServletTests extends ScalatraFunSuite {
   test("GET /collaboration") {
     get(
       "/collaboration",
-      params = Map("artist1" -> "ArtistA", "artist2" -> "ArtistB")
+      params = Map("artist1" -> "Frank Sinatra", "artist2" -> "Aretha Franklin")
     ) {
       status should equal(200)
       body should equal(
-        "ArtistA and ArtistB could have collaborated between 1985 and 1992"
+        "Frank Sinatra and Aretha Franklin could have collaborated between 1954 and 1995"
       )
     }
   }
