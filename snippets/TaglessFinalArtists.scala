@@ -28,10 +28,8 @@ trait Artists[F[_]] {
 
 //#region mtl-implementation
 class ArtistT extends Artists[EitherT[IO, ArtistNotFound, *]] {
-
   def findArtist(name: String): EitherT[IO, ArtistNotFound, Artist] = 
     ??? // you know it already
-
 }
 //#endregion
 
