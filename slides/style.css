@@ -1,3 +1,7 @@
 .slidev-layout h1 > code {
     color: #555;
 }
+
+div pre.slidev-code { 
+    background-color: #eeeeee;
+}
