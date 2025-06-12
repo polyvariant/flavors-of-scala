@@ -783,6 +783,7 @@ quadrantChart
 <span style="color: #ff3300;">scalatra</span> <span style="color: #109060;">actors</span>
 
 <!--
+quadrant
 ::right::
 
 <ul style="list-style-type: circle;">
@@ -885,20 +886,170 @@ quadrantChart
   concurrency using actors:::actors: [0.45, 0.61]
   classDef scalatra color: #ff3300, radius : 8
   classDef actors color: #109060, radius : 8
-  classDef types color: #f00fff, radius : 8
+  classDef io color: #f00fff, radius : 8
   classDef class2 color: #908342, radius : 8, stroke-color: #310085, stroke-width: 10px
   classDef class3 color: #f00fff, radius : 8
 ```
 <span style="color: #ff3300;">scalatra</span> <span style="color: #109060;">actors</span>
 
-<!--
 ::right::
 
+<p>IO: where should it go?</p>
 <ul style="list-style-type: circle;">
-<li><span style="color: #109060;">concurrency using actors</span></li> 
+<li><span style="color: #f00fff;">typed I/O <tabler-thumb-up-filled/></span></li> 
+<li><span style="color: #f00fff;">structured concurrency <tabler-thumb-up-filled/></span></li> 
+<li><span style="color: #f00fff;">lazy evaluation <tabler-thumb-up-filled/></span></li> 
+<li><span style="color: #f00fff;">too powerful type <tabler-thumb-down/></span></li> 
+</ul>
+
+<!--
+quadrant
+
+::right::
+
+<p>IO: where should it go?</p>
+<ul style="list-style-type: circle;">
+<li><span style="color: #f00fff;">concurrency using actors</span></li> 
 </ul>
 -->
 
+---
+layout: two-cols-header
+---
+
+# Convenience vs Safety
+
+::left::
+
+```mermaid {scale: 0.8}
+quadrantChart
+  x-axis Lower Convenience --> Higher Convenience
+  y-axis Lower Safety --> Higher Safety
+  everything in one place:::scalatra: [0.85, 0.1]
+  quickly up & running:::scalatra: [0.85, 0.2]
+  servlets:::scalatra: [0.15, 0.55]
+  integrations included:::scalatra: [0.55, 0.55]
+  concurrency using actors:::actors: [0.45, 0.61]
+  typed I/O:::io: [0.52, 0.75]
+  structured concurrency:::io: [0.62, 0.85]
+
+  classDef scalatra color: #ff3300, radius : 8
+  classDef actors color: #109060, radius : 8
+  classDef io color: #f00fff, radius : 8
+  classDef class2 color: #908342, radius : 8, stroke-color: #310085, stroke-width: 10px
+  classDef class3 color: #f00fff, radius : 8
+```
+<span style="color: #ff3300;">scalatra</span> <span style="color: #109060;">actors</span>
+
+::right::
+
+<p>IO: where should it go?</p>
+<ul style="list-style-type: circle;">
+<li><span style="color: #f00fff;">lazy evaluation <tabler-thumb-up-filled/></span></li> 
+<li><span style="color: #f00fff;">too powerful type <tabler-thumb-down/></span></li> 
+</ul>
+
+<!--
+quadrant
+
+::right::
+
+<p>IO: where should it go?</p>
+<ul style="list-style-type: circle;">
+<li><span style="color: #f00fff;">concurrency using actors</span></li> 
+</ul>
+-->
+
+---
+layout: two-cols-header
+---
+
+# Convenience vs Safety
+
+::left::
+
+```mermaid {scale: 0.8}
+quadrantChart
+  x-axis Lower Convenience --> Higher Convenience
+  y-axis Lower Safety --> Higher Safety
+  everything in one place:::scalatra: [0.85, 0.1]
+  quickly up & running:::scalatra: [0.85, 0.2]
+  servlets:::scalatra: [0.15, 0.55]
+  integrations included:::scalatra: [0.55, 0.55]
+  concurrency using actors:::actors: [0.45, 0.61]
+  typed I/O:::io: [0.52, 0.67]
+  structured concurrency:::io: [0.62, 0.8]
+  lazy evaluation:::io: [0.59, 0.88]
+
+  classDef scalatra color: #ff3300, radius : 8
+  classDef actors color: #109060, radius : 8
+  classDef io color: #f00fff, radius : 8
+  classDef class2 color: #908342, radius : 8, stroke-color: #310085, stroke-width: 10px
+  classDef class3 color: #f00fff, radius : 8
+```
+<span style="color: #ff3300;">scalatra</span> <span style="color: #109060;">actors</span>
+
+::right::
+
+<p>IO: where should it go?</p>
+<ul style="list-style-type: circle;">
+<li><span style="color: #f00fff;">too powerful type <tabler-thumb-down/></span></li> 
+</ul>
+
+<!--
+quadrant
+
+::right::
+
+<p>IO: where should it go?</p>
+<ul style="list-style-type: circle;">
+<li><span style="color: #f00fff;">concurrency using actors</span></li> 
+</ul>
+-->
+
+---
+layout: two-cols-header
+---
+
+# Convenience vs Safety
+
+::left::
+
+```mermaid {scale: 0.8}
+quadrantChart
+  x-axis Lower Convenience --> Higher Convenience
+  y-axis Lower Safety --> Higher Safety
+  everything in one place:::scalatra: [0.85, 0.1]
+  quickly up & running:::scalatra: [0.85, 0.3]
+  servlets:::scalatra: [0.15, 0.55]
+  integrations included:::scalatra: [0.55, 0.55]
+  concurrency using actors:::actors: [0.45, 0.61]
+  typed I/O:::io: [0.52, 0.67]
+  structured concurrency:::io: [0.62, 0.8]
+  lazy evaluation:::io: [0.59, 0.88]
+  too powerful type:::io: [0.82, 0.2]
+
+  classDef scalatra color: #ff3300, radius : 8
+  classDef actors color: #109060, radius : 8
+  classDef io color: #f00fff, radius : 8
+  classDef class2 color: #908342, radius : 8, stroke-color: #310085, stroke-width: 10px
+  classDef class3 color: #f00fff, radius : 8
+```
+<span style="color: #ff3300;">scalatra</span> <span style="color: #109060;">actors</span>
+
+::right::
+
+
+<!--
+quadrant
+
+::right::
+
+<p>IO: where should it go?</p>
+<ul style="list-style-type: circle;">
+<li><span style="color: #f00fff;">concurrency using actors</span></li> 
+</ul>
+-->
 ---
 
 # Liberties constrain, constraints liberate
@@ -1053,6 +1204,50 @@ And that's the new DSL. Was it the holy grail? it turns out, not really... we st
 
 <!--
 We were able to solve some convenience and safety problems. It's easier to work with IO than with monad transformers. It's lazily evaluated but one problem remained the same as in Futures: these types are too powerful: you can do everything in a function that returns an IO.
+-->
+---
+layout: two-cols-header
+---
+
+# Convenience vs Safety
+
+::left::
+
+```mermaid {scale: 0.8}
+quadrantChart
+  x-axis Lower Convenience --> Higher Convenience
+  y-axis Lower Safety --> Higher Safety
+  everything in one place:::scalatra: [0.85, 0.1]
+  quickly up & running:::scalatra: [0.85, 0.3]
+  servlets:::scalatra: [0.15, 0.55]
+  integrations included:::scalatra: [0.55, 0.55]
+  concurrency using actors:::actors: [0.45, 0.61]
+  typed I/O:::io: [0.52, 0.67]
+  structured concurrency:::io: [0.62, 0.8]
+  lazy evaluation:::io: [0.59, 0.88]
+  too powerful type:::io: [0.82, 0.2]
+  decoupling using types:::fp: [0.77, 0.91]
+
+  classDef scalatra color: #ff3300, radius : 8
+  classDef actors color: #109060, radius : 8
+  classDef io color: #f00fff, radius : 8
+  classDef fp color: #F99111, radius : 8, stroke-color: #310085, stroke-width: 10px
+  classDef class3 color: #f00fff, radius : 8
+```
+<span style="color: #ff3300;">scalatra</span> <span style="color: #109060;">actors</span> <span style="color: #f00fff;">IO</span> <span style="color: #F99111;">FP</span>
+
+::right::
+
+
+<!--
+quadrant
+
+::right::
+
+<p>IO: where should it go?</p>
+<ul style="list-style-type: circle;">
+<li><span style="color: #f00fff;">concurrency using actors</span></li> 
+</ul>
 -->
 ---
 
