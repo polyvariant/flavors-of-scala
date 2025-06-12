@@ -412,6 +412,23 @@ In case of Scalatra, we can see a lot of benefits in both categories.
 maybe it's quick to write something, but it's usually not that quick to write something that works correctly (or change something bigger without introducing bugs)
 -->
 
+---
+
+# Convenience vs Safety: Scalatra & co.
+
+```mermaid {scale: 0.8}
+quadrantChart
+  x-axis Lower Convenience --> Higher Convenience
+  y-axis Lower Safety --> Higher Safety
+  everything in one place:::scalatra: [0.85, 0.1] radius: 8
+  quickly up & running:::scalatra: [0.85, 0.2] radius: 8
+  dealing with servlets:::scalatra: [0.15, 0.55] radius: 8
+  stable integrations:::scalatra: [0.55, 0.55] radius: 8
+  classDef scalatra color: #ff3300
+  classDef play color: #109060
+  classDef class2 color: #908342, radius : 10, stroke-color: #310085, stroke-width: 10px
+  classDef class3 color: #f00fff, radius : 10
+```
 
 ---
 
@@ -689,7 +706,7 @@ We needed to step up our FP game, but it looked like it paid off. The call site 
 
 ---
 
-# Convenience vs Safety: Actors and advanced FP
+# Convenience vs Safety: Actors + some FP
 
 <img class="absolute top-35 right-20 size-2/5 shadow-xl rounded-md" alt="" src="/devil_and_angel.gif" />
 
@@ -706,6 +723,71 @@ We needed to step up our FP game, but it looked like it paid off. The call site 
 
 <!--
 In case of actors and FP, Scala ecosystem made some progress, but some new problems were created along the way. Let's handle the last two problems in order. First, the eager evaluation.
+-->
+
+---
+layout: two-cols-header
+---
+
+# Convenience vs Safety
+
+::left::
+
+```mermaid {scale: 0.8}
+quadrantChart
+  x-axis Lower Convenience --> Higher Convenience
+  y-axis Lower Safety --> Higher Safety
+  everything in one place:::scalatra: [0.85, 0.1]
+  quickly up & running:::scalatra: [0.85, 0.2]
+  servlets:::scalatra: [0.15, 0.55]
+  integrations included:::scalatra: [0.55, 0.55]
+  classDef scalatra color: #ff3300, radius : 8
+  classDef actors color: #109060, radius : 8
+  classDef types color: #f00fff, radius : 8
+  classDef class2 color: #908342, radius : 8, stroke-color: #310085, stroke-width: 10px
+  classDef class3 color: #f00fff, radius : 8
+```
+
+<span style="color: #ff3300;">scalatra</span> <span style="color: #f00fff;">types</span> <span style="color: #109060;">actors</span>
+
+::right::
+
+<p>where should it go?</p>
+<ul style="list-style-type: circle;">
+<li><span style="color: #109060;">concurrency using actors</span></li> 
+</ul>
+
+---
+layout: two-cols-header
+---
+
+# Convenience vs Safety
+
+::left::
+
+```mermaid {scale: 0.8}
+quadrantChart
+  x-axis Lower Convenience --> Higher Convenience
+  y-axis Lower Safety --> Higher Safety
+  everything in one place:::scalatra: [0.85, 0.1]
+  quickly up & running:::scalatra: [0.85, 0.2]
+  servlets:::scalatra: [0.15, 0.55]
+  integrations included:::scalatra: [0.55, 0.55]
+  concurrency using actors:::actors: [0.45, 0.61]
+  classDef scalatra color: #ff3300, radius : 8
+  classDef actors color: #109060, radius : 8
+  classDef types color: #f00fff, radius : 8
+  classDef class2 color: #908342, radius : 8, stroke-color: #310085, stroke-width: 10px
+  classDef class3 color: #f00fff, radius : 8
+```
+<span style="color: #ff3300;">scalatra</span> <span style="color: #109060;">actors</span>
+
+<!--
+::right::
+
+<ul style="list-style-type: circle;">
+<li><span style="color: #109060;">concurrency using actors</span></li> 
+</ul>
 -->
 
 ---
@@ -783,6 +865,40 @@ We could use EitherT with IOs here but that would mean we'd need to work with mo
 <!--
 We were able to solve some convenience and safety problems. It's easier to work with IO than with monad transformers. It's lazily evaluated but one problem remained the same as in Futures: these types are too powerful: you can do everything in a function that returns an IO.
 -->
+
+---
+layout: two-cols-header
+---
+
+# Convenience vs Safety
+
+::left::
+
+```mermaid {scale: 0.8}
+quadrantChart
+  x-axis Lower Convenience --> Higher Convenience
+  y-axis Lower Safety --> Higher Safety
+  everything in one place:::scalatra: [0.85, 0.1]
+  quickly up & running:::scalatra: [0.85, 0.2]
+  servlets:::scalatra: [0.15, 0.55]
+  integrations included:::scalatra: [0.55, 0.55]
+  concurrency using actors:::actors: [0.45, 0.61]
+  classDef scalatra color: #ff3300, radius : 8
+  classDef actors color: #109060, radius : 8
+  classDef types color: #f00fff, radius : 8
+  classDef class2 color: #908342, radius : 8, stroke-color: #310085, stroke-width: 10px
+  classDef class3 color: #f00fff, radius : 8
+```
+<span style="color: #ff3300;">scalatra</span> <span style="color: #109060;">actors</span>
+
+<!--
+::right::
+
+<ul style="list-style-type: circle;">
+<li><span style="color: #109060;">concurrency using actors</span></li> 
+</ul>
+-->
+
 ---
 
 # Liberties constrain, constraints liberate
