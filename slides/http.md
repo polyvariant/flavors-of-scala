@@ -913,7 +913,8 @@ quadrantChart
   classDef scalatra color: #ff3300, radius : 8
   classDef akka color: #109060, radius : 8
   classDef http4s color: #f00fff, radius : 8
-  classDef tapir color: #F99111, radius : 13, stroke-color: #310085, stroke-width: 10px
+  classDef tapir color: #F99111, radius : 8
+  classDef play color: #92d13d, radius : 13, stroke-color: #310085, stroke-width: 10px
 ```
 
 ::right::
@@ -925,8 +926,44 @@ quadrantChart
 
 <!--
 Since you can choose what's the design of your app, you can use anything and it will integrate well.
+-->
 
-TODO: add more 
+---
+layout: two-cols-header
+---
+
+# Convenience vs Safety: <span style="color: #92d13d;">play</span>
+
+::left::
+
+```mermaid {scale: 0.9}
+quadrantChart
+  x-axis Lower Convenience --> Higher Convenience
+  y-axis Lower Safety --> Higher Safety
+  scalatra:::scalatra: [0.85, 0.1]
+  akka-http:::akka: [0.6, 0.4]
+  http4s:::http4s: [0.4, 0.6]
+  tapir:::tapir: [0.7, 0.8]
+  play:::play: [0.7, 0.3]
+
+  classDef scalatra color: #ff3300, radius : 8
+  classDef akka color: #109060, radius : 8
+  classDef http4s color: #f00fff, radius : 8
+  classDef tapir color: #F99111, radius : 8
+  classDef play color: #92d13d, radius : 13, stroke-color: #310085, stroke-width: 10px
+```
+
+::right::
+
+- MVC (with some discipline) <tabler-thumb-up-filled/>
+- built-in security <tabler-thumb-up-filled/>
+- a lot of stable integrations <tabler-thumb-up-filled/>
+- routes as text file <tabler-thumb-down/>
+- tightly coupled with sbt <tabler-thumb-down/>
+- MVC (without discipline) <tabler-thumb-down/>
+
+<!--
+Since you can choose what's the design of your app, you can use anything and it will integrate well.
 -->
 
 ---

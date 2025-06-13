@@ -291,41 +291,27 @@ layout: center
 
 # Monadic effects are not the only option
 
-
 ---
 
-# Algebraic effects
-
-Abstract operations with handlers!
-
----
-
-# Meet Kyo
-
-<div class="absolute top-25 w-200">
-
-<<< ../snippets/KyoBasicExample.scala#example-app scala {5-12|4|14|16|*}{lines:true}
-
-</div>
+# Happening now...
 
 <v-click>
-
-<div class="absolute bottom-10 w-200">
-
-No `IO[A]` in sight!
-
-</div>
-
+  <img class="absolute top-20 left-20 w-180" alt="" src="./capybara.jpeg" />
 </v-click>
 
+<v-click>
+  <img class="absolute top-40 left-20 w-200" alt="" src="./gears.png" />
+</v-click>
 
----
+<v-click>
+  <img class="absolute top-40 left-20 w-200" alt="" src="./ox.png" />
+</v-click>
 
-# Kyo Ref example
-
-Try it at home!
-
-Watch [this talk](https://www.youtube.com/live/gYS3UkmFoHQ?t=719&cbrd=1) for more detailed introduction
+<v-click>
+  <div class="absolute top-25 w-200">
+<<< ../snippets/KyoBasicExample.scala#example-app scala {*}{lines:true}
+  </div>
+</v-click>
 
 ---
 
