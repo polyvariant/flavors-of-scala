@@ -110,7 +110,7 @@ in Scala (since it's a JVM language) we also have a posibility to use the synchr
 
 ---
 
-# How do make it **safer**?
+# How to make it **safer**?
 
 
 <v-clicks>
@@ -507,27 +507,6 @@ background: /galaxy-brain.jpg
 
 </v-click>
 
-<v-click>
-
-<div class="absolute bottom-2 right-20 text-2xl bg-white text-black rotate-5 border-solid border-white border-10">
-
-Featuring
-
-✅ Testability
-
-✅ Composability
-
-✅ Choice
-
-❌ Readability
-
-❌ Cognitive load
-
-
-</div>
-
-</v-click>
-
 
 
 ---
@@ -538,7 +517,7 @@ Featuring
 
 <!-- Speaker A: Everyone was supposed to be happy!  -->
 
-Everyone was supposed to be happy!
+Everyone was supposed to be happy! Right?
 
 </v-click>
 
@@ -560,3 +539,6 @@ You telling me I now need `F[_]: Async: Monad: Clock: UUIDGen` to run hello worl
 
 </v-click>
 
+<!--
+[click] # TRANSITION
+-->

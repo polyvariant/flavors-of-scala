@@ -308,24 +308,14 @@ layout: center
 </v-click>
 
 <v-click>
+  <img class="absolute top-45 left-20 w-210 rotate-350" alt="" src="./cyfra.png" />
+</v-click>
+
+<v-click>
   <div class="absolute top-25 w-200">
 <<< ../snippets/KyoBasicExample.scala#example-app scala {*}{lines:true}
   </div>
 </v-click>
-
----
-
-# We did concurrency and HTTP
-
-But a similar story can be told about:
-- databases
-- JSON libraries
-- testing frameworks
-- frontend (Scala.js)
-- dependency management
-- HTTP clients
-- API integrations
-- ...
 
 ---
 layout: center
